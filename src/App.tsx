@@ -12,65 +12,397 @@ type Page =
   | "system"
   | "compare";
 
+type NavigateFn = (page: Page, productId?: string) => void;
+
+type CollectionId = "core" | "special-edition";
+
+type ProductImage = {
+  src: string;
+  alt: string;
+  view: string;
+};
+
+type ProductAttributes = {
+  model: string;
+  colorPattern: string;
+  size: string;
+  material: string;
+  closure: string;
+};
+
+type ProductValidation = {
+  status: "provisional-partial" | "confirmed";
+  mockData: {
+    price: boolean;
+  };
+  pendingConfirmation: ("price" | "size" | "material" | "closure")[];
+};
+
 type Product = {
+  id: string;
   name: string;
-  subtitle: string;
+  shortDescription: string;
+  description: string;
   price: string;
-  colors: string[];
-  special?: boolean;
+  priceAmount: number;
+  mockData: boolean;
+  collectionId: CollectionId;
+  collectionLabel: string;
+  backdropTone: "light" | "dark";
+  swatch: string;
+  variants?: { id: string; label: string; swatch: string }[];
+  images: ProductImage[];
+  attributes: ProductAttributes;
+  validation: ProductValidation;
 };
 
 const products: Product[] = [
   {
-    name: "Senderos",
-    subtitle: "Core Cap",
+    id: "rsm-blue",
+    name: "RSM Blue",
+    shortDescription: "Contraste crema y azul marino con bordado frontal RSM en relieve.",
+    description:
+      "Corona estructurada en tono crema de sarga diagonal en contraste con visera curva, botón superior y bordado frontal RSM en relieve tridimensional azul marino.",
     price: "$1,599 MXN",
-    colors: ["#594438", "#3D302A", "#8C694C", "#D5C2A8"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "core",
+    collectionLabel: "Core Cap",
+    backdropTone: "light",
+    swatch: "#1E305E",
+    images: [
+      {
+        src: "/assets/rsm-blue.webp",
+        alt: "Gorra RSM Blue en tono crema con visera y bordado azul marino",
+        view: "Vista principal",
+      },
+    ],
+    attributes: {
+      model: "RSM Blue",
+      colorPattern: "Crema / Azul marino",
+      size: "Por confirmar (pendiente de confirmación)",
+      material: "Tejido de sarga visible; composición exacta pendiente de confirmación",
+      closure: "Pendiente de confirmación",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material", "closure"],
+    },
   },
   {
-    name: "Caliza",
-    subtitle: "Core Cap",
+    id: "rsm-militar",
+    name: "RSM Militar",
+    shortDescription: "Corona arena con emblema en relieve oscuro y visera en patrón camuflaje.",
+    description:
+      "Corona estructurada en tono arena con emblema frontal RSM en relieve oscuro mate, cordón trenzado olivo en la base y visera curva con patrón camuflaje en tonos tierra.",
     price: "$1,599 MXN",
-    colors: ["#6B4D3B", "#463934", "#987C67", "#D9C9B2"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "core",
+    collectionLabel: "Core Cap",
+    backdropTone: "light",
+    swatch: "#574D35",
+    images: [
+      {
+        src: "/assets/rsm-militar.webp",
+        alt: "Gorra RSM Militar en tono arena con visera camuflaje y emblema oscuro",
+        view: "Vista principal",
+      },
+    ],
+    attributes: {
+      model: "RSM Militar",
+      colorPattern: "Arena / Camuflaje pixelado",
+      size: "Por confirmar (pendiente de confirmación)",
+      material: "Corona en tejido de sarga y visera estampada; composición pendiente de confirmación",
+      closure: "Pendiente de confirmación",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material", "closure"],
+    },
   },
   {
-    name: "Caspiano",
-    subtitle: "Core Cap",
+    id: "rsm-special-edition-gamuza",
+    name: "RSM Special Edition Gamuza",
+    shortDescription:
+      "Textura tipo gamuza en tono tabaco con emblema metálico dorado y cordón trenzado.",
+    description:
+      "Silueta de seis paneles en acabado tipo gamuza color tabaco, distinguida por emblema ovalado e iniciales RSM en relieve metálico dorado, cordón trenzado frontal con herraje labrado y cierre posterior con hebilla metálica.",
     price: "$1,599 MXN",
-    colors: ["#191716", "#34302D", "#664B3A", "#776D5B"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "special-edition",
+    collectionLabel: "Special Edition",
+    backdropTone: "dark",
+    swatch: "#6D4423",
+    images: [
+      {
+        src: "/assets/rsm-special-edition-gamuza.webp",
+        alt: "Gorra RSM Special Edition Gamuza vista tres cuartos",
+        view: "Vista tres cuartos",
+      },
+      {
+        src: "/assets/rsm-special-edition-gamuza-front.webp",
+        alt: "Gorra RSM Special Edition Gamuza vista frontal",
+        view: "Vista frontal",
+      },
+      {
+        src: "/assets/rsm-special-edition-gamuza-side.webp",
+        alt: "Gorra RSM Special Edition Gamuza vista lateral",
+        view: "Vista lateral",
+      },
+      {
+        src: "/assets/rsm-special-edition-gamuza-back.webp",
+        alt: "Gorra RSM Special Edition Gamuza vista posterior con hebilla metálica",
+        view: "Vista posterior",
+      },
+    ],
+    attributes: {
+      model: "Special Edition Gamuza",
+      colorPattern: "Tabaco / Dorado envejecido",
+      size: "Ajustable (medidas pendientes de confirmación)",
+      material:
+        "Acabado tipo gamuza con aplicaciones metálicas; composición exacta pendiente de confirmación",
+      closure: "Correa ajustable con hebilla metálica en tono latón antiguo",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material"],
+    },
   },
   {
-    name: "Macho",
-    subtitle: "Core Cap",
+    id: "rsm-special-edition-leather-brown",
+    name: "RSM Special Edition Leather Brown",
+    shortDescription:
+      "Corona café texturizada, parche ovalado con emblema en relieve y visera tono miel.",
+    description:
+      "Corona en café profundo con relieve orgánico sutil, parche ovalado frontal con marco labrado y emblema RSM en acabado metálico cobrizo, cordón trenzado con doble herraje lateral y visera curva en tono miel.",
     price: "$1,599 MXN",
-    colors: ["#54362C", "#493A32", "#897867", "#D1BDA4"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "special-edition",
+    collectionLabel: "Special Edition",
+    backdropTone: "dark",
+    swatch: "#4A2C1D",
+    images: [
+      {
+        src: "/assets/rsm-special-edition-leather-brown.webp",
+        alt: "Gorra RSM Special Edition Leather Brown con parche ovalado y emblema en relieve",
+        view: "Vista principal",
+      },
+    ],
+    attributes: {
+      model: "Special Edition Leather Brown",
+      colorPattern: "Café profundo grabado / Miel",
+      size: "Por confirmar (pendiente de confirmación)",
+      material:
+        "Corona texturizada con parche tipo piel y visera tipo gamuza; composición pendiente de confirmación",
+      closure: "Pendiente de confirmación",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material", "closure"],
+    },
   },
   {
-    name: "Nocturna",
-    subtitle: "Special Edition",
+    id: "rsm-special-edition-pipes",
+    name: "RSM Special Edition Pipes",
+    shortDescription:
+      "Contraste hueso y negro con emblema RSM en bordado texturizado tonos tierra.",
+    description:
+      "Construcción bicolor de acabado suave con paneles frontales en tono hueso, paneles posteriores y visera curva en negro con pespuntes claros, cordón frontal al tono y emblema RSM en bordado texturizado tipo bucle.",
     price: "$1,599 MXN",
-    colors: ["#1B1A19", "#2F2D2B", "#5E493C", "#5D5C57"],
-    special: true,
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "special-edition",
+    collectionLabel: "Special Edition",
+    backdropTone: "dark",
+    swatch: "#191716",
+    images: [
+      {
+        src: "/assets/rsm-special-edition-pipes.webp",
+        alt: "Gorra RSM Special Edition Pipes bicolor hueso y negro con bordado texturizado",
+        view: "Vista principal",
+      },
+    ],
+    attributes: {
+      model: "Special Edition Pipes",
+      colorPattern: "Hueso / Negro con bordado terracota",
+      size: "Por confirmar (pendiente de confirmación)",
+      material:
+        "Paneles de acabado afelpado tipo gamuza y bordado en bucle; composición pendiente de confirmación",
+      closure: "Pendiente de confirmación",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material", "closure"],
+    },
   },
   {
-    name: "Orígenes",
-    subtitle: "Core Cap",
+    id: "rsm-special-edition-red",
+    name: "RSM Special Edition Red",
+    shortDescription: "Frente hueso y paneles en tono vino con bordado histórico Rancho San Marco.",
+    description:
+      "Diseño bicolor de textura tipo gamuza con frente estructurado en tono hueso y visera, paneles posteriores y cordón trenzado en rojo vino, acompañado del bordado frontal Rancho San Marco · Monterrey, N.L. · ESTD 2016.",
     price: "$1,599 MXN",
-    colors: ["#806D55", "#5B4435", "#74503A"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "special-edition",
+    collectionLabel: "Special Edition",
+    backdropTone: "dark",
+    swatch: "#64242E",
+    images: [
+      {
+        src: "/assets/rsm-special-edition-red.webp",
+        alt: "Gorra RSM Special Edition Red en hueso y vino con bordado Rancho San Marco",
+        view: "Vista principal",
+      },
+    ],
+    attributes: {
+      model: "Special Edition Red",
+      colorPattern: "Hueso / Vino Estirpe",
+      size: "Por confirmar (pendiente de confirmación)",
+      material:
+        "Acabado tipo gamuza bicolor con bordado en relieve; composición pendiente de confirmación",
+      closure: "Pendiente de confirmación",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material", "closure"],
+    },
   },
   {
-    name: "Territorio",
-    subtitle: "Core Cap",
+    id: "rsm-super-cajeta",
+    name: "RSM Super Cajeta",
+    shortDescription:
+      "Silueta trucker en negro y cajeta con parche grabado Rancho Riders y malla beige.",
+    description:
+      "Silueta trucker con panel frontal negro estructurado, parche frontal grabado con la inscripción Super Cajeta · RSM · Rancho Riders, visera curva en tono cajeta, paneles de malla beige y cierre posterior snapback con etiqueta tejida RSM.",
     price: "$1,599 MXN",
-    colors: ["#3E2D28", "#4A3C34", "#68695A"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "core",
+    collectionLabel: "Core Cap",
+    backdropTone: "light",
+    swatch: "#944A20",
+    images: [
+      {
+        src: "/assets/rsm-super-cajeta.webp",
+        alt: "Gorra RSM Super Cajeta vista tres cuartos",
+        view: "Vista tres cuartos",
+      },
+      {
+        src: "/assets/rsm-super-cajeta-front.webp",
+        alt: "Gorra RSM Super Cajeta vista frontal",
+        view: "Vista frontal",
+      },
+      {
+        src: "/assets/rsm-super-cajeta-side-b.webp",
+        alt: "Gorra RSM Super Cajeta vista lateral con malla beige",
+        view: "Vista lateral",
+      },
+      {
+        src: "/assets/rsm-super-cajeta-back.webp",
+        alt: "Gorra RSM Super Cajeta vista posterior con cierre snapback",
+        view: "Vista posterior",
+      },
+      {
+        src: "/assets/rsm-super-cajeta-up.webp",
+        alt: "Detalle cercano del parche grabado RSM Super Cajeta Rancho Riders",
+        view: "Detalle de parche",
+      },
+    ],
+    attributes: {
+      model: "RSM Super Cajeta",
+      colorPattern: "Negro / Cajeta con malla beige",
+      size: "Ajustable (medidas pendientes de confirmación)",
+      material:
+        "Frente de sarga, malla posterior y parche grabado tipo piel; composición exacta pendiente de confirmación",
+      closure: "Broche ajustable tipo snapback en tono arena",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material"],
+    },
   },
   {
-    name: "Sierra",
-    subtitle: "Core Cap",
+    id: "rsm-wine",
+    name: "RSM Wine",
+    shortDescription:
+      "Frente crema con emblema bordado en relieve y paneles de malla en tono vino.",
+    description:
+      "Construcción trucker con panel frontal estructurado en tono crema, emblema RSM bordado en relieve tridimensional color vino, cordón frontal al tono, visera curva vino con pespuntes visibles y paneles posteriores de malla.",
     price: "$1,599 MXN",
-    colors: ["#4A3A2E", "#3B3029", "#747064"],
+    priceAmount: 1599,
+    mockData: true,
+    collectionId: "core",
+    collectionLabel: "Core Cap",
+    backdropTone: "light",
+    swatch: "#64242E",
+    images: [
+      {
+        src: "/assets/rsm-wine.webp",
+        alt: "Gorra RSM Wine con frente crema, emblema vino y malla posterior",
+        view: "Vista principal",
+      },
+    ],
+    attributes: {
+      model: "RSM Wine",
+      colorPattern: "Crema / Vino con malla",
+      size: "Por confirmar (pendiente de confirmación)",
+      material:
+        "Frente de sarga y paneles posteriores de malla; composición exacta pendiente de confirmación",
+      closure: "Pendiente de confirmación",
+    },
+    validation: {
+      status: "provisional-partial",
+      mockData: { price: true },
+      pendingConfirmation: ["price", "size", "material", "closure"],
+    },
   },
 ];
+
+const DEFAULT_CORE_PRODUCT_ID = "rsm-super-cajeta";
+const DEFAULT_SPECIAL_PRODUCT_ID = "rsm-special-edition-gamuza";
+
+const productsById = Object.fromEntries(products.map((product) => [product.id, product])) as Record<
+  string,
+  Product
+>;
+const coreProducts = products.filter((product) => product.collectionId === "core");
+const specialEditionProducts = products.filter(
+  (product) => product.collectionId === "special-edition",
+);
+
+function resolveRouteState(rawPath: string): { page: Page; productId: string } {
+  if (rawPath.startsWith("producto/")) {
+    const slug = rawPath.slice("producto/".length);
+    if (slug === "caliza") {
+      return { page: "caliza", productId: DEFAULT_CORE_PRODUCT_ID };
+    }
+    if (slug === "nocturna") {
+      return { page: "nocturna", productId: DEFAULT_SPECIAL_PRODUCT_ID };
+    }
+    const matched = productsById[slug];
+    if (matched) {
+      return {
+        page: matched.collectionId === "special-edition" ? "nocturna" : "caliza",
+        productId: matched.id,
+      };
+    }
+  }
+  return {
+    page: routeMap[rawPath] || "home",
+    productId: DEFAULT_CORE_PRODUCT_ID,
+  };
+}
 
 const routes: Record<Page, string> = {
   home: "",
@@ -300,7 +632,7 @@ function SectionHeading({
   light = false,
 }: {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   copy?: string;
   light?: boolean;
 }) {
@@ -330,59 +662,59 @@ function TextLink({
   );
 }
 
-function ProductCard({ product, navigate }: { product: Product; navigate: (page: Page) => void }) {
-  const target: Page =
-    product.name === "Caliza" ? "caliza" : product.special ? "nocturna" : "collection";
+function ProductCard({ product, navigate }: { product: Product; navigate: NavigateFn }) {
+  const target: Page = product.collectionId === "special-edition" ? "nocturna" : "caliza";
+  const primaryImage = product.images[0];
+  const secondaryImage = product.images[1];
   return (
     <article className="product-card">
       <button
-        className="product-card__media"
-        onClick={() => navigate(target)}
+        className={`product-card__media product-card__media--${product.backdropTone} ${secondaryImage ? "product-card__media--has-secondary" : ""}`}
+        onClick={() => navigate(target, product.id)}
         aria-label={`Ver ${product.name}`}
       >
-        <ImagePlaceholder
-          className="product-card__primary"
-          label="PRODUCT IMAGE"
-          backgroundColor="#F2E8DA"
-          aspectRatio=".82"
-          variant="light"
+        <img
+          className="product-card__img product-card__primary"
+          src={primaryImage.src}
+          alt={primaryImage.alt}
+          loading="lazy"
         />
-        <ImagePlaceholder
-          className="product-card__secondary"
-          label="SECONDARY VIEW"
-          backgroundColor="#FFFFFF"
-          aspectRatio=".82"
-          variant="light"
-        />
-        {product.special && <span className="product-card__label">Edición especial</span>}
+        {secondaryImage && (
+          <img
+            className="product-card__img product-card__secondary"
+            src={secondaryImage.src}
+            alt={secondaryImage.alt}
+            loading="lazy"
+          />
+        )}
+        {product.collectionId === "special-edition" && (
+          <span className="product-card__label">Edición especial</span>
+        )}
       </button>
-      <button className="product-card__title" onClick={() => navigate(target)}>
+      <button className="product-card__title" onClick={() => navigate(target, product.id)}>
         <span>{product.name}</span>
-        <small>{product.subtitle}</small>
+        <small>{product.collectionLabel}</small>
       </button>
       <p className="product-card__price">{product.price}</p>
-      <div className="swatches" aria-label="Colores disponibles">
-        {product.colors.map((color, index) => (
-          <button
-            key={color}
-            className={index === 0 ? "is-selected" : ""}
-            style={{ "--swatch": color } as React.CSSProperties}
-            aria-label={`Color ${index + 1}`}
-          />
-        ))}
+      <div className="swatches" aria-label={`Color: ${product.attributes.colorPattern}`}>
+        <span
+          className="swatch-dot is-selected"
+          style={{ "--swatch": product.swatch } as React.CSSProperties}
+          title={product.attributes.colorPattern}
+        />
       </div>
     </article>
   );
 }
 
-function Home({ navigate }: { navigate: (page: Page) => void }) {
+function Home({ navigate }: { navigate: NavigateFn }) {
   return (
     <main>
       <section
         className="home-hero"
         aria-label="Gorra RSM sobre piedra en un espacio arquitectónico"
       >
-        <div className="home-hero__shade" />
+        <div className="home-hero__shade" style={{ width: "800px" }} />
         <div className="home-hero__content">
           <span className="eyebrow eyebrow--light">Rancho San Marco · Norte de México</span>
           <h1>
@@ -399,12 +731,13 @@ function Home({ navigate }: { navigate: (page: Page) => void }) {
         <span className="hero-index">01 / 05</span>
       </section>
 
-      <section className="borderless">
-        <div className="borderless__image">
+      <section className="hidden borderless">
+        <div className="borderless__image" style={{ width: "780px" }}>
           <img
             className="home-lifestyle-image"
             src="/assets/home-sin-fronteras-2.jpeg"
             alt="Hombre con gorra RSM contemplando Monterrey desde la montaña"
+            style={{ width: "800px" }}
           />
         </div>
         <div className="borderless__copy">
@@ -427,7 +760,7 @@ function Home({ navigate }: { navigate: (page: Page) => void }) {
         <div className="borderless-fullwidth__shade" />
         <div className="borderless-fullwidth__content shell">
           <span className="eyebrow eyebrow--light">Variante experimental</span>
-          <h2>Sin fronteras.</h2>
+          <h2 style={{ fontSize: "60px" }}>Sin fronteras.</h2>
           <p>
             Una identidad que se mueve con naturalidad entre el origen y una forma contemporánea de
             vivirlo.
@@ -439,19 +772,31 @@ function Home({ navigate }: { navigate: (page: Page) => void }) {
       </section>
 
       <section className="featured-collection">
-        <div className="shell">
-          <div className="featured-collection__head">
-            <SectionHeading
-              eyebrow="03 — Core"
-              title={"La colección\nTierra RSM"}
-              copy="Materia, presencia y oficio. Una primera expresión del origen."
-            />
-            <TextLink onClick={() => navigate("collection")}>Ver colección completa</TextLink>
+        <div className="featured-collection__banner">
+          <div className="shell">
+            <div className="featured-collection__head">
+              <SectionHeading
+                eyebrow="Core collection"
+                title={
+                  <>
+                    La colección
+                    {"\n"}
+                    <span className="featured-collection__accent">Tierra RSM</span>
+                  </>
+                }
+                copy="Materia, presencia y oficio. Una primera expresión del origen."
+              />
+              <TextLink onClick={() => navigate("collection")}>Ver colección completa</TextLink>
+            </div>
           </div>
-          <div className="product-grid product-grid--featured">
-            {products.slice(0, 4).map((product) => (
-              <ProductCard key={product.name} product={product} navigate={navigate} />
-            ))}
+        </div>
+        <div className="featured-collection__body">
+          <div className="shell">
+            <div className="product-grid product-grid--featured">
+              {coreProducts.map((product) => (
+                <ProductCard key={product.id} product={product} navigate={navigate} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -508,12 +853,43 @@ function Home({ navigate }: { navigate: (page: Page) => void }) {
   );
 }
 
-function Collection({ navigate }: { navigate: (page: Page) => void }) {
+function Collection({ navigate }: { navigate: NavigateFn }) {
   const [sort, setSort] = useState("Destacados");
+  const [collectionFilter, setCollectionFilter] = useState<"all" | CollectionId>("all");
+
+  const visibleProducts = useMemo(() => {
+    const filtered =
+      collectionFilter === "all"
+        ? products
+        : products.filter((product) => product.collectionId === collectionFilter);
+    if (sort === "Precio: menor a mayor") {
+      return [...filtered].sort((a, b) => a.priceAmount - b.priceAmount);
+    }
+    if (sort === "Precio: mayor a menor") {
+      return [...filtered].sort((a, b) => b.priceAmount - a.priceAmount);
+    }
+    return filtered;
+  }, [collectionFilter, sort]);
+
+  const cycleCollectionFilter = () => {
+    setCollectionFilter((current) =>
+      current === "all" ? "core" : current === "core" ? "special-edition" : "all",
+    );
+  };
+
+  const filterLabel =
+    collectionFilter === "all"
+      ? "Línea"
+      : collectionFilter === "core"
+        ? "Línea: Core"
+        : "Línea: Special Edition";
+
   return (
     <main className="page-light">
-      <section className="collection-hero">
-        <ImagePlaceholder label="COLLECTION HERO" backgroundColor="#4B5B6E" variant="dark" corner />
+      <section
+        className="collection-hero"
+        aria-label="Gorra RSM Special Edition Leather Brown como portada de colección"
+      >
         <div className="collection-hero__shade" />
         <div className="collection-hero__copy">
           <span className="eyebrow eyebrow--light">Colección Core</span>
@@ -534,15 +910,15 @@ function Collection({ navigate }: { navigate: (page: Page) => void }) {
             Gorras de carácter sobrio, tonos naturales y detalles que hablan del oficio sin
             exageración.
           </p>
-          <span>8 productos</span>
+          <span>{visibleProducts.length} productos</span>
         </div>
         <div className="toolbar">
           <div className="toolbar__filters">
-            <button>
+            <button type="button">
               Disponibilidad <span>⌄</span>
             </button>
-            <button>
-              Color <span>⌄</span>
+            <button type="button" onClick={cycleCollectionFilter}>
+              {filterLabel} <span>⌄</span>
             </button>
           </div>
           <label>
@@ -555,12 +931,8 @@ function Collection({ navigate }: { navigate: (page: Page) => void }) {
           </label>
         </div>
         <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard
-              key={`${product.name}-${product.image}`}
-              product={product}
-              navigate={navigate}
-            />
+          {visibleProducts.map((product) => (
+            <ProductCard key={product.id} product={product} navigate={navigate} />
           ))}
         </div>
         <div className="pagination" aria-label="Paginación">
@@ -624,45 +996,164 @@ function Accordion({
   );
 }
 
+function ProductGallery({ product, dark = false }: { product: Product; dark?: boolean }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [product.id]);
+
+  const images = product.images;
+  const current = images[activeIndex] || images[0];
+  const hasMultiple = images.length > 1;
+
+  const goPrev = () => {
+    setActiveIndex((index) => (index === 0 ? images.length - 1 : index - 1));
+  };
+
+  const goNext = () => {
+    setActiveIndex((index) => (index === images.length - 1 ? 0 : index + 1));
+  };
+
+  return (
+    <div
+      className={`product-gallery product-gallery--interactive ${dark ? "product-gallery--dark" : ""}`}
+    >
+      <div className={`product-gallery__stage product-gallery__stage--${product.backdropTone}`}>
+        <img
+          key={current.src}
+          className="product-gallery__stage-img"
+          src={current.src}
+          alt={current.alt}
+        />
+        {hasMultiple && (
+          <div className="product-gallery__controls" aria-label="Controles de galería">
+            <button
+              type="button"
+              className="product-gallery__arrow product-gallery__arrow--prev"
+              onClick={goPrev}
+              aria-label="Vista anterior"
+            >
+              <Icon name="arrow" size={18} />
+            </button>
+            <span className="product-gallery__counter" aria-live="polite">
+              {activeIndex + 1} / {images.length} · {current.view}
+            </span>
+            <button
+              type="button"
+              className="product-gallery__arrow"
+              onClick={goNext}
+              aria-label="Vista siguiente"
+            >
+              <Icon name="arrow" size={18} />
+            </button>
+          </div>
+        )}
+      </div>
+      {hasMultiple && (
+        <div className="product-gallery__thumbs" role="list" aria-label="Vistas del producto">
+          {images.map((image, index) => (
+            <button
+              key={image.src}
+              type="button"
+              className={`product-gallery__thumb product-gallery__thumb--${product.backdropTone} ${index === activeIndex ? "is-active" : ""}`}
+              onClick={() => setActiveIndex(index)}
+              aria-label={`${image.view} (${index + 1} de ${images.length})`}
+              aria-pressed={index === activeIndex}
+            >
+              <img src={image.src} alt={image.alt} loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ProductInfo({
+  product,
+  navigate,
   dark = false,
   onAdd,
 }: {
+  product: Product;
+  navigate: NavigateFn;
   dark?: boolean;
   onAdd: (quantity: number) => void;
 }) {
   const [quantity, setQuantity] = useState(1);
-  const colors = dark
-    ? ["#171716", "#2C2927", "#4A4039"]
-    : ["#6B4D3B", "#493A33", "#99806C", "#D9C9B2"];
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [product.id]);
+
   return (
     <aside className={`product-info ${dark ? "product-info--dark" : ""}`}>
       <nav className="breadcrumbs" aria-label="Breadcrumbs">
-        <span>Inicio</span>
+        <button type="button" onClick={() => navigate("home")}>
+          Inicio
+        </button>
         <b>/</b>
-        <span>{dark ? "Special Edition" : "Colección Core"}</span>
+        <button
+          type="button"
+          onClick={() =>
+            navigate(product.collectionId === "special-edition" ? "special" : "collection")
+          }
+        >
+          {product.collectionId === "special-edition" ? "Special Edition" : "Colección Core"}
+        </button>
+        <b>/</b>
+        <span>{product.name}</span>
       </nav>
-      <span className="eyebrow">{dark ? "Special Edition · 01" : "Core Cap · 02"}</span>
-      <h1>{dark ? "Nocturna" : "Caliza"}</h1>
+      <span className="eyebrow">{product.collectionLabel}</span>
+      <h1>{product.name}</h1>
       <p className="product-info__price">
-        $1,599 MXN <small>Precio demostrativo</small>
+        {product.price}
+        {product.mockData && <small>Precio demostrativo</small>}
       </p>
       <div className="variant">
         <div>
-          <span>Color</span>
-          <b>{dark ? "Negro" : "Tierra"}</b>
+          <span>Color / patrón</span>
+          <b>{product.attributes.colorPattern}</b>
         </div>
-        <div className="swatches swatches--large">
-          {colors.map((color, index) => (
-            <button
-              key={color}
-              className={index === 0 ? "is-selected" : ""}
-              style={{ "--swatch": color } as React.CSSProperties}
-              aria-label={`Color ${index + 1}`}
+        <div className="swatches swatches--large" aria-label="Tono principal del modelo">
+          {product.variants && product.variants.length > 0 ? (
+            product.variants.map((variant, index) => (
+              <button
+                key={variant.id}
+                type="button"
+                className={index === 0 ? "is-selected" : ""}
+                style={{ "--swatch": variant.swatch } as React.CSSProperties}
+                aria-label={variant.label}
+              />
+            ))
+          ) : (
+            <span
+              className="swatch-dot swatch-dot--large is-selected"
+              style={{ "--swatch": product.swatch } as React.CSSProperties}
+              title={product.attributes.colorPattern}
             />
-          ))}
+          )}
         </div>
       </div>
+      <dl className="product-specs" aria-label="Atributos del producto">
+        <div>
+          <dt>Modelo</dt>
+          <dd>{product.attributes.model}</dd>
+        </div>
+        <div>
+          <dt>Talla</dt>
+          <dd>{product.attributes.size}</dd>
+        </div>
+        <div>
+          <dt>Material / tejido</dt>
+          <dd>{product.attributes.material}</dd>
+        </div>
+        <div>
+          <dt>Ajuste / cierre</dt>
+          <dd>{product.attributes.closure}</dd>
+        </div>
+      </dl>
       <div className="buy-row">
         <Quantity value={quantity} setValue={setQuantity} dark={dark} />
         <button
@@ -673,21 +1164,19 @@ function ProductInfo({
         </button>
       </div>
       <p className="availability">
-        <span /> Disponible · Envío calculado en checkout
+        <span /> Envío e impuestos calculados en checkout
       </p>
       <div className="product-accordions">
         <Accordion title="Descripción" dark={dark} open>
-          <p>
-            {dark
-              ? "Una edición de presencia sobria, definida por el contraste de sus materiales y una lectura tonal del emblema RSM."
-              : "Una pieza de tonos cálidos y carácter cotidiano, pensada para acompañar el movimiento entre origen y ciudad."}
-          </p>
+          <p>{product.description}</p>
         </Accordion>
         <Accordion title="Materiales" dark={dark}>
-          <p>Información de composición pendiente de confirmación con el catálogo oficial.</p>
+          <p>{product.attributes.material}.</p>
         </Accordion>
         <Accordion title="Ajuste y dimensiones" dark={dark}>
-          <p>Especificaciones de ajuste y talla por confirmar.</p>
+          <p>
+            Talla: {product.attributes.size}. Cierre: {product.attributes.closure}.
+          </p>
         </Accordion>
         <Accordion title="Envíos y devoluciones" dark={dark}>
           <p>Políticas sujetas a la configuración final de la tienda.</p>
@@ -698,32 +1187,19 @@ function ProductInfo({
 }
 
 function CorePdp({
+  product,
   navigate,
   onAdd,
 }: {
-  navigate: (page: Page) => void;
+  product: Product;
+  navigate: NavigateFn;
   onAdd: (quantity: number) => void;
 }) {
   return (
     <main className="page-light">
       <section className="pdp shell">
-        <div className="product-gallery">
-          <ImagePlaceholder
-            className="product-gallery__main"
-            label="PRODUCT GALLERY — MAIN"
-            backgroundColor="#F2E8DA"
-            variant="light"
-          />
-          <ImagePlaceholder
-            className="product-gallery__wide"
-            label="PRODUCT GALLERY — SIDE"
-            backgroundColor="#FFFFFF"
-            variant="light"
-          />
-          <ImagePlaceholder label="PRODUCT DETAIL" backgroundColor="#F2E8DA" variant="light" />
-          <ImagePlaceholder label="PRODUCT DETAIL" backgroundColor="#FFFFFF" variant="light" />
-        </div>
-        <ProductInfo onAdd={onAdd} />
+        <ProductGallery product={product} />
+        <ProductInfo product={product} navigate={navigate} onAdd={onAdd} />
       </section>
       <section className="pdp-story">
         <ImagePlaceholder label="LIFESTYLE IMAGE" backgroundColor="#574D35" variant="dark" />
@@ -746,12 +1222,11 @@ function CorePdp({
           <TextLink onClick={() => navigate("collection")}>Ver todo</TextLink>
         </div>
         <div className="product-grid product-grid--featured">
-          {products
-            .slice(0, 4)
-            .filter((p) => p.name !== "Caliza")
+          {coreProducts
+            .filter((p) => p.id !== product.id)
             .slice(0, 3)
             .map((p) => (
-              <ProductCard key={p.name} product={p} navigate={navigate} />
+              <ProductCard key={p.id} product={p} navigate={navigate} />
             ))}
         </div>
       </section>
@@ -795,13 +1270,14 @@ function SpecialEditionHero() {
   };
 
   return (
-    <section className="se-hero">
-      <ImagePlaceholder label="HERO NOCTURNA" backgroundColor="#191716" variant="dark" corner />
+    <section
+      className="se-hero"
+      aria-label="Detalle del emblema metálico de la edición especial RSM"
+    >
       <div className="se-hero__overlay" />
       <Reveal className="se-hero__content">
-        <span className="eyebrow eyebrow--light">Special Edition</span>
-        <p>Relieve de lujo</p>
-        <h1>Nocturna</h1>
+        <p>SPECIAL EDITION</p>
+        <h1>estirpe de lujo</h1>
         <small>Una expresión de carácter, tradición y exclusividad.</small>
         <button className="button button--light" type="button" onClick={scrollToEditorial}>
           Descubrir la edición
@@ -826,43 +1302,29 @@ function EditorialIntro() {
   );
 }
 
-function SpecialEditionDetails() {
-  const items = [
-    {
-      title: "Nocturna",
-      copy: "Una silueta de presencia sobria para la expresión más oscura de RSM.",
-      label: "PRODUCTO — VISTA GENERAL",
-      color: "#64242E",
-    },
-    {
-      title: "El relieve",
-      copy: "Un detalle distintivo que aparece con la luz y refuerza su carácter.",
-      label: "DETALLE — EMBLEMA",
-      color: "#574D35",
-    },
-    {
-      title: "La textura",
-      copy: "Materiales y acabados presentados con equilibrio y profundidad.",
-      label: "DETALLE — MATERIAL",
-      color: "#4B5B6E",
-    },
-  ];
-
+function SpecialEditionDetails({ navigate }: { navigate: NavigateFn }) {
   return (
     <section className="se-presentation">
       <div className="se-presentation__grid shell">
-        {items.map((item) => (
-          <Reveal className="se-product-card" key={item.title}>
-            <div className="se-product-card__media">
-              <ImagePlaceholder
-                label={item.label}
-                backgroundColor={item.color}
-                aspectRatio="4 / 5"
-                variant="dark"
-              />
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.copy}</p>
+        {specialEditionProducts.map((product) => (
+          <Reveal className="se-product-card" key={product.id}>
+            <button
+              type="button"
+              className="se-product-card__media"
+              onClick={() => navigate("nocturna", product.id)}
+              aria-label={`Ver ${product.name}`}
+            >
+              <img src={product.images[0].src} alt={product.images[0].alt} loading="lazy" />
+            </button>
+            <h3>
+              <button type="button" onClick={() => navigate("nocturna", product.id)}>
+                {product.name}
+              </button>
+            </h3>
+            <p>{product.shortDescription}</p>
+            <TextLink light onClick={() => navigate("nocturna", product.id)}>
+              Ver producto
+            </TextLink>
           </Reveal>
         ))}
       </div>
@@ -902,7 +1364,7 @@ function EditorialImageText({
   );
 }
 
-function SpecialEditionProductCTA({ navigate }: { navigate: (page: Page) => void }) {
+function SpecialEditionProductCTA({ navigate }: { navigate: NavigateFn }) {
   return (
     <section className="se-product-cta">
       <Reveal className="se-product-cta__inner shell">
@@ -923,12 +1385,12 @@ function SpecialEditionProductCTA({ navigate }: { navigate: (page: Page) => void
   );
 }
 
-function SpecialLanding({ navigate }: { navigate: (page: Page) => void }) {
+function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
   return (
     <main className="se-page">
       <SpecialEditionHero />
       <EditorialIntro />
-      <SpecialEditionDetails />
+      <SpecialEditionDetails navigate={navigate} />
       <section className="se-story shell">
         <Reveal className="se-story__heading">
           <span className="eyebrow eyebrow--light">Relieve de lujo</span>
@@ -954,7 +1416,7 @@ function SpecialLanding({ navigate }: { navigate: (page: Page) => void }) {
           color="#4B5B6E"
         />
       </section>
-      <section className="se-lifestyle">
+      <section className="se-lifestyle hidden">
         <ImagePlaceholder label="LIFESTYLE — RANCHO" backgroundColor="#191716" variant="dark" />
         <div className="se-lifestyle__overlay" />
         <Reveal className="se-lifestyle__copy shell">
@@ -968,32 +1430,19 @@ function SpecialLanding({ navigate }: { navigate: (page: Page) => void }) {
 }
 
 function NocturnaPdp({
+  product,
   navigate,
   onAdd,
 }: {
-  navigate: (page: Page) => void;
+  product: Product;
+  navigate: NavigateFn;
   onAdd: (quantity: number) => void;
 }) {
   return (
     <main className="dark-page">
       <section className="pdp pdp--dark shell">
-        <div className="product-gallery product-gallery--dark">
-          <ImagePlaceholder
-            className="product-gallery__main"
-            label="PRODUCT GALLERY — MAIN"
-            backgroundColor="#191716"
-            variant="dark"
-          />
-          <ImagePlaceholder label="MACRO DETAIL" backgroundColor="#64242E" variant="dark" />
-          <ImagePlaceholder label="MATERIAL DETAIL" backgroundColor="#574D35" variant="dark" />
-          <ImagePlaceholder
-            className="product-gallery__wide"
-            label="PRODUCT DETAIL"
-            backgroundColor="#4B5B6E"
-            variant="dark"
-          />
-        </div>
-        <ProductInfo dark onAdd={onAdd} />
+        <ProductGallery product={product} dark />
+        <ProductInfo product={product} navigate={navigate} dark onAdd={onAdd} />
       </section>
       <section className="nocturna-story">
         <div>
@@ -1030,6 +1479,9 @@ function EditorialSplitSection({
   imageAlt,
   variant,
   reverse = false,
+  sectionStyle,
+  copyStyle,
+  titleStyle,
 }: {
   id: string;
   eyebrow: string;
@@ -1039,16 +1491,20 @@ function EditorialSplitSection({
   imageAlt: string;
   variant: "origin" | "city";
   reverse?: boolean;
+  sectionStyle?: React.CSSProperties;
+  copyStyle?: React.CSSProperties;
+  titleStyle?: React.CSSProperties;
 }) {
   return (
     <section
       id={id}
       className={`story-split story-split--${variant} ${reverse ? "story-split--reverse" : ""}`}
+      style={sectionStyle}
     >
-      <div className="story-split__copy">
+      <div className="story-split__copy" style={copyStyle}>
         <span className="story-split__rule" aria-hidden="true" />
         <span className="eyebrow">{eyebrow}</span>
-        <h2>{title}</h2>
+        <h2 style={titleStyle}>{title}</h2>
         <p>{copy}</p>
       </div>
       <div className="story-split__media">
@@ -1933,20 +2389,35 @@ function CartDrawer({ open, close, count }: { open: boolean; close: () => void; 
 export default function App() {
   const hashPath = window.location.hash.replace(/^#\/?/, "");
   const pathname = window.location.pathname.replace(/^\/|\/$/g, "");
-  const initial = hashPath || pathname;
-  const [page, setPage] = useState<Page>(routeMap[initial] || "home");
+  const initialRoute = resolveRouteState(hashPath || pathname);
+  const [page, setPage] = useState<Page>(initialRoute.page);
+  const [selectedProductId, setSelectedProductId] = useState<string>(initialRoute.productId);
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
 
-  const navigate = (next: Page) => {
+  const navigate: NavigateFn = (next, productId) => {
+    const resolvedId =
+      productId ||
+      (next === "nocturna"
+        ? DEFAULT_SPECIAL_PRODUCT_ID
+        : next === "caliza"
+          ? DEFAULT_CORE_PRODUCT_ID
+          : selectedProductId);
     setPage(next);
+    if (productId || next === "caliza" || next === "nocturna") {
+      setSelectedProductId(resolvedId);
+    }
     if (next === "care") {
       window.history.pushState({}, "", "/pages/cuidado-de-gorras");
     } else {
       if (window.location.pathname !== "/") {
         window.history.pushState({}, "", "/");
       }
-      window.location.hash = routes[next] ? `/${routes[next]}` : "/";
+      if (next === "caliza" || next === "nocturna") {
+        window.location.hash = `/producto/${resolvedId}`;
+      } else {
+        window.location.hash = routes[next] ? `/${routes[next]}` : "/";
+      }
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -1955,7 +2426,11 @@ export default function App() {
     const syncRoute = () => {
       const hash = window.location.hash.replace(/^#\/?/, "");
       const path = hash || window.location.pathname.replace(/^\/|\/$/g, "");
-      setPage(routeMap[path] || "home");
+      const resolved = resolveRouteState(path);
+      setPage(resolved.page);
+      if (path.startsWith("producto/")) {
+        setSelectedProductId(resolved.productId);
+      }
       window.scrollTo(0, 0);
     };
     window.addEventListener("hashchange", syncRoute);
@@ -1971,15 +2446,36 @@ export default function App() {
       setCartCount((value) => value + quantity);
       setCartOpen(true);
     };
+    const activeProduct = productsById[selectedProductId];
     switch (page) {
       case "collection":
         return <Collection navigate={navigate} />;
       case "caliza":
-        return <CorePdp navigate={navigate} onAdd={add} />;
+        return (
+          <CorePdp
+            product={
+              activeProduct?.collectionId === "core"
+                ? activeProduct
+                : productsById[DEFAULT_CORE_PRODUCT_ID]
+            }
+            navigate={navigate}
+            onAdd={add}
+          />
+        );
       case "special":
         return <SpecialLanding navigate={navigate} />;
       case "nocturna":
-        return <NocturnaPdp navigate={navigate} onAdd={add} />;
+        return (
+          <NocturnaPdp
+            product={
+              activeProduct?.collectionId === "special-edition"
+                ? activeProduct
+                : productsById[DEFAULT_SPECIAL_PRODUCT_ID]
+            }
+            navigate={navigate}
+            onAdd={add}
+          />
+        );
       case "story":
         return <Story />;
       case "care":
@@ -1991,7 +2487,7 @@ export default function App() {
       default:
         return <Home navigate={navigate} />;
     }
-  }, [page]);
+  }, [page, selectedProductId]);
 
   return (
     <div className={`app app--${page}`}>
