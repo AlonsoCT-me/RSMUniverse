@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { assetUrl } from "./asset-url";
 import territoryLandscapeImg from "@/imports/home-SIN_FRONTERAS-2.jpg";
 
 type Page =
@@ -73,7 +74,7 @@ const products: Product[] = [
     swatch: "#1E305E",
     images: [
       {
-        src: "/assets/rsm-blue.webp",
+        src: assetUrl("/assets/rsm-blue.webp"),
         alt: "Gorra RSM Blue en tono crema con visera y bordado azul marino",
         view: "Vista principal",
       },
@@ -108,7 +109,7 @@ const products: Product[] = [
     swatch: "#574D35",
     images: [
       {
-        src: "/assets/rsm-militar.webp",
+        src: assetUrl("/assets/rsm-militar.webp"),
         alt: "Gorra RSM Militar en tono arena con visera camuflaje y emblema oscuro",
         view: "Vista principal",
       },
@@ -143,22 +144,22 @@ const products: Product[] = [
     swatch: "#6D4423",
     images: [
       {
-        src: "/assets/rsm-special-edition-gamuza.webp",
+        src: assetUrl("/assets/rsm-special-edition-gamuza.webp"),
         alt: "Gorra RSM Special Edition Gamuza vista tres cuartos",
         view: "Vista tres cuartos",
       },
       {
-        src: "/assets/rsm-special-edition-gamuza-front.webp",
+        src: assetUrl("/assets/rsm-special-edition-gamuza-front.webp"),
         alt: "Gorra RSM Special Edition Gamuza vista frontal",
         view: "Vista frontal",
       },
       {
-        src: "/assets/rsm-special-edition-gamuza-side.webp",
+        src: assetUrl("/assets/rsm-special-edition-gamuza-side.webp"),
         alt: "Gorra RSM Special Edition Gamuza vista lateral",
         view: "Vista lateral",
       },
       {
-        src: "/assets/rsm-special-edition-gamuza-back.webp",
+        src: assetUrl("/assets/rsm-special-edition-gamuza-back.webp"),
         alt: "Gorra RSM Special Edition Gamuza vista posterior con hebilla metálica",
         view: "Vista posterior",
       },
@@ -193,7 +194,7 @@ const products: Product[] = [
     swatch: "#4A2C1D",
     images: [
       {
-        src: "/assets/rsm-special-edition-leather-brown.webp",
+        src: assetUrl("/assets/rsm-special-edition-leather-brown.webp"),
         alt: "Gorra RSM Special Edition Leather Brown con parche ovalado y emblema en relieve",
         view: "Vista principal",
       },
@@ -228,7 +229,7 @@ const products: Product[] = [
     swatch: "#191716",
     images: [
       {
-        src: "/assets/rsm-special-edition-pipes.webp",
+        src: assetUrl("/assets/rsm-special-edition-pipes.webp"),
         alt: "Gorra RSM Special Edition Pipes bicolor hueso y negro con bordado texturizado",
         view: "Vista principal",
       },
@@ -263,7 +264,7 @@ const products: Product[] = [
     swatch: "#64242E",
     images: [
       {
-        src: "/assets/rsm-special-edition-red.webp",
+        src: assetUrl("/assets/rsm-special-edition-red.webp"),
         alt: "Gorra RSM Special Edition Red en hueso y vino con bordado Rancho San Marco",
         view: "Vista principal",
       },
@@ -298,27 +299,27 @@ const products: Product[] = [
     swatch: "#944A20",
     images: [
       {
-        src: "/assets/rsm-super-cajeta.webp",
+        src: assetUrl("/assets/rsm-super-cajeta.webp"),
         alt: "Gorra RSM Super Cajeta vista tres cuartos",
         view: "Vista tres cuartos",
       },
       {
-        src: "/assets/rsm-super-cajeta-front.webp",
+        src: assetUrl("/assets/rsm-super-cajeta-front.webp"),
         alt: "Gorra RSM Super Cajeta vista frontal",
         view: "Vista frontal",
       },
       {
-        src: "/assets/rsm-super-cajeta-side-b.webp",
+        src: assetUrl("/assets/rsm-super-cajeta-side-b.webp"),
         alt: "Gorra RSM Super Cajeta vista lateral con malla beige",
         view: "Vista lateral",
       },
       {
-        src: "/assets/rsm-super-cajeta-back.webp",
+        src: assetUrl("/assets/rsm-super-cajeta-back.webp"),
         alt: "Gorra RSM Super Cajeta vista posterior con cierre snapback",
         view: "Vista posterior",
       },
       {
-        src: "/assets/rsm-super-cajeta-up.webp",
+        src: assetUrl("/assets/rsm-super-cajeta-up.webp"),
         alt: "Detalle cercano del parche grabado RSM Super Cajeta Rancho Riders",
         view: "Detalle de parche",
       },
@@ -353,7 +354,7 @@ const products: Product[] = [
     swatch: "#64242E",
     images: [
       {
-        src: "/assets/rsm-wine.webp",
+        src: assetUrl("/assets/rsm-wine.webp"),
         alt: "Gorra RSM Wine con frente crema, emblema vino y malla posterior",
         view: "Vista principal",
       },
@@ -585,8 +586,8 @@ function Header({
             className="brand-logo"
             src={
               overlay || dark
-                ? "/assets/rsm-logo-white.png"
-                : "/assets/rsm-logo-dark.png"
+                ? assetUrl("/assets/rsm-logo-white.png")
+                : assetUrl("/assets/rsm-logo-dark.png")
             }
             alt="RSM"
             style={{ width: 120, height: "fit-content" }}
@@ -632,7 +633,7 @@ function Header({
         aria-hidden={!menuOpen}
       >
         <div className="mobile-nav__top">
-          <img src="/assets/rsm-logo-white.png" alt="RSM" />
+          <img src={assetUrl("/assets/rsm-logo-white.png")} alt="RSM" />
           <button aria-label="Cerrar menú" onClick={() => setMenuOpen(false)}>
             <Icon name="close" size={24} />
           </button>
@@ -778,7 +779,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
         <div className="borderless__image" style={{ width: "780px" }}>
           <img
             className="home-lifestyle-image"
-            src="/assets/home-sin-fronteras-2.jpeg"
+            src={assetUrl("/assets/home-sin-fronteras-2.jpeg")}
             alt="Hombre con gorra RSM contemplando Monterrey desde la montaña"
             style={{ width: "800px" }}
           />
@@ -800,7 +801,9 @@ function Home({ navigate }: { navigate: NavigateFn }) {
         className="borderless-fullwidth borderless-fullwidth--experimental"
         data-variant="experimental"
         aria-label="Sin fronteras, paisaje de Monterrey"
-        style={{ backgroundImage: 'url("/assets/home-sin-fronteras-2.jpeg")' }}
+        style={{
+          backgroundImage: `url("${assetUrl("/assets/home-sin-fronteras-2.jpeg")}")`,
+        }}
       >
         <div className="borderless-fullwidth__shade" />
         <div className="borderless-fullwidth__content shell">
@@ -866,7 +869,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
         <div className="special-split__image">
           <img
             className="home-special-image"
-            src="/assets/rsm-special-edition-cap.jpeg"
+            src={assetUrl("/assets/rsm-special-edition-cap.jpeg")}
             alt="Detalle del emblema metálico de la edición especial RSM"
           />
         </div>
@@ -1768,7 +1771,7 @@ function TerritoryEditorialBanner() {
       </div>
       <figure className="territory-editorial__visual territory-editorial__visual--architecture">
         <img
-          src="/assets/story-territory-architecture.webp"
+          src={assetUrl("/assets/story-territory-architecture.webp")}
           alt="Arquitectura de rancho con cúpula y farol"
         />
       </figure>
@@ -1803,7 +1806,7 @@ function Story() {
         eyebrow="EL ORIGEN"
         title="EL ORIGEN"
         copy="Nuestra historia hunde sus raíces en la tierra de México, donde el amor por los caballos, las tradiciones y la vida de campo forman la base de la identidad."
-        imageSrc="/assets/story-origin.webp"
+        imageSrc={assetUrl("/assets/story-origin.webp")}
         imageAlt="Rancho RSM enmarcado por montañas"
         variant="origin"
       />
@@ -1815,7 +1818,7 @@ function Story() {
         reverse={false}
         title="DEL RANCHO A LA CIUDAD"
         copy="Una identidad que trasciende fronteras. Llevamos la esencia de nuestro origen —su fuerza y carácter— a un entorno contemporáneo sin perder lo que nos define."
-        imageSrc="/assets/story-city.webp"
+        imageSrc={assetUrl("/assets/story-city.webp")}
         imageAlt="Hombre con sombrero frente a la ciudad y las montañas"
         variant="city"
       />
@@ -2507,7 +2510,7 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
       <Newsletter />
       <footer>
         <div className="footer__brand">
-          <img src="/assets/rsm-logo-white.png" alt="RSM" />
+          <img src={assetUrl("/assets/rsm-logo-white.png")} alt="RSM" />
           <p>
             Nuestro origen nos define.
             <br />
@@ -2611,8 +2614,7 @@ function CartDrawer({
 
 export default function App() {
   const hashPath = window.location.hash.replace(/^#\/?/, "");
-  const pathname = window.location.pathname.replace(/^\/|\/$/g, "");
-  const initialRoute = resolveRouteState(hashPath || pathname);
+  const initialRoute = resolveRouteState(hashPath);
   const [page, setPage] = useState<Page>(initialRoute.page);
   const [selectedProductId, setSelectedProductId] = useState<string>(
     initialRoute.productId,
@@ -2632,25 +2634,18 @@ export default function App() {
     if (productId || next === "caliza" || next === "nocturna") {
       setSelectedProductId(resolvedId);
     }
-    if (next === "care") {
-      window.history.pushState({}, "", "/pages/cuidado-de-gorras");
-    } else {
-      if (window.location.pathname !== "/") {
-        window.history.pushState({}, "", "/");
-      }
-      if (next === "caliza" || next === "nocturna") {
-        window.location.hash = `/producto/${resolvedId}`;
-      } else {
-        window.location.hash = routes[next] ? `/${routes[next]}` : "/";
-      }
-    }
+    const route =
+      next === "caliza" || next === "nocturna"
+        ? `producto/${resolvedId}`
+        : routes[next];
+    window.location.hash = `/${route}`;
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     const syncRoute = () => {
       const hash = window.location.hash.replace(/^#\/?/, "");
-      const path = hash || window.location.pathname.replace(/^\/|\/$/g, "");
+      const path = hash;
       const resolved = resolveRouteState(path);
       setPage(resolved.page);
       if (path.startsWith("producto/")) {
