@@ -1,0 +1,26 @@
+name: Validate prototype
+description: Install the pinned toolchain, verify LFS images, typecheck and build for Pages.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22.22.3'
+    - uses: pnpm/action-setup@v4
+      with:
+        version: '10.34.3'
+        run_install: false
+    - name: Verify hydrated images
+      shell: bash
+      run: node scripts/verify-images.mjs
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+    - name: TypeScript
+      shell: bash
+      run: pnpm exec tsc --noEmit
+    - name: Build for GitHub Pages
+      shell: bash
+      env:
+        GITHUB_PAGES: 'true'
+      run: pnpm build
