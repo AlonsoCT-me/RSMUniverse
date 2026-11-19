@@ -964,13 +964,11 @@ function Collection({ navigate }: { navigate: NavigateFn }) {
       >
         <div className="collection-hero__shade" />
         <div className="collection-hero__copy">
-          <span className="eyebrow eyebrow--light">Colección Core</span>
+          <span className="sr-only eyebrow eyebrow--light">Colección Core</span>
           <h1>
-            La colección
-            <br />
-            Tierra RSM
+            La colección <em>Tierra RSM</em>
           </h1>
-          <p>
+          <p className="collection-hero__description sr-only">
             Una expresión contemporánea de un origen real. Diseñada para moverse
             del rancho a la ciudad.
           </p>
@@ -1402,11 +1400,14 @@ function SpecialEditionHero() {
       <div className="se-hero__overlay" />
       <Reveal className="se-hero__content">
         <p>SPECIAL EDITION</p>
-        <h1>estirpe de lujo</h1>
-        <small>Una expresión de carácter, tradición y exclusividad.</small>
+        <h1>Estirpe de lujo</h1>
+        <small className="sr-only">
+          Una expresión de carácter, tradición y exclusividad.
+        </small>
         <button
           className="button button--light"
           type="button"
+          style={{ background: "none", color: "rgb(242, 232, 218)" }}
           onClick={scrollToEditorial}
         >
           Descubrir la edición
@@ -1420,11 +1421,11 @@ function EditorialIntro() {
   return (
     <section className="se-intro" id="special-editorial">
       <Reveal className="se-intro__inner shell">
-        <span className="eyebrow eyebrow--light">
+        <span className="sr-only eyebrow eyebrow--light">
           Una edición extraordinaria
         </span>
         <h2>Inspiración en la penumbra</h2>
-        <p>
+        <p className="sr-only">
           Nacida del contraste entre la oscuridad y la luz, NOCTURNA representa
           una interpretación contemporánea de la identidad ecuestre de RSM.
         </p>
@@ -1504,7 +1505,7 @@ function EditorialImageText({
 
 function SpecialEditionProductCTA({ navigate }: { navigate: NavigateFn }) {
   return (
-    <section className="se-product-cta">
+    <section className="se-product-cta hidden">
       <Reveal className="se-product-cta__inner shell">
         <div className="se-product-cta__media">
           <ImagePlaceholder
@@ -1538,8 +1539,13 @@ function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
       <SpecialEditionDetails navigate={navigate} />
       <section className="se-story shell">
         <Reveal className="se-story__heading">
-          <span className="eyebrow eyebrow--light">Relieve de lujo</span>
-          <h2>Cada detalle cuenta una historia.</h2>
+          <span className="sr-only eyebrow eyebrow--light">
+            Relieve de lujo
+          </span>
+          <h2>
+            Cada detalle <br />
+            cuenta una historia.
+          </h2>
         </Reveal>
         <EditorialImageText
           title="El relieve de lujo"

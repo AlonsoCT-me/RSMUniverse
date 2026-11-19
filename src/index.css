@@ -382,7 +382,8 @@
   text-transform: uppercase;
 }
 .home-hero h1 em,
-.special-hero h1 em {
+.special-hero h1 em,
+.collection-hero h1 em {
   color: #e1c6aa;
   font-weight: 600;
 }
@@ -460,7 +461,11 @@
 .borderless-fullwidth__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(15, 12, 9, 0.04) 34%, rgba(15, 12, 9, 0.82) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 12, 9, 0.04) 34%,
+    rgba(15, 12, 9, 0.82) 100%
+  );
 }
 .borderless-fullwidth__content {
   position: relative;
@@ -709,7 +714,11 @@
 .history-banner__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(15, 12, 9, 0.7), rgba(15, 12, 9, 0.04) 62%);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 12, 9, 0.7),
+    rgba(15, 12, 9, 0.04) 62%
+  );
 }
 .history-banner__content {
   position: relative;
@@ -750,9 +759,9 @@
 }
 .collection-hero__copy {
   position: absolute;
-  left: max(32px, calc((100vw - 1360px)/2));
-  bottom: 64px;
-  max-width: 610px;
+  left: max(32px, calc((100vw - 1360px) / 2));
+  bottom: 145px;
+  max-width: 810px;
 }
 .collection-hero h1 {
   margin: 15px 0 24px;
@@ -1311,28 +1320,34 @@
 .se-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(8, 7, 6, 0.86), rgba(8, 7, 6, 0.16) 72%);
+  background: linear-gradient(
+    90deg,
+    rgba(8, 7, 6, 0.86),
+    rgba(8, 7, 6, 0.16) 72%
+  );
 }
 .se-hero__content {
   position: absolute;
   left: max(32px, calc((100vw - 1360px) / 2));
-  bottom: 10%;
+  bottom: 25%;
+  top: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   max-width: 900px;
 }
 .se-hero__content > p {
   margin-top: 26px;
   font-family: var(--serif);
   font-size: clamp(38px, 4.2vw, 64px);
-  line-height: 0.9;
+  line-height: 1;
   text-transform: uppercase;
 }
 .se-hero h1 {
   margin: 0 0 30px;
   font-family: var(--serif);
-  font-size: clamp(92px, 12vw, 176px);
+  font-size: clamp(92px, 12vw, 120px);
   font-weight: 600;
   line-height: 0.72;
   letter-spacing: -0.055em;
@@ -1363,7 +1378,6 @@
   text-transform: uppercase;
 }
 .se-intro h2 {
-  max-width: 950px;
   margin: 20px 0 30px;
   font-size: clamp(58px, 7vw, 104px);
   line-height: 0.84;
@@ -1445,9 +1459,8 @@
   border-top: 1px solid rgba(255, 255, 255, 0.13);
 }
 .se-story__heading h2 {
-  max-width: 950px;
   margin-top: 20px;
-  font-size: clamp(58px, 7vw, 102px);
+  font-size: clamp(58px, 7vw, 100px);
   line-height: 0.84;
 }
 .se-detail {
@@ -1496,7 +1509,11 @@
 .se-lifestyle__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(8, 7, 6, 0.86), rgba(8, 7, 6, 0.14) 72%);
+  background: linear-gradient(
+    0deg,
+    rgba(8, 7, 6, 0.86),
+    rgba(8, 7, 6, 0.14) 72%
+  );
 }
 .se-lifestyle__copy {
   position: relative;
@@ -1857,7 +1874,11 @@
   position: absolute;
   z-index: 2;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 13, 12, 0.94), rgba(15, 13, 12, 0.2) 70%);
+  background: linear-gradient(
+    to top,
+    rgba(15, 13, 12, 0.94),
+    rgba(15, 13, 12, 0.2) 70%
+  );
   opacity: 0;
   transition: opacity 360ms ease;
 }
@@ -2070,7 +2091,11 @@
 .care-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(16, 14, 12, 0.76), rgba(16, 14, 12, 0.08) 72%);
+  background: linear-gradient(
+    90deg,
+    rgba(16, 14, 12, 0.76),
+    rgba(16, 14, 12, 0.08) 72%
+  );
 }
 .care-hero__content {
   position: absolute;
@@ -2709,7 +2734,11 @@ footer {
     background-position: 68% center;
   }
   .home-hero__shade {
-    background: linear-gradient(0deg, rgba(14, 10, 8, 0.87), rgba(14, 10, 8, 0.03) 68%);
+    background: linear-gradient(
+      0deg,
+      rgba(14, 10, 8, 0.87),
+      rgba(14, 10, 8, 0.03) 68%
+    );
   }
   .home-hero__content {
     left: 22px;
@@ -2746,7 +2775,11 @@ footer {
     background-position: 43% center;
   }
   .borderless-fullwidth__shade {
-    background: linear-gradient(0deg, rgba(15, 12, 9, 0.86), rgba(15, 12, 9, 0.02) 72%);
+    background: linear-gradient(
+      0deg,
+      rgba(15, 12, 9, 0.86),
+      rgba(15, 12, 9, 0.02) 72%
+    );
   }
   .borderless-fullwidth__content {
     justify-content: end;
@@ -2788,7 +2821,7 @@ footer {
   .collection-hero__copy {
     left: 22px;
     right: 22px;
-    bottom: 45px;
+    bottom: 100px;
   }
   .collection__intro {
     flex-direction: column;
