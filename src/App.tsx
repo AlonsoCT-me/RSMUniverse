@@ -716,15 +716,16 @@ function Home({ navigate }: { navigate: NavigateFn }) {
       >
         <div className="home-hero__shade" style={{ width: "800px" }} />
         <div className="home-hero__content">
-          <span className="eyebrow eyebrow--light">Rancho San Marco · Norte de México</span>
           <h1>
-            Nuestro origen
-            <br />
-            nos define.
+            Nuestro origen nos define.
             <br />
             <em>No nos limita.</em>
           </h1>
-          <button className="button button--light" onClick={() => navigate("collection")}>
+          <button
+            className="button button--light"
+            style={{ background: "none", color: "rgb(242, 232, 218)" }}
+            onClick={() => navigate("collection")}
+          >
             Explorar la colección
           </button>
         </div>
@@ -759,7 +760,6 @@ function Home({ navigate }: { navigate: NavigateFn }) {
       >
         <div className="borderless-fullwidth__shade" />
         <div className="borderless-fullwidth__content shell">
-          <span className="eyebrow eyebrow--light">Variante experimental</span>
           <h2 style={{ fontSize: "60px" }}>Sin fronteras.</h2>
           <p>
             Una identidad que se mueve con naturalidad entre el origen y una forma contemporánea de
@@ -774,14 +774,15 @@ function Home({ navigate }: { navigate: NavigateFn }) {
       <section className="featured-collection">
         <div className="featured-collection__banner">
           <div className="shell">
-            <div className="featured-collection__head">
+            <div
+              className="featured-collection__head"
+              style={{ backgroundColor: "rgb(242, 232, 218)" }}
+            >
               <SectionHeading
                 eyebrow="Core collection"
                 title={
                   <>
-                    La colección
-                    {"\n"}
-                    <span className="featured-collection__accent">Tierra RSM</span>
+                    La colección <span className="featured-collection__accent">Tierra RSM</span>
                   </>
                 }
                 copy="Materia, presencia y oficio. Una primera expresión del origen."
@@ -810,16 +811,16 @@ function Home({ navigate }: { navigate: NavigateFn }) {
           />
         </div>
         <div className="special-split__copy">
-          <span className="eyebrow eyebrow--light">04 — Special Edition</span>
-          <h2>
-            Estirpe
-            <br />
-            de lujo.
-          </h2>
+          <span className="eyebrow eyebrow--light">Special Edition</span>
+          <h2 style={{ width: "100%", fontSize: "50px" }}>Estirpe de lujo.</h2>
           <p>
             Una expresión nocturna donde el detalle, la textura y la presencia ocupan el centro.
           </p>
-          <button className="button button--outline-light" onClick={() => navigate("special")}>
+          <button
+            className="button button--outline-light"
+            style={{ width: "123px", minWidth: "240px" }}
+            onClick={() => navigate("special")}
+          >
             Descubrir
           </button>
         </div>
@@ -832,7 +833,6 @@ function Home({ navigate }: { navigate: NavigateFn }) {
         <div className="history-banner__shade" />
         <div className="history-banner__content" style={{ paddingBottom: 100 }}>
           <span className="story-hero__rule" aria-hidden="true" />
-          <span className="eyebrow eyebrow--light">05 — Nuestra historia</span>
           <h2
             style={{
               maxWidth: 460,
