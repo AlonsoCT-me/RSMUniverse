@@ -60,7 +60,8 @@ const products: Product[] = [
   {
     id: "rsm-blue",
     name: "RSM Blue",
-    shortDescription: "Contraste crema y azul marino con bordado frontal RSM en relieve.",
+    shortDescription:
+      "Contraste crema y azul marino con bordado frontal RSM en relieve.",
     description:
       "Corona estructurada en tono crema de sarga diagonal en contraste con visera curva, botón superior y bordado frontal RSM en relieve tridimensional azul marino.",
     price: "$1,599 MXN",
@@ -81,7 +82,8 @@ const products: Product[] = [
       model: "RSM Blue",
       colorPattern: "Crema / Azul marino",
       size: "Por confirmar (pendiente de confirmación)",
-      material: "Tejido de sarga visible; composición exacta pendiente de confirmación",
+      material:
+        "Tejido de sarga visible; composición exacta pendiente de confirmación",
       closure: "Pendiente de confirmación",
     },
     validation: {
@@ -93,7 +95,8 @@ const products: Product[] = [
   {
     id: "rsm-militar",
     name: "RSM Militar",
-    shortDescription: "Corona arena con emblema en relieve oscuro y visera en patrón camuflaje.",
+    shortDescription:
+      "Corona arena con emblema en relieve oscuro y visera en patrón camuflaje.",
     description:
       "Corona estructurada en tono arena con emblema frontal RSM en relieve oscuro mate, cordón trenzado olivo en la base y visera curva con patrón camuflaje en tonos tierra.",
     price: "$1,599 MXN",
@@ -114,7 +117,8 @@ const products: Product[] = [
       model: "RSM Militar",
       colorPattern: "Arena / Camuflaje pixelado",
       size: "Por confirmar (pendiente de confirmación)",
-      material: "Corona en tejido de sarga y visera estampada; composición pendiente de confirmación",
+      material:
+        "Corona en tejido de sarga y visera estampada; composición pendiente de confirmación",
       closure: "Pendiente de confirmación",
     },
     validation: {
@@ -246,7 +250,8 @@ const products: Product[] = [
   {
     id: "rsm-special-edition-red",
     name: "RSM Special Edition Red",
-    shortDescription: "Frente hueso y paneles en tono vino con bordado histórico Rancho San Marco.",
+    shortDescription:
+      "Frente hueso y paneles en tono vino con bordado histórico Rancho San Marco.",
     description:
       "Diseño bicolor de textura tipo gamuza con frente estructurado en tono hueso y visera, paneles posteriores y cordón trenzado en rojo vino, acompañado del bordado frontal Rancho San Marco · Monterrey, N.L. · ESTD 2016.",
     price: "$1,599 MXN",
@@ -372,11 +377,12 @@ const products: Product[] = [
 const DEFAULT_CORE_PRODUCT_ID = "rsm-super-cajeta";
 const DEFAULT_SPECIAL_PRODUCT_ID = "rsm-special-edition-gamuza";
 
-const productsById = Object.fromEntries(products.map((product) => [product.id, product])) as Record<
-  string,
-  Product
->;
-const coreProducts = products.filter((product) => product.collectionId === "core");
+const productsById = Object.fromEntries(
+  products.map((product) => [product.id, product]),
+) as Record<string, Product>;
+const coreProducts = products.filter(
+  (product) => product.collectionId === "core",
+);
 const specialEditionProducts = products.filter(
   (product) => product.collectionId === "special-edition",
 );
@@ -393,7 +399,8 @@ function resolveRouteState(rawPath: string): { page: Page; productId: string } {
     const matched = productsById[slug];
     if (matched) {
       return {
-        page: matched.collectionId === "special-edition" ? "nocturna" : "caliza",
+        page:
+          matched.collectionId === "special-edition" ? "nocturna" : "caliza",
         productId: matched.id,
       };
     }
@@ -424,7 +431,15 @@ function Icon({
   name,
   size = 20,
 }: {
-  name: "menu" | "close" | "search" | "bag" | "user" | "arrow" | "minus" | "plus";
+  name:
+    | "menu"
+    | "close"
+    | "search"
+    | "bag"
+    | "user"
+    | "arrow"
+    | "minus"
+    | "plus";
   size?: number;
 }) {
   const paths = {
@@ -538,7 +553,11 @@ function Header({
   openCart: () => void;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const overlay = page === "home" || page === "story" || page === "special" || page === "care";
+  const overlay =
+    page === "home" ||
+    page === "story" ||
+    page === "special" ||
+    page === "care";
   const dark = page === "special" || page === "nocturna";
   const links: [string, Page][] = [
     ["Inicio", "home"],
@@ -557,10 +576,18 @@ function Header({
       <header
         className={`site-header ${overlay ? "site-header--overlay" : ""} ${dark ? "site-header--dark" : ""}`}
       >
-        <button className="logo-button" onClick={() => go("home")} aria-label="Ir al inicio">
+        <button
+          className="logo-button"
+          onClick={() => go("home")}
+          aria-label="Ir al inicio"
+        >
           <img
             className="brand-logo"
-            src={overlay || dark ? "/assets/rsm-logo-white.png" : "/assets/rsm-logo-dark.png"}
+            src={
+              overlay || dark
+                ? "/assets/rsm-logo-white.png"
+                : "/assets/rsm-logo-dark.png"
+            }
             alt="RSM"
             style={{ width: 120, height: "fit-content" }}
           />
@@ -600,7 +627,10 @@ function Header({
           </button>
         </div>
       </header>
-      <div className={`mobile-nav ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
+      <div
+        className={`mobile-nav ${menuOpen ? "is-open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
         <div className="mobile-nav__top">
           <img src="/assets/rsm-logo-white.png" alt="RSM" />
           <button aria-label="Cerrar menú" onClick={() => setMenuOpen(false)}>
@@ -655,15 +685,25 @@ function TextLink({
   light?: boolean;
 }) {
   return (
-    <button className={`text-link ${light ? "text-link--light" : ""}`} onClick={onClick}>
+    <button
+      className={`text-link ${light ? "text-link--light" : ""}`}
+      onClick={onClick}
+    >
       <span>{children}</span>
       <Icon name="arrow" size={18} />
     </button>
   );
 }
 
-function ProductCard({ product, navigate }: { product: Product; navigate: NavigateFn }) {
-  const target: Page = product.collectionId === "special-edition" ? "nocturna" : "caliza";
+function ProductCard({
+  product,
+  navigate,
+}: {
+  product: Product;
+  navigate: NavigateFn;
+}) {
+  const target: Page =
+    product.collectionId === "special-edition" ? "nocturna" : "caliza";
   const primaryImage = product.images[0];
   const secondaryImage = product.images[1];
   return (
@@ -691,12 +731,18 @@ function ProductCard({ product, navigate }: { product: Product; navigate: Naviga
           <span className="product-card__label">Edición especial</span>
         )}
       </button>
-      <button className="product-card__title" onClick={() => navigate(target, product.id)}>
+      <button
+        className="product-card__title"
+        onClick={() => navigate(target, product.id)}
+      >
         <span>{product.name}</span>
         <small>{product.collectionLabel}</small>
       </button>
       <p className="product-card__price">{product.price}</p>
-      <div className="swatches" aria-label={`Color: ${product.attributes.colorPattern}`}>
+      <div
+        className="swatches"
+        aria-label={`Color: ${product.attributes.colorPattern}`}
+      >
         <span
           className="swatch-dot is-selected"
           style={{ "--swatch": product.swatch } as React.CSSProperties}
@@ -716,11 +762,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
       >
         <div className="home-hero__shade" style={{ width: "800px" }} />
         <div className="home-hero__content">
-          <h1>
-            Nuestro origen nos define.
-            <br />
-            <em>No nos limita.</em>
-          </h1>
+          <h1>Nuestro origen nos define.</h1>
           <button
             className="button button--light"
             style={{ background: "none", color: "rgb(242, 232, 218)" }}
@@ -745,10 +787,12 @@ function Home({ navigate }: { navigate: NavigateFn }) {
           <span className="eyebrow">Rancho × ciudad</span>
           <h2>Sin fronteras.</h2>
           <p>
-            Una identidad que se mueve con naturalidad entre el origen y una forma contemporánea de
-            vivirlo.
+            Una identidad que se mueve con naturalidad entre el origen y una
+            forma contemporánea de vivirlo.
           </p>
-          <TextLink onClick={() => navigate("story")}>Conocer el universo RSM</TextLink>
+          <TextLink onClick={() => navigate("story")}>
+            Conocer el universo RSM
+          </TextLink>
         </div>
       </section>
 
@@ -762,8 +806,8 @@ function Home({ navigate }: { navigate: NavigateFn }) {
         <div className="borderless-fullwidth__content shell">
           <h2 style={{ fontSize: "60px" }}>Sin fronteras.</h2>
           <p>
-            Una identidad que se mueve con naturalidad entre el origen y una forma contemporánea de
-            vivirlo.
+            Una identidad que se mueve con naturalidad entre el origen y una
+            forma contemporánea de vivirlo.
           </p>
           <TextLink light onClick={() => navigate("story")}>
             Conocer el universo RSM
@@ -776,18 +820,30 @@ function Home({ navigate }: { navigate: NavigateFn }) {
           <div className="shell">
             <div
               className="featured-collection__head"
-              style={{ backgroundColor: "rgb(242, 232, 218)" }}
+              style={{ backgroundColor: "" }}
             >
               <SectionHeading
                 eyebrow="Core collection"
                 title={
                   <>
-                    La colección <span className="featured-collection__accent">Tierra RSM</span>
+                    La colección
+                    <span className="featured-collection__accent">
+                      Tierra RSM
+                    </span>
                   </>
                 }
                 copy="Materia, presencia y oficio. Una primera expresión del origen."
               />
-              <TextLink onClick={() => navigate("collection")}>Ver colección completa</TextLink>
+              <TextLink onClick={() => navigate("collection")}>
+                Ver colección completa
+              </TextLink>
+              <button
+                className="button button--light"
+                style={{ background: "none", color: "rgb(242, 232, 218)" }}
+                onClick={() => navigate("collection")}
+              >
+                Ver colección completa
+              </button>
             </div>
           </div>
         </div>
@@ -795,7 +851,11 @@ function Home({ navigate }: { navigate: NavigateFn }) {
           <div className="shell">
             <div className="product-grid product-grid--featured">
               {coreProducts.map((product) => (
-                <ProductCard key={product.id} product={product} navigate={navigate} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  navigate={navigate}
+                />
               ))}
             </div>
           </div>
@@ -814,7 +874,8 @@ function Home({ navigate }: { navigate: NavigateFn }) {
           <span className="eyebrow eyebrow--light">Special Edition</span>
           <h2 style={{ width: "100%", fontSize: "50px" }}>Estirpe de lujo.</h2>
           <p>
-            Una expresión nocturna donde el detalle, la textura y la presencia ocupan el centro.
+            Una expresión nocturna donde el detalle, la textura y la presencia
+            ocupan el centro.
           </p>
           <button
             className="button button--outline-light"
@@ -855,13 +916,17 @@ function Home({ navigate }: { navigate: NavigateFn }) {
 
 function Collection({ navigate }: { navigate: NavigateFn }) {
   const [sort, setSort] = useState("Destacados");
-  const [collectionFilter, setCollectionFilter] = useState<"all" | CollectionId>("all");
+  const [collectionFilter, setCollectionFilter] = useState<
+    "all" | CollectionId
+  >("all");
 
   const visibleProducts = useMemo(() => {
     const filtered =
       collectionFilter === "all"
         ? products
-        : products.filter((product) => product.collectionId === collectionFilter);
+        : products.filter(
+            (product) => product.collectionId === collectionFilter,
+          );
     if (sort === "Precio: menor a mayor") {
       return [...filtered].sort((a, b) => a.priceAmount - b.priceAmount);
     }
@@ -873,7 +938,11 @@ function Collection({ navigate }: { navigate: NavigateFn }) {
 
   const cycleCollectionFilter = () => {
     setCollectionFilter((current) =>
-      current === "all" ? "core" : current === "core" ? "special-edition" : "all",
+      current === "all"
+        ? "core"
+        : current === "core"
+          ? "special-edition"
+          : "all",
     );
   };
 
@@ -899,16 +968,16 @@ function Collection({ navigate }: { navigate: NavigateFn }) {
             Tierra RSM
           </h1>
           <p>
-            Una expresión contemporánea de un origen real. Diseñada para moverse del rancho a la
-            ciudad.
+            Una expresión contemporánea de un origen real. Diseñada para moverse
+            del rancho a la ciudad.
           </p>
         </div>
       </section>
       <section className="collection shell">
         <div className="collection__intro">
           <p>
-            Gorras de carácter sobrio, tonos naturales y detalles que hablan del oficio sin
-            exageración.
+            Gorras de carácter sobrio, tonos naturales y detalles que hablan del
+            oficio sin exageración.
           </p>
           <span>{visibleProducts.length} productos</span>
         </div>
@@ -923,7 +992,10 @@ function Collection({ navigate }: { navigate: NavigateFn }) {
           </div>
           <label>
             <span>Ordenar por</span>
-            <select value={sort} onChange={(event) => setSort(event.target.value)}>
+            <select
+              value={sort}
+              onChange={(event) => setSort(event.target.value)}
+            >
               <option>Destacados</option>
               <option>Precio: menor a mayor</option>
               <option>Precio: mayor a menor</option>
@@ -932,7 +1004,11 @@ function Collection({ navigate }: { navigate: NavigateFn }) {
         </div>
         <div className="product-grid">
           {visibleProducts.map((product) => (
-            <ProductCard key={product.id} product={product} navigate={navigate} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              navigate={navigate}
+            />
           ))}
         </div>
         <div className="pagination" aria-label="Paginación">
@@ -966,7 +1042,10 @@ function Quantity({
         <Icon name="minus" size={16} />
       </button>
       <span>{value}</span>
-      <button aria-label="Aumentar cantidad" onClick={() => setValue(value + 1)}>
+      <button
+        aria-label="Aumentar cantidad"
+        onClick={() => setValue(value + 1)}
+      >
         <Icon name="plus" size={16} />
       </button>
     </div>
@@ -996,7 +1075,13 @@ function Accordion({
   );
 }
 
-function ProductGallery({ product, dark = false }: { product: Product; dark?: boolean }) {
+function ProductGallery({
+  product,
+  dark = false,
+}: {
+  product: Product;
+  dark?: boolean;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -1019,7 +1104,9 @@ function ProductGallery({ product, dark = false }: { product: Product; dark?: bo
     <div
       className={`product-gallery product-gallery--interactive ${dark ? "product-gallery--dark" : ""}`}
     >
-      <div className={`product-gallery__stage product-gallery__stage--${product.backdropTone}`}>
+      <div
+        className={`product-gallery__stage product-gallery__stage--${product.backdropTone}`}
+      >
         <img
           key={current.src}
           className="product-gallery__stage-img"
@@ -1027,7 +1114,10 @@ function ProductGallery({ product, dark = false }: { product: Product; dark?: bo
           alt={current.alt}
         />
         {hasMultiple && (
-          <div className="product-gallery__controls" aria-label="Controles de galería">
+          <div
+            className="product-gallery__controls"
+            aria-label="Controles de galería"
+          >
             <button
               type="button"
               className="product-gallery__arrow product-gallery__arrow--prev"
@@ -1051,7 +1141,11 @@ function ProductGallery({ product, dark = false }: { product: Product; dark?: bo
         )}
       </div>
       {hasMultiple && (
-        <div className="product-gallery__thumbs" role="list" aria-label="Vistas del producto">
+        <div
+          className="product-gallery__thumbs"
+          role="list"
+          aria-label="Vistas del producto"
+        >
           {images.map((image, index) => (
             <button
               key={image.src}
@@ -1097,10 +1191,16 @@ function ProductInfo({
         <button
           type="button"
           onClick={() =>
-            navigate(product.collectionId === "special-edition" ? "special" : "collection")
+            navigate(
+              product.collectionId === "special-edition"
+                ? "special"
+                : "collection",
+            )
           }
         >
-          {product.collectionId === "special-edition" ? "Special Edition" : "Colección Core"}
+          {product.collectionId === "special-edition"
+            ? "Special Edition"
+            : "Colección Core"}
         </button>
         <b>/</b>
         <span>{product.name}</span>
@@ -1116,7 +1216,10 @@ function ProductInfo({
           <span>Color / patrón</span>
           <b>{product.attributes.colorPattern}</b>
         </div>
-        <div className="swatches swatches--large" aria-label="Tono principal del modelo">
+        <div
+          className="swatches swatches--large"
+          aria-label="Tono principal del modelo"
+        >
           {product.variants && product.variants.length > 0 ? (
             product.variants.map((variant, index) => (
               <button
@@ -1175,7 +1278,8 @@ function ProductInfo({
         </Accordion>
         <Accordion title="Ajuste y dimensiones" dark={dark}>
           <p>
-            Talla: {product.attributes.size}. Cierre: {product.attributes.closure}.
+            Talla: {product.attributes.size}. Cierre:{" "}
+            {product.attributes.closure}.
           </p>
         </Accordion>
         <Accordion title="Envíos y devoluciones" dark={dark}>
@@ -1202,7 +1306,11 @@ function CorePdp({
         <ProductInfo product={product} navigate={navigate} onAdd={onAdd} />
       </section>
       <section className="pdp-story">
-        <ImagePlaceholder label="LIFESTYLE IMAGE" backgroundColor="#574D35" variant="dark" />
+        <ImagePlaceholder
+          label="LIFESTYLE IMAGE"
+          backgroundColor="#574D35"
+          variant="dark"
+        />
         <div>
           <span className="eyebrow">Del origen al presente</span>
           <h2>
@@ -1211,14 +1319,17 @@ function CorePdp({
             Carácter que permanece.
           </h2>
           <p>
-            Una paleta tomada de la tierra y una construcción visual que prioriza el producto sin
-            perder su contexto.
+            Una paleta tomada de la tierra y una construcción visual que
+            prioriza el producto sin perder su contexto.
           </p>
         </div>
       </section>
       <section className="related shell">
         <div className="related__head">
-          <SectionHeading eyebrow="También puede interesarte" title="Más de Tierra RSM" />
+          <SectionHeading
+            eyebrow="También puede interesarte"
+            title="Más de Tierra RSM"
+          />
           <TextLink onClick={() => navigate("collection")}>Ver todo</TextLink>
         </div>
         <div className="product-grid product-grid--featured">
@@ -1234,7 +1345,13 @@ function CorePdp({
   );
 }
 
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Reveal({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const [visible, setVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement | null>(null);
 
@@ -1255,7 +1372,10 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
   }, []);
 
   return (
-    <div ref={elementRef} className={`se-reveal ${visible ? "is-visible" : ""} ${className}`}>
+    <div
+      ref={elementRef}
+      className={`se-reveal ${visible ? "is-visible" : ""} ${className}`}
+    >
       {children}
     </div>
   );
@@ -1263,7 +1383,9 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 
 function SpecialEditionHero() {
   const scrollToEditorial = () => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     document
       .getElementById("special-editorial")
       ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
@@ -1279,7 +1401,11 @@ function SpecialEditionHero() {
         <p>SPECIAL EDITION</p>
         <h1>estirpe de lujo</h1>
         <small>Una expresión de carácter, tradición y exclusividad.</small>
-        <button className="button button--light" type="button" onClick={scrollToEditorial}>
+        <button
+          className="button button--light"
+          type="button"
+          onClick={scrollToEditorial}
+        >
           Descubrir la edición
         </button>
       </Reveal>
@@ -1291,11 +1417,13 @@ function EditorialIntro() {
   return (
     <section className="se-intro" id="special-editorial">
       <Reveal className="se-intro__inner shell">
-        <span className="eyebrow eyebrow--light">Una edición extraordinaria</span>
+        <span className="eyebrow eyebrow--light">
+          Una edición extraordinaria
+        </span>
         <h2>Inspiración en la penumbra</h2>
         <p>
-          Nacida del contraste entre la oscuridad y la luz, NOCTURNA representa una interpretación
-          contemporánea de la identidad ecuestre de RSM.
+          Nacida del contraste entre la oscuridad y la luz, NOCTURNA representa
+          una interpretación contemporánea de la identidad ecuestre de RSM.
         </p>
       </Reveal>
     </section>
@@ -1314,10 +1442,17 @@ function SpecialEditionDetails({ navigate }: { navigate: NavigateFn }) {
               onClick={() => navigate("nocturna", product.id)}
               aria-label={`Ver ${product.name}`}
             >
-              <img src={product.images[0].src} alt={product.images[0].alt} loading="lazy" />
+              <img
+                src={product.images[0].src}
+                alt={product.images[0].alt}
+                loading="lazy"
+              />
             </button>
             <h3>
-              <button type="button" onClick={() => navigate("nocturna", product.id)}>
+              <button
+                type="button"
+                onClick={() => navigate("nocturna", product.id)}
+              >
                 {product.name}
               </button>
             </h3>
@@ -1369,14 +1504,21 @@ function SpecialEditionProductCTA({ navigate }: { navigate: NavigateFn }) {
     <section className="se-product-cta">
       <Reveal className="se-product-cta__inner shell">
         <div className="se-product-cta__media">
-          <ImagePlaceholder label="PRODUCTO — CTA" backgroundColor="#64242E" variant="dark" />
+          <ImagePlaceholder
+            label="PRODUCTO — CTA"
+            backgroundColor="#64242E"
+            variant="dark"
+          />
         </div>
         <div className="se-product-cta__copy">
           <span className="eyebrow eyebrow--light">Special Edition</span>
           <h2>Nocturna</h2>
           <small>Signature Cap</small>
           <p>Una edición que reúne tradición, diseño y carácter.</p>
-          <button className="button button--light" onClick={() => navigate("nocturna")}>
+          <button
+            className="button button--light"
+            onClick={() => navigate("nocturna")}
+          >
             Descubrir Nocturna
           </button>
         </div>
@@ -1417,7 +1559,11 @@ function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
         />
       </section>
       <section className="se-lifestyle hidden">
-        <ImagePlaceholder label="LIFESTYLE — RANCHO" backgroundColor="#191716" variant="dark" />
+        <ImagePlaceholder
+          label="LIFESTYLE — RANCHO"
+          backgroundColor="#191716"
+          variant="dark"
+        />
         <div className="se-lifestyle__overlay" />
         <Reveal className="se-lifestyle__copy shell">
           <h2>Una identidad que trasciende.</h2>
@@ -1453,8 +1599,8 @@ function NocturnaPdp({
             Otra luz.
           </h2>
           <p>
-            Core y Special Edition comparten estructura, claridad comercial y una misma voz. La
-            diferencia vive en la atmósfera.
+            Core y Special Edition comparten estructura, claridad comercial y
+            una misma voz. La diferencia vive en la atmósfera.
           </p>
           <TextLink light onClick={() => navigate("special")}>
             Conocer el concepto
@@ -1586,8 +1732,8 @@ function TerritoryGrid() {
         <div className="territory-gallery__heading">
           <h2>El territorio</h2>
           <p>
-            La arquitectura, los paisajes y la cultura ecuestre del norte de México forman parte del
-            lenguaje visual de RSM.
+            La arquitectura, los paisajes y la cultura ecuestre del norte de
+            México forman parte del lenguaje visual de RSM.
           </p>
         </div>
         <div className="territory-grid">
@@ -1602,16 +1748,22 @@ function TerritoryGrid() {
 
 function TerritoryEditorialBanner() {
   return (
-    <section className="territory-editorial" aria-labelledby="territory-editorial-title">
+    <section
+      className="territory-editorial"
+      aria-labelledby="territory-editorial-title"
+    >
       <figure className="territory-editorial__visual territory-editorial__visual--landscape">
-        <img src={territoryLandscapeImg} alt="Hombre contemplando Monterrey desde la montaña" />
+        <img
+          src={territoryLandscapeImg}
+          alt="Hombre contemplando Monterrey desde la montaña"
+        />
       </figure>
       <div className="territory-editorial__copy">
         <span className="territory-editorial__rule" aria-hidden="true" />
         <h2 id="territory-editorial-title">EL TERRITORIO</h2>
         <p>
-          La arquitectura, los paisajes y la cultura ecuestre del norte de México forman parte del
-          lenguaje visual de RSM.
+          La arquitectura, los paisajes y la cultura ecuestre del norte de
+          México forman parte del lenguaje visual de RSM.
         </p>
       </div>
       <figure className="territory-editorial__visual territory-editorial__visual--architecture">
@@ -1637,7 +1789,9 @@ function Story() {
             className="story-hero__cta"
             type="button"
             onClick={() =>
-              document.getElementById("story-origin")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .getElementById("story-origin")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
           >
             CONOCE NUESTRO UNIVERSO
@@ -1687,8 +1841,8 @@ function DesignSystem({ navigate }: { navigate: (page: Page) => void }) {
           <br />& components.
         </h1>
         <p>
-          Un sistema para expresar el mismo origen en dos atmósferas: Core / Light y Special Edition
-          / Dark.
+          Un sistema para expresar el mismo origen en dos atmósferas: Core /
+          Light y Special Edition / Dark.
         </p>
       </section>
       <section className="system-section shell">
@@ -1697,7 +1851,10 @@ function DesignSystem({ navigate }: { navigate: (page: Page) => void }) {
           {tokens.map(([name, color]) => (
             <article
               key={name}
-              style={{ background: color, color: name === "Caliza" ? "#191716" : "#fff" }}
+              style={{
+                background: color,
+                color: name === "Caliza" ? "#191716" : "#fff",
+              }}
             >
               <span>{name}</span>
               <small>{color}</small>
@@ -1714,12 +1871,16 @@ function DesignSystem({ navigate }: { navigate: (page: Page) => void }) {
         <div className="type-specimen__body">
           <span>Figtree · 400 / 500 / 600</span>
           <p>
-            Menos palabras. Más carácter. Una jerarquía clara para navegar, descubrir y comprar.
+            Menos palabras. Más carácter. Una jerarquía clara para navegar,
+            descubrir y comprar.
           </p>
         </div>
       </section>
       <section className="system-section shell">
-        <SectionHeading eyebrow="03 — Componentes" title="Comercio con carácter." />
+        <SectionHeading
+          eyebrow="03 — Componentes"
+          title="Comercio con carácter."
+        />
         <div className="component-board">
           <div className="component-board__light">
             <span className="component-label">Core / Light</span>
@@ -1765,9 +1926,15 @@ function DesignSystem({ navigate }: { navigate: (page: Page) => void }) {
         <div className="feasibility">
           {[
             ["Native", "Grids, PDP, acordeones, filtros, newsletter y footer."],
-            ["Native + CSS", "Tipografía, espaciado, swatches, tarjetas y atmósfera Dark."],
+            [
+              "Native + CSS",
+              "Tipografía, espaciado, swatches, tarjetas y atmósfera Dark.",
+            ],
             ["RSM Custom", "Bento Nocturna y módulos narrativos asimétricos."],
-            ["Por validar", "Header liquid glass existente y comportamiento sticky final."],
+            [
+              "Por validar",
+              "Header liquid glass existente y comportamiento sticky final.",
+            ],
           ].map(([title, copy]) => (
             <article key={title}>
               <b>{title}</b>
@@ -1896,7 +2063,11 @@ function CareStep({
       data-care-step={index}
       aria-current={active ? "step" : undefined}
     >
-      <button type="button" onClick={select} aria-label={`Activar paso ${index + 1}`}>
+      <button
+        type="button"
+        onClick={select}
+        aria-label={`Activar paso ${index + 1}`}
+      >
         <span>{step.number}</span>
         <div>
           <h3>{step.title}</h3>
@@ -1918,7 +2089,9 @@ function CareScrollStory() {
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible) {
-          setActiveStep(Number((visible.target as HTMLElement).dataset.careStep));
+          setActiveStep(
+            Number((visible.target as HTMLElement).dataset.careStep),
+          );
         }
       },
       { rootMargin: "-35% 0px -35% 0px", threshold: [0.05, 0.2, 0.4] },
@@ -1930,7 +2103,9 @@ function CareScrollStory() {
 
   const selectStep = (index: number) => {
     setActiveStep(index);
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     stepRefs.current[index]?.scrollIntoView({
       behavior: reduceMotion ? "auto" : "smooth",
       block: "center",
@@ -1949,7 +2124,10 @@ function CareScrollStory() {
           <div className="care-story__illustration">
             <CareIllustration step={activeStep} />
           </div>
-          <nav className="care-story__nav" aria-label="Seleccionar paso de cuidado">
+          <nav
+            className="care-story__nav"
+            aria-label="Seleccionar paso de cuidado"
+          >
             <span>
               {String(activeStep + 1).padStart(2, "0")} /{" "}
               {String(careSteps.length).padStart(2, "0")}
@@ -1984,8 +2162,8 @@ function CareScrollStory() {
             />
           ))}
           <p className="care-story__note">
-            Estos consejos son orientativos. Siempre deben prevalecer las instrucciones específicas
-            indicadas para cada producto.
+            Estos consejos son orientativos. Siempre deben prevalecer las
+            instrucciones específicas indicadas para cada producto.
           </p>
         </div>
       </div>
@@ -1993,7 +2171,13 @@ function CareScrollStory() {
   );
 }
 
-function CareMaterialAccordion({ title, children }: { title: string; children: React.ReactNode }) {
+function CareMaterialAccordion({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="care-material-accordion">
       <Accordion title={title}>{children}</Accordion>
@@ -2021,7 +2205,9 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
           type="button"
           aria-label="Continuar a la introducción"
           onClick={() => {
-            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const reduceMotion = window.matchMedia(
+              "(prefers-reduced-motion: reduce)",
+            ).matches;
             document
               .getElementById("care-intro")
               ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
@@ -2037,8 +2223,9 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
           <span className="eyebrow">Cuidado RSM</span>
           <h2>Hechas para acompañarte. Cuidadas para durar.</h2>
           <p>
-            Cada gorra acompaña historias, caminos y momentos. Un cuidado adecuado ayuda a conservar
-            su forma, apariencia y materiales con el paso del tiempo.
+            Cada gorra acompaña historias, caminos y momentos. Un cuidado
+            adecuado ayuda a conservar su forma, apariencia y materiales con el
+            paso del tiempo.
           </p>
         </div>
         <div className="care-intro__marquee" aria-hidden="true">
@@ -2055,9 +2242,9 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
             <span className="eyebrow">Cuidado cotidiano</span>
             <h2>El cuidado comienza en los detalles.</h2>
             <p>
-              Antes de limpiar tu gorra, identifica sus materiales y revisa las indicaciones
-              específicas del producto. No todos los tejidos, parches y acabados requieren el mismo
-              tratamiento.
+              Antes de limpiar tu gorra, identifica sus materiales y revisa las
+              indicaciones específicas del producto. No todos los tejidos,
+              parches y acabados requieren el mismo tratamiento.
             </p>
             <ul>
               <li>Evita la exposición prolongada al calor y al sol directo.</li>
@@ -2090,10 +2277,13 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
             <span className="eyebrow">Conservación</span>
             <h2>El tiempo también deja huella.</h2>
             <p>
-              La forma en que guardas y utilizas tu gorra influye en su conservación. Evita
-              aplastarla, exponerla a humedad prolongada o almacenarla sin ventilación.
+              La forma en que guardas y utilizas tu gorra influye en su
+              conservación. Evita aplastarla, exponerla a humedad prolongada o
+              almacenarla sin ventilación.
             </p>
-            <TextLink onClick={() => navigate("collection")}>Explorar la colección</TextLink>
+            <TextLink onClick={() => navigate("collection")}>
+              Explorar la colección
+            </TextLink>
           </div>
         </div>
       </section>
@@ -2104,39 +2294,41 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
             <span className="eyebrow">Según su composición</span>
             <h2>Cada material merece su propio cuidado.</h2>
             <p>
-              Las indicaciones oficiales de cada producto tienen prioridad sobre estas
-              recomendaciones generales.
+              Las indicaciones oficiales de cada producto tienen prioridad sobre
+              estas recomendaciones generales.
             </p>
           </div>
           <div className="care-information__accordions">
             <CareMaterialAccordion title="Algodón y tejidos textiles">
               <p>
-                Retira el polvo en seco y trata únicamente zonas puntuales cuando las indicaciones
-                del producto lo permitan. Evita empapar el tejido.
+                Retira el polvo en seco y trata únicamente zonas puntuales
+                cuando las indicaciones del producto lo permitan. Evita empapar
+                el tejido.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Poliéster y materiales sintéticos">
               <p>
-                Usa un paño suave y evita calor intenso, fricción fuerte o productos químicos no
-                especificados para el material.
+                Usa un paño suave y evita calor intenso, fricción fuerte o
+                productos químicos no especificados para el material.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Malla tipo trucker">
               <p>
-                Manipula la malla con suavidad para evitar deformaciones. Retira polvo sin presionar
-                ni doblar los paneles.
+                Manipula la malla con suavidad para evitar deformaciones. Retira
+                polvo sin presionar ni doblar los paneles.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Parches, bordados y aplicaciones">
               <p>
-                Limpia alrededor de las aplicaciones con movimientos suaves y evita enganchar,
-                raspar o saturar sus bordes.
+                Limpia alrededor de las aplicaciones con movimientos suaves y
+                evita enganchar, raspar o saturar sus bordes.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Ante, gamuza o cuero, cuando aplique">
               <p>
-                Sigue únicamente las instrucciones específicas del producto. No apliques
-                limpiadores, impermeabilizantes o solventes sin una indicación verificada.
+                Sigue únicamente las instrucciones específicas del producto. No
+                apliques limpiadores, impermeabilizantes o solventes sin una
+                indicación verificada.
               </p>
             </CareMaterialAccordion>
           </div>
@@ -2152,31 +2344,36 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
           <div className="care-faq__accordions">
             <Accordion dark title="¿Puedo lavar mi gorra en lavadora?">
               <p>
-                No lo recomendamos como regla general. Revisa siempre las instrucciones específicas
-                de tu producto antes de cualquier lavado.
+                No lo recomendamos como regla general. Revisa siempre las
+                instrucciones específicas de tu producto antes de cualquier
+                lavado.
               </p>
             </Accordion>
             <Accordion dark title="¿Cómo evito que pierda su forma?">
               <p>
-                Manipúlala por sus zonas firmes, evita colocar peso encima y guárdala con espacio
-                suficiente.
+                Manipúlala por sus zonas firmes, evita colocar peso encima y
+                guárdala con espacio suficiente.
               </p>
             </Accordion>
             <Accordion dark title="¿Qué hago si se moja?">
               <p>
-                Retira el exceso de humedad sin retorcerla y deja que seque naturalmente en un lugar
-                ventilado, si el material lo permite.
+                Retira el exceso de humedad sin retorcerla y deja que seque
+                naturalmente en un lugar ventilado, si el material lo permite.
               </p>
             </Accordion>
-            <Accordion dark title="¿Cómo limpio una gorra con bordados o parches?">
+            <Accordion
+              dark
+              title="¿Cómo limpio una gorra con bordados o parches?"
+            >
               <p>
-                Trabaja de forma localizada y suave, evitando fricción intensa sobre hilos, bordes y
-                aplicaciones.
+                Trabaja de forma localizada y suave, evitando fricción intensa
+                sobre hilos, bordes y aplicaciones.
               </p>
             </Accordion>
             <Accordion dark title="¿Cómo debo guardarla?">
               <p>
-                En un espacio limpio, seco y ventilado, sin presión sobre la corona o la visera.
+                En un espacio limpio, seco y ventilado, sin presión sobre la
+                corona o la visera.
               </p>
             </Accordion>
           </div>
@@ -2187,7 +2384,11 @@ function CarePage({ navigate }: { navigate: (page: Page) => void }) {
         <span className="eyebrow">Colecciones RSM</span>
         <h2>Listas para acompañarte.</h2>
         <p>Descubre las colecciones de RSM Universe.</p>
-        <button className="button" type="button" onClick={() => navigate("collection")}>
+        <button
+          className="button"
+          type="button"
+          onClick={() => navigate("collection")}
+        >
           Explorar la colección
         </button>
       </section>
@@ -2238,8 +2439,8 @@ function Comparison() {
           no decoración.
         </h1>
         <p>
-          La propuesta combina la dirección RSM con patrones comerciales de Prestige y reglas
-          verificables del brandbook.
+          La propuesta combina la dirección RSM con patrones comerciales de
+          Prestige y reglas verificables del brandbook.
         </p>
       </section>
       <section className="comparison__table shell">
@@ -2318,7 +2519,9 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
           <button onClick={() => navigate("collection")}>Colección Core</button>
           <button onClick={() => navigate("special")}>Special Edition</button>
           <button onClick={() => navigate("story")}>Nuestra historia</button>
-          <button onClick={() => navigate("care")}>Cuidado de tus gorras</button>
+          <button onClick={() => navigate("care")}>
+            Cuidado de tus gorras
+          </button>
         </div>
         <div className="footer__nav">
           <span>Legales</span>
@@ -2329,7 +2532,10 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
         </div>
         <div className="footer__meta footer__nav">
           <span>Propuesta conceptual</span>
-          <p>Contenido y precios demostrativos. Sujeto a catálogo y políticas oficiales.</p>
+          <p>
+            Contenido y precios demostrativos. Sujeto a catálogo y políticas
+            oficiales.
+          </p>
           <button onClick={() => navigate("system")}>Design System</button>
           <button onClick={() => navigate("compare")}>Comparativa UX/UI</button>
         </div>
@@ -2342,11 +2548,28 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
   );
 }
 
-function CartDrawer({ open, close, count }: { open: boolean; close: () => void; count: number }) {
+function CartDrawer({
+  open,
+  close,
+  count,
+}: {
+  open: boolean;
+  close: () => void;
+  count: number;
+}) {
   return (
     <div className={`cart-layer ${open ? "is-open" : ""}`} aria-hidden={!open}>
-      <button className="cart-layer__backdrop" aria-label="Cerrar carrito" onClick={close} />
-      <aside className="cart-drawer" role="dialog" aria-modal="true" aria-label="Bolsa de compra">
+      <button
+        className="cart-layer__backdrop"
+        aria-label="Cerrar carrito"
+        onClick={close}
+      />
+      <aside
+        className="cart-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Bolsa de compra"
+      >
         <div className="cart-drawer__head">
           <h2>Tu bolsa</h2>
           <button aria-label="Cerrar" onClick={close}>
@@ -2391,7 +2614,9 @@ export default function App() {
   const pathname = window.location.pathname.replace(/^\/|\/$/g, "");
   const initialRoute = resolveRouteState(hashPath || pathname);
   const [page, setPage] = useState<Page>(initialRoute.page);
-  const [selectedProductId, setSelectedProductId] = useState<string>(initialRoute.productId);
+  const [selectedProductId, setSelectedProductId] = useState<string>(
+    initialRoute.productId,
+  );
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -2499,7 +2724,11 @@ export default function App() {
       />
       {content}
       <Footer navigate={navigate} />
-      <CartDrawer open={cartOpen} close={() => setCartOpen(false)} count={cartCount} />
+      <CartDrawer
+        open={cartOpen}
+        close={() => setCartOpen(false)}
+        count={cartCount}
+      />
     </div>
   );
 }
