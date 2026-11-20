@@ -21,9 +21,18 @@ jobs:
         with:
           lfs: true
           persist-credentials: false
+      - name: Verify Userback configuration
+        shell: bash
+        env:
+          VITE_USERBACK_ACCESS_TOKEN: ${{ vars.VITE_USERBACK_ACCESS_TOKEN || secrets.VITE_USERBACK_ACCESS_TOKEN }}
+        run: |
+          if [[ -z "${VITE_USERBACK_ACCESS_TOKEN//[[:space:]]/}" ]]; then
+            echo "::error::Set VITE_USERBACK_ACCESS_TOKEN in Settings > Secrets and variables > Actions as a repository variable or secret, then run Deploy GitHub Pages again."
+            exit 1
+          fi
       - uses: ./.github/actions/validate
         env:
-          VITE_USERBACK_ACCESS_TOKEN: ${{ vars.VITE_USERBACK_ACCESS_TOKEN }}
+          VITE_USERBACK_ACCESS_TOKEN: ${{ vars.VITE_USERBACK_ACCESS_TOKEN || secrets.VITE_USERBACK_ACCESS_TOKEN }}
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
