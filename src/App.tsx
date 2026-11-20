@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { assetUrl } from "./asset-url";
 import territoryLandscapeImg from "@/imports/home-SIN_FRONTERAS-2.jpg";
 
@@ -56,6 +56,9 @@ type Product = {
   attributes: ProductAttributes;
   validation: ProductValidation;
 };
+
+type CartItem = { product: Product; quantity: number };
+type AddToCartFn = (product: Product, quantity: number) => void;
 
 const products: Product[] = [
   {
@@ -437,6 +440,7 @@ function Icon({
     | "close"
     | "search"
     | "bag"
+    | "bag-plus"
     | "user"
     | "arrow"
     | "minus"
@@ -464,6 +468,12 @@ function Icon({
       <>
         <path d="M5 8h14l-1 13H6L5 8Z" />
         <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+      </>
+    ),
+    "bag-plus": (
+      <>
+        <path d="M5 8h14l-1 13H6L5 8Z" />
+        <path d="M9 9V6a3 3 0 0 1 6 0v3M9 15h6M12 12v6" />
       </>
     ),
     user: (
@@ -699,9 +709,11 @@ function TextLink({
 function ProductCard({
   product,
   navigate,
+  onAdd,
 }: {
   product: Product;
   navigate: NavigateFn;
+  onAdd: AddToCartFn;
 }) {
   const target: Page =
     product.collectionId === "special-edition" ? "nocturna" : "caliza";
@@ -740,21 +752,43 @@ function ProductCard({
         <small>{product.collectionLabel}</small>
       </button>
       <p className="product-card__price">{product.price}</p>
-      <div
-        className="swatches"
-        aria-label={`Color: ${product.attributes.colorPattern}`}
-      >
-        <span
-          className="swatch-dot is-selected"
-          style={{ "--swatch": product.swatch } as React.CSSProperties}
-          title={product.attributes.colorPattern}
-        />
+      <div className="product-card__actions">
+        <div
+          className="swatches"
+          aria-label={`Color: ${product.attributes.colorPattern}`}
+        >
+          <span
+            className="swatch-dot is-selected"
+            style={{ "--swatch": product.swatch } as React.CSSProperties}
+            title={product.attributes.colorPattern}
+          />
+        </div>
+        <button
+          type="button"
+          className="product-card__quick-add"
+          aria-label={`Agregar ${product.name} al carrito`}
+          onClick={() => {
+            if (product.variants?.length) {
+              navigate(target, product.id);
+              return;
+            }
+            onAdd(product, 1);
+          }}
+        >
+          <Icon name="bag-plus" size={22} />
+        </button>
       </div>
     </article>
   );
 }
 
-function Home({ navigate }: { navigate: NavigateFn }) {
+function Home({
+  navigate,
+  onAdd,
+}: {
+  navigate: NavigateFn;
+  onAdd: AddToCartFn;
+}) {
   return (
     <main>
       <section
@@ -763,10 +797,11 @@ function Home({ navigate }: { navigate: NavigateFn }) {
       >
         <div className="home-hero__shade" style={{ width: "800px" }} />
         <div className="home-hero__content">
-          <h1>Nuestro origen nos define.</h1>
+          <h1>
+            Nuestro origen <br></br>nos define.
+          </h1>
           <button
-            className="button button--light"
-            style={{ background: "none", color: "rgb(242, 232, 218)" }}
+            className="button button button--outline-light"
             onClick={() => navigate("collection")}
           >
             Explorar la colección
@@ -816,8 +851,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
             Conocer el universo RSM
           </TextLink>*/}
           <button
-            className="button button--light button-outline"
-            style={{ background: "none", color: "rgb(242, 232, 218)" }}
+            className="button button--outline-light"
             onClick={() => navigate("collection")}
           >
             Conoce el universo RSM
@@ -848,8 +882,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
                 Ver colección completa
               </TextLink>
               <button
-                className="button button--light"
-                style={{ background: "none", color: "rgb(242, 232, 218)" }}
+                className="button button--outline-light"
                 onClick={() => navigate("collection")}
               >
                 Ver colección completa
@@ -865,6 +898,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
                   key={product.id}
                   product={product}
                   navigate={navigate}
+                  onAdd={onAdd}
                 />
               ))}
             </div>
@@ -918,8 +952,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
             Conoce nuestra historia
           </button>*/}
           <button
-            className="button button--light"
-            style={{ background: "none", color: "rgb(242, 232, 218)" }}
+            className="button button--outline-light"
             onClick={() => navigate("collection")}
           >
             Conoce nuestra historia
@@ -930,7 +963,13 @@ function Home({ navigate }: { navigate: NavigateFn }) {
   );
 }
 
-function Collection({ navigate }: { navigate: NavigateFn }) {
+function Collection({
+  navigate,
+  onAdd,
+}: {
+  navigate: NavigateFn;
+  onAdd: AddToCartFn;
+}) {
   const [sort, setSort] = useState("Destacados");
   const [collectionFilter, setCollectionFilter] = useState<
     "all" | CollectionId
@@ -1022,6 +1061,7 @@ function Collection({ navigate }: { navigate: NavigateFn }) {
               key={product.id}
               product={product}
               navigate={navigate}
+              onAdd={onAdd}
             />
           ))}
         </div>
@@ -1308,10 +1348,12 @@ function CorePdp({
   product,
   navigate,
   onAdd,
+  onQuickAdd,
 }: {
   product: Product;
   navigate: NavigateFn;
   onAdd: (quantity: number) => void;
+  onQuickAdd: AddToCartFn;
 }) {
   return (
     <main className="page-light">
@@ -1351,7 +1393,12 @@ function CorePdp({
             .filter((p) => p.id !== product.id)
             .slice(0, 3)
             .map((p) => (
-              <ProductCard key={p.id} product={p} navigate={navigate} />
+              <ProductCard
+                key={p.id}
+                product={p}
+                navigate={navigate}
+                onAdd={onQuickAdd}
+              />
             ))}
         </div>
       </section>
@@ -1418,9 +1465,8 @@ function SpecialEditionHero() {
           Una expresión de carácter, tradición y exclusividad.
         </small>
         <button
-          className="button button--light"
+          className="button button--outline-light"
           type="button"
-          style={{ background: "none", color: "rgb(242, 232, 218)" }}
           onClick={scrollToEditorial}
         >
           Descubrir la edición
@@ -1533,7 +1579,7 @@ function SpecialEditionProductCTA({ navigate }: { navigate: NavigateFn }) {
           <small>Signature Cap</small>
           <p>Una edición que reúne tradición, diseño y carácter.</p>
           <button
-            className="button button--light"
+            className="button button--outline-light"
             onClick={() => navigate("nocturna")}
           >
             Descubrir Nocturna
@@ -1807,7 +1853,7 @@ function Story() {
           </span>
           <h1>ANTES QUE UNA MARCA, UNA HISTORIA.</h1>
           <button
-            className="story-hero__cta"
+            className="button button--outline-light"
             type="button"
             onClick={() =>
               document
@@ -1923,6 +1969,9 @@ function DesignSystem({ navigate }: { navigate: (page: Page) => void }) {
           <div className="component-board__dark">
             <span className="component-label">Special Edition / Dark</span>
             <button className="button button--light">Acción primaria</button>
+            <button className="button button--outline-light">
+              Acción primaria estilo outline
+            </button>
             <TextLink light>Acción editorial</TextLink>
             <div className="swatches swatches--large">
               {["#171716", "#4B5B6E", "#64242E"].map((c, i) => (
@@ -2572,11 +2621,11 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
 function CartDrawer({
   open,
   close,
-  count,
+  items,
 }: {
   open: boolean;
   close: () => void;
-  count: number;
+  items: CartItem[];
 }) {
   return (
     <div className={`cart-layer ${open ? "is-open" : ""}`} aria-hidden={!open}>
@@ -2597,24 +2646,33 @@ function CartDrawer({
             <Icon name="close" />
           </button>
         </div>
-        {count ? (
+        {items.length > 0 ? (
           <>
-            <div className="cart-item">
-              <ImagePlaceholder
-                label="PRODUCT IMAGE"
-                backgroundColor="#F2E8DA"
-                aspectRatio="1"
-                variant="light"
-              />
-              <div>
-                <b>Selección RSM</b>
-                <span>Color seleccionado</span>
-                <p>{count} × $1,599 MXN</p>
+            {items.map(({ product, quantity }) => (
+              <div className="cart-item" key={product.id}>
+                <img src={product.images[0].src} alt={product.images[0].alt} />
+                <div>
+                  <b>{product.name}</b>
+                  <span>{product.attributes.colorPattern}</span>
+                  <p>
+                    {quantity} × {product.price}
+                  </p>
+                </div>
               </div>
-            </div>
+            ))}
             <div className="cart-drawer__total">
               <span>Subtotal</span>
-              <b>${(1599 * count).toLocaleString("es-MX")} MXN</b>
+              <b>
+                $
+                {items
+                  .reduce(
+                    (total, item) =>
+                      total + item.product.priceAmount * item.quantity,
+                    0,
+                  )
+                  .toLocaleString("es-MX")}{" "}
+                MXN
+              </b>
             </div>
             <button className="button">Ir al checkout</button>
             <small>Impuestos y envío calculados en checkout.</small>
@@ -2637,8 +2695,23 @@ export default function App() {
   const [selectedProductId, setSelectedProductId] = useState<string>(
     initialRoute.productId,
   );
-  const [cartCount, setCartCount] = useState(0);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
   const [cartOpen, setCartOpen] = useState(false);
+
+  const addToCart = useCallback<AddToCartFn>((product, quantity) => {
+    setCartItems((items) => {
+      const existing = items.find((item) => item.product.id === product.id);
+      return existing
+        ? items.map((item) =>
+            item.product.id === product.id
+              ? { ...item, quantity: item.quantity + quantity }
+              : item,
+          )
+        : [...items, { product, quantity }];
+    });
+    setCartOpen(true);
+  }, []);
 
   const navigate: NavigateFn = (next, productId) => {
     const resolvedId =
@@ -2680,24 +2753,32 @@ export default function App() {
   }, []);
 
   const content = useMemo(() => {
-    const add = (quantity: number) => {
-      setCartCount((value) => value + quantity);
-      setCartOpen(true);
-    };
     const activeProduct = productsById[selectedProductId];
+    const coreProduct =
+      activeProduct?.collectionId === "core"
+        ? activeProduct
+        : productsById[DEFAULT_CORE_PRODUCT_ID];
+    const specialProduct =
+      activeProduct?.collectionId === "special-edition"
+        ? activeProduct
+        : productsById[DEFAULT_SPECIAL_PRODUCT_ID];
     switch (page) {
       case "collection":
-        return <Collection navigate={navigate} />;
+        return <Collection navigate={navigate} onAdd={addToCart} />;
       case "caliza":
         return (
           <CorePdp
-            product={
-              activeProduct?.collectionId === "core"
-                ? activeProduct
-                : productsById[DEFAULT_CORE_PRODUCT_ID]
-            }
+            product={coreProduct}
             navigate={navigate}
-            onAdd={add}
+            onAdd={(quantity) =>
+              addToCart(
+                activeProduct?.collectionId === "core"
+                  ? activeProduct
+                  : productsById[DEFAULT_CORE_PRODUCT_ID],
+                quantity,
+              )
+            }
+            onQuickAdd={addToCart}
           />
         );
       case "special":
@@ -2705,13 +2786,16 @@ export default function App() {
       case "nocturna":
         return (
           <NocturnaPdp
-            product={
-              activeProduct?.collectionId === "special-edition"
-                ? activeProduct
-                : productsById[DEFAULT_SPECIAL_PRODUCT_ID]
-            }
+            product={specialProduct}
             navigate={navigate}
-            onAdd={add}
+            onAdd={(quantity) =>
+              addToCart(
+                activeProduct?.collectionId === "special-edition"
+                  ? activeProduct
+                  : productsById[DEFAULT_SPECIAL_PRODUCT_ID],
+                quantity,
+              )
+            }
           />
         );
       case "story":
@@ -2723,9 +2807,9 @@ export default function App() {
       case "compare":
         return <Comparison />;
       default:
-        return <Home navigate={navigate} />;
+        return <Home navigate={navigate} onAdd={addToCart} />;
     }
-  }, [page, selectedProductId]);
+  }, [page, selectedProductId, addToCart]);
 
   return (
     <div className={`app app--${page}`}>
@@ -2740,7 +2824,7 @@ export default function App() {
       <CartDrawer
         open={cartOpen}
         close={() => setCartOpen(false)}
-        count={cartCount}
+        items={cartItems}
       />
     </div>
   );
