@@ -812,9 +812,16 @@ function Home({ navigate }: { navigate: NavigateFn }) {
             Una identidad que se mueve con naturalidad entre el origen y una
             forma contemporánea de vivirlo.
           </p>
-          <TextLink light onClick={() => navigate("story")}>
+          {/*<TextLink light onClick={() => navigate("story")}>
             Conocer el universo RSM
-          </TextLink>
+          </TextLink>*/}
+          <button
+            className="button button--light button-outline"
+            style={{ background: "none", color: "rgb(242, 232, 218)" }}
+            onClick={() => navigate("collection")}
+          >
+            Conoce el universo RSM
+          </button>
         </div>
       </section>
 
@@ -829,7 +836,7 @@ function Home({ navigate }: { navigate: NavigateFn }) {
                 eyebrow="Core collection"
                 title={
                   <>
-                    La colección
+                    La colección <br />
                     <span className="featured-collection__accent">
                       Tierra RSM
                     </span>
@@ -896,7 +903,6 @@ function Home({ navigate }: { navigate: NavigateFn }) {
       >
         <div className="history-banner__shade" />
         <div className="history-banner__content" style={{ paddingBottom: 100 }}>
-          <span className="story-hero__rule" aria-hidden="true" />
           <h2
             style={{
               maxWidth: 460,
@@ -908,7 +914,14 @@ function Home({ navigate }: { navigate: NavigateFn }) {
           >
             Antes que una marca, una historia.
           </h2>
-          <button className="story-hero__cta" onClick={() => navigate("story")}>
+          {/*<button className="story-hero__cta" onClick={() => navigate("story")}>
+            Conoce nuestra historia
+          </button>*/}
+          <button
+            className="button button--light"
+            style={{ background: "none", color: "rgb(242, 232, 218)" }}
+            onClick={() => navigate("collection")}
+          >
             Conoce nuestra historia
           </button>
         </div>
@@ -1657,7 +1670,6 @@ function EditorialSplitSection({
       style={sectionStyle}
     >
       <div className="story-split__copy" style={copyStyle}>
-        <span className="story-split__rule" aria-hidden="true" />
         <span className="eyebrow">{eyebrow}</span>
         <h2 style={titleStyle}>{title}</h2>
         <p>{copy}</p>
@@ -1736,7 +1748,7 @@ function TerritoryGrid() {
   ];
 
   return (
-    <section className="territory-gallery">
+    <section className="hidden territory-gallery">
       <div className="shell">
         <div className="territory-gallery__heading">
           <h2>El territorio</h2>
@@ -1768,7 +1780,6 @@ function TerritoryEditorialBanner() {
         />
       </figure>
       <div className="territory-editorial__copy">
-        <span className="territory-editorial__rule" aria-hidden="true" />
         <h2 id="territory-editorial-title">EL TERRITORIO</h2>
         <p>
           La arquitectura, los paisajes y la cultura ecuestre del norte de
@@ -1791,8 +1802,9 @@ function Story() {
       <section className="story-hero">
         <div className="story-hero__shade" />
         <div className="story-hero__content shell">
-          <span className="story-hero__rule" aria-hidden="true" />
-          <span className="eyebrow eyebrow--light">NUESTRA HISTORIA</span>
+          <span className="sr-only eyebrow eyebrow--light">
+            NUESTRA HISTORIA
+          </span>
           <h1>ANTES QUE UNA MARCA, UNA HISTORIA.</h1>
           <button
             className="story-hero__cta"
@@ -1809,7 +1821,7 @@ function Story() {
       </section>
       <EditorialSplitSection
         id="story-origin"
-        eyebrow="EL ORIGEN"
+        eyebrow=""
         title="EL ORIGEN"
         copy="Nuestra historia hunde sus raíces en la tierra de México, donde el amor por los caballos, las tradiciones y la vida de campo forman la base de la identidad."
         imageSrc={assetUrl("/assets/story-origin.webp")}
@@ -1820,7 +1832,7 @@ function Story() {
       <TerritoryEditorialBanner />
       <EditorialSplitSection
         id="story-ranch-to-city"
-        eyebrow="EVOLUCIÓN"
+        eyebrow=""
         reverse={false}
         title="DEL RANCHO A LA CIUDAD"
         copy="Una identidad que trasciende fronteras. Llevamos la esencia de nuestro origen —su fuerza y carácter— a un entorno contemporáneo sin perder lo que nos define."
