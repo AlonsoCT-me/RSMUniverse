@@ -1,0 +1,75 @@
+@mixin segment-11 {
+.borderless p,
+.special-split p,
+.pdp-story p,
+.nocturna-story p {
+  max-width: 430px;
+  margin-bottom: 32px;
+  color: #534c46;
+  line-height: 1.7;
+}
+}
+
+@mixin segment-29 {
+.pdp {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(340px, 0.72fr);
+  gap: 48px;
+  padding-block: 48px 120px;
+}
+}
+
+@mixin segment-34 {
+.pdp-story {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: stretch;
+  min-height: 640px;
+  background: var(--caliza);
+}
+.pdp-story > .image-placeholder {
+  width: 100%;
+  height: 100%;
+}
+.pdp-story div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8vw;
+}
+.pdp-story h2 {
+  font-size: clamp(44px, 4.5vw, 70px);
+}
+.related {
+  padding-block: 120px;
+}
+}
+
+@mixin segment-38 {
+.pdp--dark {
+  padding-top: 120px;
+}
+}
+
+@mixin segment-44 {
+.nocturna-story {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: stretch;
+  background: #24211e;
+}
+.nocturna-story > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8vw;
+}
+.nocturna-story > .image-placeholder {
+  width: 100%;
+  height: 700px;
+}
+.nocturna-story p {
+  color: rgba(255, 255, 255, 0.58);
+}
+}

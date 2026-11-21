@@ -1,0 +1,234 @@
+@mixin segment-03 {
+.hidden {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.shell {
+  width: min(100% - 64px, 1360px);
+  margin-inline: auto;
+}
+.eyebrow {
+  display: inline-block;
+  color: var(--arcilla);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.eyebrow--light {
+  color: #e9d3bd;
+}
+.image-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.image-placeholder::before,
+.image-placeholder::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+.image-placeholder::before {
+  inset: 16px;
+  border: 1px solid currentColor;
+  opacity: 0.14;
+}
+.image-placeholder::after {
+  width: 72%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.09;
+  transform: rotate(-28deg);
+}
+.image-placeholder--light {
+  color: var(--dark);
+}
+.image-placeholder--dark {
+  color: white;
+}
+.image-placeholder__mark {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid currentColor;
+  color: inherit;
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  opacity: 0.68;
+}
+.image-placeholder__mark svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.2;
+}
+.image-placeholder__mark b {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.image-placeholder--corner .image-placeholder__mark {
+  position: absolute;
+  top: 96px;
+  right: 24px;
+}
+}
+
+@mixin segment-05 {
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  min-width: 290px;
+  padding: 0 24px;
+  border: 1px solid var(--dark);
+  background: var(--dark);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: 0.25s ease;
+}
+.button:hover {
+  background: var(--estirpe);
+  border-color: var(--estirpe);
+}
+.button--light {
+  background: var(--caliza);
+  border-color: var(--caliza);
+  color: var(--dark);
+}
+.button--light:hover {
+  background: white;
+  border-color: white;
+}
+.button--outline-light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.64);
+  color: white;
+}
+.button--outline-light:hover {
+  background: white;
+  border-color: white;
+  color: var(--dark);
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 7px;
+  margin-top: 8px;
+  border-bottom: 1px solid currentColor;
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.text-link svg {
+  transition: transform 0.25s;
+}
+.text-link:hover svg {
+  transform: translateX(4px);
+}
+.text-link--light {
+  color: white;
+}
+}
+
+@mixin segment-15 {
+.section-heading {
+  max-width: 680px;
+}
+.section-heading h2 {
+  margin-top: 14px;
+  white-space: pre-line;
+  font-family: var(--serif);
+  font-size: 80px;
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+}
+
+@mixin segment-17 {
+.section-heading p {
+  max-width: 520px;
+  margin-top: 20px;
+  color: #665f58;
+  line-height: 1.65;
+}
+.section-heading--light h2,
+.section-heading--light p {
+  color: white;
+}
+.section-heading--light p {
+  color: rgba(255, 255, 255, 0.62);
+}
+}
+
+@mixin segment-25 {
+.page-light {
+  background: var(--paper);
+  gap: 4px;
+}
+}
+
+@mixin segment-27 {
+.collection {
+  padding-block: 48px 120px;
+}
+}
+
+@mixin segment-32 {
+.button--add {
+  min-height: 52px;
+  width: 100%;
+}
+}
+
+@mixin segment-36 {
+.dark-page {
+  color: white;
+  background: var(--dark);
+}
+}
+
+@mixin segment-42 {
+.button--caliza {
+  background: var(--caliza);
+  border-color: var(--caliza);
+  color: var(--dark);
+}
+}
+
+@mixin segment-52 {
+.component-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+}

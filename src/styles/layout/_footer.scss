@@ -1,0 +1,60 @@
+@mixin segment-57 {
+footer {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr;
+  gap: 50px;
+  padding: 80px max(32px, 5vw) 30px;
+  color: white;
+  background: #11100f;
+}
+.footer__brand img {
+  width: 85px;
+}
+.footer__brand p {
+  margin-top: 25px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+}
+.footer__nav span,
+.footer__meta span {
+  margin-bottom: 10px;
+  color: #c49c80;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.footer__nav button {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+}
+.footer__nav button:hover {
+  color: white;
+}
+.footer__meta p {
+  max-width: 280px;
+  color: rgba(255, 255, 255, 0.44);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.footer__bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+}

@@ -198,3 +198,7 @@ Los artefactos de la sesión se guardan fuera del repositorio en `/private/tmp/r
 - Las secciones ocultas permanecen renderizadas con sus clases originales. No se eliminan placeholders, datos locales ni componentes usados solo por una página.
 - CSS permanece centralizado. Una fase posterior podrá definir SCSS y estilos por responsabilidad, con validación visual independiente; esta fase no prepara ni modifica reglas CSS.
 - Para Shopify Prestige 11.4.1 se debe usar este mapa como referencia de responsabilidades del prototipo y mantener las especificaciones visuales existentes. No se modifica el tema ni se despliega ningún cambio.
+
+## Actualización de estilos — fase 2
+
+La entrada de estilos ahora combina src/index.css (fuentes y Tailwind) y src/styles/main.scss. La estructura y la cascada se documentan en [SCSS_ARCHITECTURE.md](SCSS_ARCHITECTURE.md). Las referencias anteriores a CSS centralizado describen el estado de fase 1.
