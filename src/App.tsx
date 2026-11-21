@@ -799,12 +799,13 @@ function Home({
         <div className="home-hero__content">
           <h1>
             Nuestro origen <br></br>nos define.
+            <em>No nos limita</em>
           </h1>
           <button
-            className="button button button--outline-light"
+            className="button button--outline-light"
             onClick={() => navigate("collection")}
           >
-            Explorar la colección
+            Explorar la colección <Icon name="arrow" size={18} />
           </button>
         </div>
         <span className="hero-index">01 / 05</span>
@@ -842,20 +843,22 @@ function Home({
       >
         <div className="borderless-fullwidth__shade" />
         <div className="borderless-fullwidth__content shell">
-          <h2 style={{ fontSize: "60px" }}>Sin fronteras.</h2>
-          <p>
-            Una identidad que se mueve con naturalidad entre el origen y una
-            forma contemporánea de vivirlo.
-          </p>
-          {/*<TextLink light onClick={() => navigate("story")}>
-            Conocer el universo RSM
-          </TextLink>*/}
-          <button
+          <div className="borderless-fullwidth__text">
+            <h2 style={{ fontSize: "60px" }}>Sin fronteras.</h2>
+            <p className="sr-only">
+              Una identidad que se mueve con naturalidad entre el origen y una
+              forma contemporánea de vivirlo.
+            </p>
+            <TextLink light onClick={() => navigate("story")}>
+              Conocer el universo RSM
+            </TextLink>
+            {/*<button
             className="button button--outline-light"
             onClick={() => navigate("collection")}
           >
             Conoce el universo RSM
-          </button>
+          </button>*/}
+          </div>
         </div>
       </section>
 
@@ -867,7 +870,7 @@ function Home({
               style={{ backgroundColor: "" }}
             >
               <SectionHeading
-                eyebrow="Core collection"
+                eyebrow=""
                 title={
                   <>
                     La colección <br />
@@ -876,17 +879,11 @@ function Home({
                     </span>
                   </>
                 }
-                copy="Materia, presencia y oficio. Una primera expresión del origen."
+                copy=""
               />
               <TextLink onClick={() => navigate("collection")}>
                 Ver colección completa
               </TextLink>
-              <button
-                className="button button--outline-light"
-                onClick={() => navigate("collection")}
-              >
-                Ver colección completa
-              </button>
             </div>
           </div>
         </div>
@@ -917,7 +914,7 @@ function Home({
         <div className="special-split__copy">
           <span className="eyebrow eyebrow--light">Special Edition</span>
           <h2 style={{ width: "100%", fontSize: "50px" }}>Estirpe de lujo.</h2>
-          <p>
+          <p className="sr-only">
             Una expresión nocturna donde el detalle, la textura y la presencia
             ocupan el centro.
           </p>
@@ -946,17 +943,11 @@ function Home({
               letterSpacing: "-0.035em",
             }}
           >
-            Antes que una marca, una historia.
+            Antes que <br></br>una marca, <br></br> una historia.
           </h2>
-          {/*<button className="story-hero__cta" onClick={() => navigate("story")}>
+          <TextLink onClick={() => navigate("story")}>
             Conoce nuestra historia
-          </button>*/}
-          <button
-            className="button button--outline-light"
-            onClick={() => navigate("collection")}
-          >
-            Conoce nuestra historia
-          </button>
+          </TextLink>
         </div>
       </section>
     </main>
@@ -1460,7 +1451,9 @@ function SpecialEditionHero() {
       <div className="se-hero__overlay" />
       <Reveal className="se-hero__content">
         <p>SPECIAL EDITION</p>
-        <h1>Estirpe de lujo</h1>
+        <h1>
+          Estirpe <br></br>de lujo
+        </h1>
         <small className="sr-only">
           Una expresión de carácter, tradición y exclusividad.
         </small>
@@ -1851,18 +1844,9 @@ function Story() {
           <span className="sr-only eyebrow eyebrow--light">
             NUESTRA HISTORIA
           </span>
-          <h1>ANTES QUE UNA MARCA, UNA HISTORIA.</h1>
-          <button
-            className="button button--outline-light"
-            type="button"
-            onClick={() =>
-              document
-                .getElementById("story-origin")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            CONOCE NUESTRO UNIVERSO
-          </button>
+          <h1>
+            Antes que <br></br>una marca, <br></br> una historia.
+          </h1>
         </div>
       </section>
       <EditorialSplitSection
