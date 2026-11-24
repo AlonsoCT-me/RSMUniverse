@@ -2,6 +2,7 @@
 @use "base/elements";
 @use "base/shared";
 @use "layout/header";
+@use "layout/containers";
 @use "pages/home";
 @use "pages/our-story";
 @use "pages/collection";
@@ -11,7 +12,9 @@
 @use "pages/special-edition";
 @use "components/product-gallery";
 @use "components/product-info";
+@use "components/product-price";
 @use "components/editorial-split";
+@use "components/media-hero";
 @use "pages/design-system";
 @use "pages/care";
 @use "pages/comparison";
@@ -22,9 +25,10 @@
 @include tokens.segment-01;
 @include elements.segment-02;
 @include shared.segment-03;
+@include containers.system;
 @include header.segment-04;
 @include shared.segment-05;
-@include home.segment-06;
+@include media-hero.base;
 @include our-story.segment-07;
 @include collection.segment-08;
 @include home.segment-09;
@@ -81,3 +85,6 @@
 @include footer.segment-57;
 @include cart.segment-58;
 @include responsive.segment-59;
+
+@include product-price.base;
+@include design-system.prices;

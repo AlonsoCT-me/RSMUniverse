@@ -1,18 +1,20 @@
 @mixin segment-56 {
 .newsletter {
-  display: grid;
-  justify-items: center;
-  padding: 100px 30px;
+  padding-block: 100px;
   color: white;
   text-align: center;
   background: var(--estirpe);
+}
+.newsletter__inner {
+  display: grid;
+  justify-items: center;
 }
 .newsletter h2 {
   margin: 18px 0 35px;
   font-family: var(--serif);
   text-transform: uppercase;
 }
-.newsletter > p {
+.newsletter__inner > p {
   color: rgba(255, 255, 255, 0.7);
 }
 .newsletter form {

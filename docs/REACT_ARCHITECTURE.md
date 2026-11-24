@@ -206,3 +206,16 @@ La entrada de estilos ahora combina src/index.css (fuentes y Tailwind) y src/sty
 ## Extensión editorial reutilizable
 
 `EditorialSplitSection` dispone ahora de una unión discriminada static/slider y propiedades independientes de layout, ratio, orden móvil, fondo y encuadre. Sus tipos se exportan desde el componente y se definen en `EditorialSplitSection.types.ts`; el estado interactivo está aislado en `EditorialSlider.tsx`. Solo Nuestra Historia activa el slider en El Origen. Ciudad conserva su composición previa por decisión explícita del usuario. Contrato, ejemplos, auditoría de variantes, migración y futura equivalencia de opciones en Prestige: [EditorialSplitSection](EDITORIAL_SPLIT_SECTION.md). Las secciones no importan páginas ni deducen comportamiento desde IDs.
+
+
+## Sistema global de contenedores de sección
+
+`types/section.ts` define SectionContainer = contained | full-width. `components/layout/SectionContainer.tsx` exporta SectionContainer (div interior) y Section (section exterior con contenedor interior). Las páginas migran las secciones que antes tenían shell directamente en section, conservando sus clases/ID/fondos y espacio vertical fuera del contenedor. Los grids específicos, como PDP y EditorialSplitSection, se ubican en wrappers interiores. Los divs shell pasan al componente; Reveal conserva su propio nodo y recibe las clases canónicas. Newsletter, territorio y el componente editorial ofrecen container opcional con defaults compatibles.
+
+Los componentes no administran navegación, catálogo, carrito ni Userback. Header/Footer y las composiciones inmersivas conservan su distribución propia full-width. El mapa de cada sección, excepciones y pruebas está en [SECTION_CONTAINER_SYSTEM.md](SECTION_CONTAINER_SYSTEM.md).
+
+## MediaHero reutilizable
+
+El hero de Home se extrae a `components/editorial/MediaHero.tsx`, con contrato discriminado image/video en MediaHero.types.ts, presentación multimedia/ciclo nativo en MediaHeroMedia.tsx y resolución de configuración en media-hero-styles.ts. Solo Home lo consume inicialmente, con la fotografía y callback navigate existentes. Se reutilizan SectionContainer, Icon y clases button; no se incorpora un router, estado global o dependencia.
+
+La configuración separa media, altura, contenedor, posición/text alignment responsive, contenido, CTA, overlay e índice editorial. Home conserva alturas y encuadres; el usuario autorizó reducir únicamente el título en mobile estrecho para corregir un recorte anterior. No existe video en el repositorio: la variante queda implementada con pruebas de ciclo simuladas y validación real de reproducción pendiente. Contrato, ejemplos, resultados y equivalencia con Prestige: [MEDIA_HERO.md](MEDIA_HERO.md).

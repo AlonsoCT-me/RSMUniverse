@@ -1,3 +1,4 @@
+import { Section } from "../../components/layout/SectionContainer";
 import type { Product } from "../../types/product";
 import type { NavigateFn } from "../../types/navigation";
 import { ProductGallery } from "../../components/product/ProductGallery";
@@ -16,10 +17,10 @@ export function NocturnaPdp({
 }) {
   return (
     <main className="dark-page">
-      <section className="pdp pdp--dark shell">
+      <Section className="pdp pdp--dark" contentClassName="pdp__container">
         <ProductGallery product={product} dark />
         <ProductInfo product={product} navigate={navigate} dark onAdd={onAdd} />
-      </section>
+      </Section>
       <section className="nocturna-story">
         <div>
           <span className="eyebrow eyebrow--light">Una nueva expresión</span>
@@ -29,8 +30,8 @@ export function NocturnaPdp({
             Otra luz.
           </h2>
           <p>
-            Core y Special Edition comparten estructura, claridad comercial y
-            una misma voz. La diferencia vive en la atmósfera.
+            Core y Special Edition comparten estructura, claridad comercial y una misma voz. La
+            diferencia vive en la atmósfera.
           </p>
           <TextLink light onClick={() => navigate("special")}>
             Conocer el concepto

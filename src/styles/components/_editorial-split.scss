@@ -1,12 +1,16 @@
 @mixin segment-45 {
   .story-split {
-    display: grid;
-    grid-template-columns: var(--story-split-tablet-columns, var(--story-split-ratio-columns));
-    grid-template-areas: "copy media";
     min-height: 620px;
     background: var(--caliza);
   }
-  .story-split--text-right {
+  .story-split__inner {
+    display: grid;
+    grid-template-columns: var(--story-split-tablet-columns, var(--story-split-ratio-columns));
+    grid-template-areas: "copy media";
+    min-height: inherit;
+    gap: inherit;
+  }
+  .story-split--text-right .story-split__inner {
     grid-template-areas: "media copy";
   }
   .story-split--ratio-25-75 {
@@ -38,6 +42,17 @@
     font-weight: 600;
     letter-spacing: -0.035em;
     text-transform: uppercase;
+  }
+  .story-split--container-contained.story-split--text-left .story-split__copy {
+    padding-left: 0;
+  }
+  .story-split--container-contained.story-split--text-right .story-split__copy {
+    padding-right: 0;
+  }
+  @media (max-width: 900px) {
+    .story-split--container-contained .story-split__copy {
+      padding-inline: 0;
+    }
   }
   .story-split--paper {
     background: var(--paper);

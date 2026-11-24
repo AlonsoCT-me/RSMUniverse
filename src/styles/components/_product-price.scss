@@ -1,0 +1,82 @@
+@mixin base {
+  .product-price {
+    min-width: 0;
+    color: var(--dark);
+    font-family: var(--sans);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: left;
+  }
+  .product-price__amounts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    min-width: 0;
+  }
+  .product-price--card {
+    font-size: 16px;
+  }
+  .product-price--detail {
+    font-size: 24px;
+  }
+  .product-price__current,
+  .product-price__compare {
+    white-space: normal;
+  }
+  .product-price--on-sale .product-price__current {
+    color: var(--estirpe);
+    font-weight: 600;
+  }
+  .product-price__compare {
+    color: var(--sierra);
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration-thickness: 1px;
+  }
+  .product-price--detail .product-price__compare {
+    font-size: 16px;
+  }
+  .product-price__discount {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 8px;
+    color: var(--caliza);
+    background: var(--estirpe);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .product-price__savings {
+    display: block;
+    margin-top: 6px;
+    color: var(--sierra);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .product-card__price {
+    min-height: 52px;
+  }
+  .product-card {
+    container-type: inline-size;
+  }
+  @container (max-width: 150px) {
+    .product-card__price {
+      min-height: 80px;
+    }
+  }
+  .product-info__price {
+    flex-wrap: wrap;
+    gap: 12px;
+    min-width: 0;
+  }
+  .product-info--dark .product-price,
+  .component-board__dark .product-price {
+    padding: 12px 16px;
+    background: var(--caliza);
+  }
+}

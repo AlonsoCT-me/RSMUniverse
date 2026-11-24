@@ -1,3 +1,4 @@
+import { SectionContainer } from "../../components/layout/SectionContainer";
 import { EditorialSplitSection } from "../../components/editorial/EditorialSplitSection";
 import { TerritoryGrid } from "../../components/editorial/TerritoryGrid";
 import { TerritoryEditorialBanner } from "../../components/editorial/TerritoryEditorialBanner";
@@ -8,14 +9,12 @@ export function Story() {
     <main className="page-light" id="our-story">
       <section className="story-hero">
         <div className="story-hero__shade" />
-        <div className="story-hero__content shell">
-          <span className="sr-only eyebrow eyebrow--light">
-            NUESTRA HISTORIA
-          </span>
+        <SectionContainer container="contained" className="story-hero__content">
+          <span className="sr-only eyebrow eyebrow--light">NUESTRA HISTORIA</span>
           <h1 className="sr-only">
             Antes que <br></br>una marca, <br></br> una historia.
           </h1>
-        </div>
+        </SectionContainer>
       </section>
       <EditorialSplitSection
         id="story-origin"
@@ -36,11 +35,8 @@ export function Story() {
             objectPosition: "54% center",
           },
           {
-            imageSrc: assetUrl(
-              "/assets/Appaloosa Rider Across Green Hills.png",
-            ),
-            imageAlt:
-              "Jinete sobre un caballo Appaloosa entre las colinas verdes",
+            imageSrc: assetUrl("/assets/Appaloosa Rider Across Green Hills.png"),
+            imageAlt: "Jinete sobre un caballo Appaloosa entre las colinas verdes",
           },
           {
             imageSrc: assetUrl("/assets/Golden-Hour Equestrian Courtyard.png"),

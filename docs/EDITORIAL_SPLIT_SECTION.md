@@ -13,6 +13,7 @@ La unión discriminada `EditorialSplitSectionProps` comparte `EditorialSplitBase
 | `title` | `React.ReactNode`, obligatorio | Encabezado h2; genera un ID accesible independiente del ancla. |
 | `copy` | `string`, obligatorio | Párrafo editorial fijo. |
 | `variant` | `"static" \| "slider"`, `"static"` | Presentación de imágenes. |
+| `container` | `"contained" \| "full-width"`, `"full-width"` | Limita solo el conjunto editorial interior; la sección y su fondo permanecen completos. |
 | `layout` | `"text-left" \| "text-right"`, `"text-left"` | Colocación desktop, independiente de la proporción. |
 | `ratio` | `"25-75" \| "30-70" \| "50-50" \| "70-30" \| "75-25"`, `"50-50"` | Porcentajes izquierda/derecha siempre que haya dos columnas (>900px). |
 | `mobileLayout` | `"image-first" \| "text-first"`, `"text-first"` | Orden visual hasta 900px, independiente del layout desktop. |
@@ -52,6 +53,7 @@ Las duraciones no finitas usan sus valores predeterminados. Un intervalo no posi
   title="Título editorial"
   copy="Contenido editorial."
   variant="static"
+  container="contained"
   layout="text-right"
   ratio="75-25"
   mobileLayout="image-first"
@@ -132,7 +134,7 @@ No se generan imágenes ni se cambian los archivos originales. Ciudad conserva `
 
 `src/styles/components/_editorial-split.scss` posee las reglas compartidas (`segment-45`, `segment-47`) y `slider`. `main.scss` los emite junto a las posiciones históricas de las reglas de Historia. Las cinco definiciones de ratio están en el parcial del componente y aplican tanto a tablet como desktop. Los overrides de padding y apilado permanecen en `base/_responsive.scss`, dentro de sus queries existentes. No se añaden utilidades Tailwind, tokens ni !important.
 
-Eliminados: `story-split--origin`, `story-split--city`, `story-split--reverse` y reglas sin consumidor `story-split__inner`. Se mantiene `story-split__copy` para no renombrar innecesariamente el bloque editorial.
+Eliminados: `story-split--origin`, `story-split--city` y `story-split--reverse`. `story-split__inner` es ahora un wrapper real del sistema de contenedores, distinto del selector huérfano retirado en la refactorización inicial. Se mantiene `story-split__copy` para no renombrar innecesariamente el bloque editorial.
 
 Nuevos modificadores: `--static`, `--slider`, `--text-left`, `--text-right`, `--ratio-25-75`, `--ratio-30-70`, `--ratio-50-50`, `--ratio-70-30`, `--ratio-75-25`, `--text-first`, `--image-first`, `--caliza`, `--paper`. Presentación interactiva: `__slider`, `__slider-track`, `__slide`, `__slider-arrow`, `__slider-dots`, `__slider-dot`, `__slider-play`, `__slider-status`, además de `__slider--fade` y `__slider--slide`.
 
@@ -221,3 +223,12 @@ Archivos modificados en esta ampliación:
 Artefactos de esta ampliación: `/private/tmp/rsm-editorial-config/`, con capturas before/after, comparison.json, validation.json, focus.json y log de Userback. Los fixtures temporales se retiran del código fuente antes de los builds; no hay dependencias ni scripts nuevos en la aplicación. No se modifica `EditorialSlider.tsx`.
 
 Límites: Chromium local con touch emulado; no se prueban dispositivos físicos, Safari/Firefox o el servicio remoto real de Userback. Persiste la advertencia preexistente de `section::last-child`. No hay cambios en contenido, assets, navegación, carrito, tokens, dependencias, Userback o despliegue; no se hace commit, push ni merge.
+
+
+## Integración con el sistema global de contenedores
+
+`EditorialSplitBaseProps` incorpora `container?: SectionContainer`, definido en `src/types/section.ts`. Es independiente de variant, layout, ratio, mobileLayout y opciones del slider. Su default es full-width para conservar Origen y Ciudad sin alterar las instancias actuales.
+
+El exterior conserva fondo, min-height, ID, variables y el gap/margen de 4px de Historia. El nuevo `story-split__inner` utiliza SectionContainer y contiene el grid, con las mismas reglas de ratio y orden móvil. En contained su ancho exterior máximo es 1520px incluyendo gutters de 60/48/36px; full-width no impone gutters ni máximo. No se modifican controles minimalistas, estado del slider o lógica de navegación. El padding editorial vertical permanece; en contained se retira el padding horizontal del extremo exterior del copy para evitar duplicarlo con el gutter.
+
+Contrato, ejemplos, matriz global, mediciones y equivalencia con Theme Editor: [Sistema de contenedores](SECTION_CONTAINER_SYSTEM.md). La opción container se traduciría a un select independiente, sin implementar Shopify todavía.

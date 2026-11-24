@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { SectionContainer } from "../layout/SectionContainer";
 import { EditorialSlider } from "./EditorialSlider";
 import type { EditorialSplitSectionProps } from "./EditorialSplitSection.types";
 
@@ -27,6 +28,7 @@ export function EditorialSplitSection(props: EditorialSplitSectionProps) {
     ratio = "50-50",
     mobileLayout = "text-first",
     surface = "caliza",
+    container = "full-width",
     sectionStyle,
     copyStyle,
     titleStyle,
@@ -63,10 +65,12 @@ export function EditorialSplitSection(props: EditorialSplitSectionProps) {
     <section
       id={id}
       aria-labelledby={headingId}
-      className={`story-split story-split--${variant} story-split--${layout} story-split--ratio-${ratio} story-split--${mobileLayout} story-split--${surface}`}
+      className={`story-split story-split--${variant} story-split--${layout} story-split--ratio-${ratio} story-split--${mobileLayout} story-split--${surface} story-split--container-${container}`}
       style={sectionStyle}
     >
-      {mobileLayout === "image-first" ? [media, content] : [content, media]}
+      <SectionContainer container={container} className="story-split__inner">
+        {mobileLayout === "image-first" ? [media, content] : [content, media]}
+      </SectionContainer>
     </section>
   );
 }

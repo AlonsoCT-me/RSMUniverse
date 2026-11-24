@@ -1,3 +1,5 @@
+import { SectionContainer } from "../layout/SectionContainer";
+import type { SectionContainer as ContainerMode } from "../../types/section";
 import { ImagePlaceholder } from "../ui/ImagePlaceholder";
 import { Icon } from "../ui/Icon";
 import { useState } from "react";
@@ -40,7 +42,7 @@ function TerritoryCard({
   );
 }
 
-export function TerritoryGrid() {
+export function TerritoryGrid({ container = "contained" }: { container?: ContainerMode } = {}) {
   const cards = [
     {
       title: "Caballos",
@@ -70,12 +72,12 @@ export function TerritoryGrid() {
 
   return (
     <section className="hidden territory-gallery">
-      <div className="shell">
+      <SectionContainer container={container}>
         <div className="territory-gallery__heading">
           <h2>El territorio</h2>
           <p>
-            La arquitectura, los paisajes y la cultura ecuestre del norte de
-            México forman parte del lenguaje visual de RSM.
+            La arquitectura, los paisajes y la cultura ecuestre del norte de México forman parte del
+            lenguaje visual de RSM.
           </p>
         </div>
         <div className="territory-grid">
@@ -83,7 +85,7 @@ export function TerritoryGrid() {
             <TerritoryCard key={card.title} {...card} />
           ))}
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }

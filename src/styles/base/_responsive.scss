@@ -17,7 +17,7 @@
 
 @mixin segment-46 {
 @media (min-width: 1120px) {
-  .story-split {
+  .story-split__inner {
     grid-template-columns: var(--story-split-columns, var(--story-split-ratio-columns));
   }
   .story-split__copy {
@@ -31,10 +31,10 @@
 
 @mixin segment-48 {
 @media (max-width: 1100px) {
-  .territory-editorial {
+  .territory-editorial__inner {
     grid-template-columns: 40fr 30fr 30fr;
   }
-  .territory-editorial > * {
+  .territory-editorial__inner > * {
     min-height: 380px;
   }
 }
@@ -56,9 +56,6 @@
 
 @mixin segment-59 {
 @media (max-width: 900px) {
-  .shell {
-    width: min(100% - 40px, 1360px);
-  }
   .site-header {
     height: 68px;
     padding: 0 20px;
@@ -76,26 +73,6 @@
   }
   .brand-logo {
     width: 68px;
-  }
-  .home-hero {
-    height: 800px;
-    min-height: 720px;
-    background-position: 68% center;
-  }
-  .home-hero__shade {
-    background: linear-gradient(
-      0deg,
-      rgba(14, 10, 8, 0.87),
-      rgba(14, 10, 8, 0.03) 68%
-    );
-  }
-  .home-hero__content {
-    left: 22px;
-    right: 22px;
-    bottom: 55px;
-  }
-  .hero-index {
-    display: none;
   }
   .borderless,
   .special-split,
@@ -176,9 +153,11 @@
     display: none;
   }
   .pdp {
-    grid-template-columns: 1fr;
     width: 100%;
     padding-top: 0;
+  }
+  .pdp__container {
+    grid-template-columns: 1fr;
     gap: 0;
   }
   .product-gallery {
@@ -265,7 +244,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .token-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .component-board {
     grid-template-columns: 1fr;
@@ -293,16 +272,6 @@
 }
 
 @media (max-width: 540px) {
-  .shell {
-    width: min(100% - 32px, 1360px);
-  }
-  .home-hero {
-    height: 760px;
-    background-position: 72% center;
-  }
-  .home-hero h1 {
-    margin-bottom: 28px;
-  }
   .button {
     min-height: 46px;
     padding-inline: 18px;
@@ -323,7 +292,7 @@
     display: grid;
   }
   .featured-collection__banner .featured-collection__head {
-    padding: 20px;
+    padding-block: 20px;
   }
   .featured-collection .product-card {
     padding: 6px 6px 12px;
@@ -335,9 +304,6 @@
   .product-card__title small {
     display: block;
     font-size: 8px;
-  }
-  .product-card__price {
-    font-size: 11px;
   }
   .swatches {
     gap: 7px;
@@ -709,15 +675,16 @@
 }
 
 @media (max-width: 900px) {
-  .story-split,
-  .story-split--text-right {
-    grid-template-columns: 1fr;
+  .story-split {
     min-height: 0;
   }
-  .story-split--text-first {
+  .story-split__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .story-split--text-first .story-split__inner {
     grid-template-areas: "copy" "media";
   }
-  .story-split--image-first {
+  .story-split--image-first .story-split__inner {
     grid-template-areas: "media" "copy";
   }
   .story-split__copy {
@@ -727,10 +694,10 @@
   .story-split__media {
     aspect-ratio: 16 / 9;
   }
-  .territory-editorial {
+  .territory-editorial__inner {
     grid-template-columns: 40fr 30fr 30fr;
   }
-  .territory-editorial > * {
+  .territory-editorial__inner > * {
     min-height: 380px;
   }
 }
@@ -770,10 +737,10 @@
   .story-split__media {
     aspect-ratio: 4 / 3;
   }
-  .territory-editorial {
+  .territory-editorial__inner {
     grid-template-columns: 1fr;
   }
-  .territory-editorial > * {
+  .territory-editorial__inner > * {
     min-height: 440px;
   }
   .territory-editorial__copy {
@@ -799,11 +766,12 @@
 }
 // Phase 3B: scoped mobile containment; preserve every rule above 540px.
 @media (max-width: 540px) {
-  .pdp {
+
+  .pdp__container {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .pdp > .product-gallery,
-  .pdp > .product-info {
+}
+  .pdp__container > .product-gallery,
+  .pdp__container > .product-info {
     min-width: 0;
     max-width: 100%;
   }
@@ -840,16 +808,16 @@
     font-size: clamp(17px, 5.2vw, 24px);
   }
   .component-board .button,
-  .system-section > .button {
+  .system-section__container > .button {
     min-width: 0;
     max-width: 100%;
   }
-  .care-intro .shell,
-  .care-cta {
+  .care-intro .section-container,
+  .care-cta__inner {
     grid-template-columns: minmax(0, 1fr);
   }
-  .care-intro .shell > *,
-  .care-cta > * {
+  .care-intro .section-container > *,
+  .care-cta__inner > * {
     min-width: 0;
     max-width: 100%;
   }
@@ -895,20 +863,16 @@
   }
 }
 @media (max-width: 540px) {
-  .newsletter {
+  .newsletter__inner {
     grid-template-columns: minmax(0, 1fr);
   }
-  .newsletter > * {
+  .newsletter__inner > * {
     min-width: 0;
     max-width: 100%;
   }
   .newsletter input {
     min-width: 0;
     width: 100%;
-  }
-  .home-hero .button {
-    min-width: 0;
-    max-width: 100%;
   }
 }
 // Phase 3C: only the two reproduced narrow-mobile overflow sources.

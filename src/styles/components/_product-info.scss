@@ -88,6 +88,9 @@
 .product-specs dd {
   min-width: 0;
 }
+.pdp .buy-row .button--add {
+  min-width: 0;
+}
 .buy-row {
   display: grid;
   grid-template-columns: 110px 1fr;

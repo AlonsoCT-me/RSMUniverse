@@ -57,10 +57,18 @@
 .product-card__media--has-secondary:hover .product-card__secondary {
   opacity: 1;
 }
-.product-card__label {
+.product-card__badges {
   position: absolute;
   top: 12px;
   left: 12px;
+  right: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 6px;
+  pointer-events: none;
+}
+.product-card__label {
   padding: 7px 9px;
   color: white;
   background: var(--dark);
@@ -94,7 +102,6 @@
 }
 .product-card__price {
   margin: 10px 0 12px;
-  font-size: 13px;
 }
 .product-card__actions {
   display: flex;

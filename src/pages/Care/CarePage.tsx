@@ -1,3 +1,4 @@
+import { Section, SectionContainer } from "../../components/layout/SectionContainer";
 import type * as React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Accordion } from "../../components/ui/Accordion";
@@ -119,11 +120,7 @@ function CareStep({
       data-care-step={index}
       aria-current={active ? "step" : undefined}
     >
-      <button
-        type="button"
-        onClick={select}
-        aria-label={`Activar paso ${index + 1}`}
-      >
+      <button type="button" onClick={select} aria-label={`Activar paso ${index + 1}`}>
         <span>{step.number}</span>
         <div>
           <h3>{step.title}</h3>
@@ -145,9 +142,7 @@ function CareScrollStory() {
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible) {
-          setActiveStep(
-            Number((visible.target as HTMLElement).dataset.careStep),
-          );
+          setActiveStep(Number((visible.target as HTMLElement).dataset.careStep));
         }
       },
       { rootMargin: "-35% 0px -35% 0px", threshold: [0.05, 0.2, 0.4] },
@@ -159,9 +154,7 @@ function CareScrollStory() {
 
   const selectStep = (index: number) => {
     setActiveStep(index);
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     stepRefs.current[index]?.scrollIntoView({
       behavior: reduceMotion ? "auto" : "smooth",
       block: "center",
@@ -170,20 +163,17 @@ function CareScrollStory() {
 
   return (
     <section className="care-story" data-shopify-candidate="rsm-cap-care-steps">
-      <div className="care-story__heading shell">
+      <SectionContainer container="contained" className="care-story__heading">
         <span className="eyebrow">Guía paso a paso</span>
         <h2>El arte de cuidar tu gorra.</h2>
         <p>Una guía sencilla para conservarla en las mejores condiciones.</p>
-      </div>
-      <div className="care-story__layout shell">
+      </SectionContainer>
+      <SectionContainer container="contained" className="care-story__layout">
         <div className="care-story__visual">
           <div className="care-story__illustration">
             <CareIllustration step={activeStep} />
           </div>
-          <nav
-            className="care-story__nav"
-            aria-label="Seleccionar paso de cuidado"
-          >
+          <nav className="care-story__nav" aria-label="Seleccionar paso de cuidado">
             <span>
               {String(activeStep + 1).padStart(2, "0")} /{" "}
               {String(careSteps.length).padStart(2, "0")}
@@ -218,22 +208,16 @@ function CareScrollStory() {
             />
           ))}
           <p className="care-story__note">
-            Estos consejos son orientativos. Siempre deben prevalecer las
-            instrucciones específicas indicadas para cada producto.
+            Estos consejos son orientativos. Siempre deben prevalecer las instrucciones específicas
+            indicadas para cada producto.
           </p>
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }
 
-function CareMaterialAccordion({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function CareMaterialAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="care-material-accordion">
       <Accordion title={title}>{children}</Accordion>
@@ -261,9 +245,7 @@ export function CarePage({ navigate }: { navigate: (page: Page) => void }) {
           type="button"
           aria-label="Continuar a la introducción"
           onClick={() => {
-            const reduceMotion = window.matchMedia(
-              "(prefers-reduced-motion: reduce)",
-            ).matches;
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             document
               .getElementById("care-intro")
               ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
@@ -275,15 +257,14 @@ export function CarePage({ navigate }: { navigate: (page: Page) => void }) {
       </section>
 
       <section className="care-intro" id="care-intro">
-        <div className="shell">
+        <SectionContainer container="contained">
           <span className="eyebrow">Cuidado RSM</span>
           <h2>Hechas para acompañarte. Cuidadas para durar.</h2>
           <p>
-            Cada gorra acompaña historias, caminos y momentos. Un cuidado
-            adecuado ayuda a conservar su forma, apariencia y materiales con el
-            paso del tiempo.
+            Cada gorra acompaña historias, caminos y momentos. Un cuidado adecuado ayuda a conservar
+            su forma, apariencia y materiales con el paso del tiempo.
           </p>
-        </div>
+        </SectionContainer>
         <div className="care-intro__marquee" aria-hidden="true">
           <div>
             <span>Cuida mejor. Conserva por más tiempo.</span>
@@ -293,14 +274,14 @@ export function CarePage({ navigate }: { navigate: (page: Page) => void }) {
       </section>
 
       <section className="care-everyday">
-        <div className="care-everyday__inner shell">
+        <SectionContainer container="contained" className="care-everyday__inner">
           <div className="care-everyday__copy">
             <span className="eyebrow">Cuidado cotidiano</span>
             <h2>El cuidado comienza en los detalles.</h2>
             <p>
-              Antes de limpiar tu gorra, identifica sus materiales y revisa las
-              indicaciones específicas del producto. No todos los tejidos,
-              parches y acabados requieren el mismo tratamiento.
+              Antes de limpiar tu gorra, identifica sus materiales y revisa las indicaciones
+              específicas del producto. No todos los tejidos, parches y acabados requieren el mismo
+              tratamiento.
             </p>
             <ul>
               <li>Evita la exposición prolongada al calor y al sol directo.</li>
@@ -315,13 +296,13 @@ export function CarePage({ navigate }: { navigate: (page: Page) => void }) {
               variant="dark"
             />
           </div>
-        </div>
+        </SectionContainer>
       </section>
 
       <CareScrollStory />
 
       <section className="care-storage">
-        <div className="care-storage__inner shell">
+        <SectionContainer container="contained" className="care-storage__inner">
           <div className="care-storage__media">
             <ImagePlaceholder
               label="STORAGE — EDITORIAL IMAGE"
@@ -333,66 +314,61 @@ export function CarePage({ navigate }: { navigate: (page: Page) => void }) {
             <span className="eyebrow">Conservación</span>
             <h2>El tiempo también deja huella.</h2>
             <p>
-              La forma en que guardas y utilizas tu gorra influye en su
-              conservación. Evita aplastarla, exponerla a humedad prolongada o
-              almacenarla sin ventilación.
+              La forma en que guardas y utilizas tu gorra influye en su conservación. Evita
+              aplastarla, exponerla a humedad prolongada o almacenarla sin ventilación.
             </p>
-            <TextLink onClick={() => navigate("collection")}>
-              Explorar la colección
-            </TextLink>
+            <TextLink onClick={() => navigate("collection")}>Explorar la colección</TextLink>
           </div>
-        </div>
+        </SectionContainer>
       </section>
 
       <section className="care-information">
-        <div className="care-information__grid shell">
+        <SectionContainer container="contained" className="care-information__grid">
           <div className="care-information__heading">
             <span className="eyebrow">Según su composición</span>
             <h2>Cada material merece su propio cuidado.</h2>
             <p>
-              Las indicaciones oficiales de cada producto tienen prioridad sobre
-              estas recomendaciones generales.
+              Las indicaciones oficiales de cada producto tienen prioridad sobre estas
+              recomendaciones generales.
             </p>
           </div>
           <div className="care-information__accordions">
             <CareMaterialAccordion title="Algodón y tejidos textiles">
               <p>
-                Retira el polvo en seco y trata únicamente zonas puntuales
-                cuando las indicaciones del producto lo permitan. Evita empapar
-                el tejido.
+                Retira el polvo en seco y trata únicamente zonas puntuales cuando las indicaciones
+                del producto lo permitan. Evita empapar el tejido.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Poliéster y materiales sintéticos">
               <p>
-                Usa un paño suave y evita calor intenso, fricción fuerte o
-                productos químicos no especificados para el material.
+                Usa un paño suave y evita calor intenso, fricción fuerte o productos químicos no
+                especificados para el material.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Malla tipo trucker">
               <p>
-                Manipula la malla con suavidad para evitar deformaciones. Retira
-                polvo sin presionar ni doblar los paneles.
+                Manipula la malla con suavidad para evitar deformaciones. Retira polvo sin presionar
+                ni doblar los paneles.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Parches, bordados y aplicaciones">
               <p>
-                Limpia alrededor de las aplicaciones con movimientos suaves y
-                evita enganchar, raspar o saturar sus bordes.
+                Limpia alrededor de las aplicaciones con movimientos suaves y evita enganchar,
+                raspar o saturar sus bordes.
               </p>
             </CareMaterialAccordion>
             <CareMaterialAccordion title="Ante, gamuza o cuero, cuando aplique">
               <p>
-                Sigue únicamente las instrucciones específicas del producto. No
-                apliques limpiadores, impermeabilizantes o solventes sin una
-                indicación verificada.
+                Sigue únicamente las instrucciones específicas del producto. No apliques
+                limpiadores, impermeabilizantes o solventes sin una indicación verificada.
               </p>
             </CareMaterialAccordion>
           </div>
-        </div>
+        </SectionContainer>
       </section>
 
       <section className="care-faq">
-        <div className="care-faq__inner shell">
+        <SectionContainer container="contained" className="care-faq__inner">
           <div className="care-faq__heading">
             <span className="eyebrow eyebrow--light">Preguntas frecuentes</span>
             <h2>Antes de comenzar.</h2>
@@ -400,54 +376,45 @@ export function CarePage({ navigate }: { navigate: (page: Page) => void }) {
           <div className="care-faq__accordions">
             <Accordion dark title="¿Puedo lavar mi gorra en lavadora?">
               <p>
-                No lo recomendamos como regla general. Revisa siempre las
-                instrucciones específicas de tu producto antes de cualquier
-                lavado.
+                No lo recomendamos como regla general. Revisa siempre las instrucciones específicas
+                de tu producto antes de cualquier lavado.
               </p>
             </Accordion>
             <Accordion dark title="¿Cómo evito que pierda su forma?">
               <p>
-                Manipúlala por sus zonas firmes, evita colocar peso encima y
-                guárdala con espacio suficiente.
+                Manipúlala por sus zonas firmes, evita colocar peso encima y guárdala con espacio
+                suficiente.
               </p>
             </Accordion>
             <Accordion dark title="¿Qué hago si se moja?">
               <p>
-                Retira el exceso de humedad sin retorcerla y deja que seque
-                naturalmente en un lugar ventilado, si el material lo permite.
+                Retira el exceso de humedad sin retorcerla y deja que seque naturalmente en un lugar
+                ventilado, si el material lo permite.
               </p>
             </Accordion>
-            <Accordion
-              dark
-              title="¿Cómo limpio una gorra con bordados o parches?"
-            >
+            <Accordion dark title="¿Cómo limpio una gorra con bordados o parches?">
               <p>
-                Trabaja de forma localizada y suave, evitando fricción intensa
-                sobre hilos, bordes y aplicaciones.
+                Trabaja de forma localizada y suave, evitando fricción intensa sobre hilos, bordes y
+                aplicaciones.
               </p>
             </Accordion>
             <Accordion dark title="¿Cómo debo guardarla?">
               <p>
-                En un espacio limpio, seco y ventilado, sin presión sobre la
-                corona o la visera.
+                En un espacio limpio, seco y ventilado, sin presión sobre la corona o la visera.
               </p>
             </Accordion>
           </div>
-        </div>
+        </SectionContainer>
       </section>
 
-      <section className="care-cta">
+      <Section className="care-cta" contentClassName="care-cta__inner">
         <span className="eyebrow">Colecciones RSM</span>
         <h2>Listas para acompañarte.</h2>
         <p>Descubre las colecciones de RSM Universe.</p>
-        <button
-          className="button"
-          type="button"
-          onClick={() => navigate("collection")}
-        >
+        <button className="button" type="button" onClick={() => navigate("collection")}>
           Explorar la colección
         </button>
-      </section>
+      </Section>
     </main>
   );
 }

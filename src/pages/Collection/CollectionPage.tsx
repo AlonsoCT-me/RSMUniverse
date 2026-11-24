@@ -1,3 +1,4 @@
+import { Section } from "../../components/layout/SectionContainer";
 import type { NavigateFn } from "../../types/navigation";
 import type { AddToCartFn } from "../../types/cart";
 import type { CollectionId } from "../../types/product";
@@ -6,25 +7,15 @@ import { ProductCard } from "../../components/product/ProductCard";
 import { Icon } from "../../components/ui/Icon";
 import { useState, useMemo } from "react";
 
-export function Collection({
-  navigate,
-  onAdd,
-}: {
-  navigate: NavigateFn;
-  onAdd: AddToCartFn;
-}) {
+export function Collection({ navigate, onAdd }: { navigate: NavigateFn; onAdd: AddToCartFn }) {
   const [sort, setSort] = useState("Destacados");
-  const [collectionFilter, setCollectionFilter] = useState<
-    "all" | CollectionId
-  >("all");
+  const [collectionFilter, setCollectionFilter] = useState<"all" | CollectionId>("all");
 
   const visibleProducts = useMemo(() => {
     const filtered =
       collectionFilter === "all"
         ? products
-        : products.filter(
-            (product) => product.collectionId === collectionFilter,
-          );
+        : products.filter((product) => product.collectionId === collectionFilter);
     if (sort === "Precio: menor a mayor") {
       return [...filtered].sort((a, b) => a.priceAmount - b.priceAmount);
     }
@@ -36,11 +27,7 @@ export function Collection({
 
   const cycleCollectionFilter = () => {
     setCollectionFilter((current) =>
-      current === "all"
-        ? "core"
-        : current === "core"
-          ? "special-edition"
-          : "all",
+      current === "all" ? "core" : current === "core" ? "special-edition" : "all",
     );
   };
 
@@ -64,16 +51,16 @@ export function Collection({
             La colección <em>Tierra RSM</em>
           </h1>
           <p className="collection-hero__description sr-only">
-            Una expresión contemporánea de un origen real. Diseñada para moverse
-            del rancho a la ciudad.
+            Una expresión contemporánea de un origen real. Diseñada para moverse del rancho a la
+            ciudad.
           </p>
         </div>
       </section>
-      <section className="collection shell">
+      <Section className="collection" contentClassName="collection__container">
         <div className="collection__intro">
           <p className="sr-only">
-            Gorras de carácter sobrio, tonos naturales y detalles que hablan del
-            oficio sin exageración.
+            Gorras de carácter sobrio, tonos naturales y detalles que hablan del oficio sin
+            exageración.
           </p>
           <span>{visibleProducts.length} productos</span>
         </div>
@@ -88,10 +75,7 @@ export function Collection({
           </div>
           <label>
             <span>Ordenar por</span>
-            <select
-              value={sort}
-              onChange={(event) => setSort(event.target.value)}
-            >
+            <select value={sort} onChange={(event) => setSort(event.target.value)}>
               <option>Destacados</option>
               <option>Precio: menor a mayor</option>
               <option>Precio: mayor a menor</option>
@@ -100,12 +84,7 @@ export function Collection({
         </div>
         <div className="product-grid">
           {visibleProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              navigate={navigate}
-              onAdd={onAdd}
-            />
+            <ProductCard key={product.id} product={product} navigate={navigate} onAdd={onAdd} />
           ))}
         </div>
         <div className="pagination" aria-label="Paginación">
@@ -115,7 +94,7 @@ export function Collection({
             <Icon name="arrow" />
           </button>
         </div>
-      </section>
+      </Section>
     </main>
   );
 }

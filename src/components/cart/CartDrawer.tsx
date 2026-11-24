@@ -1,4 +1,5 @@
 import type { CartItem } from "../../types/cart";
+import { formatMoney } from "../../utils/pricing";
 import { Icon } from "../ui/Icon";
 
 export function CartDrawer({
@@ -12,17 +13,8 @@ export function CartDrawer({
 }) {
   return (
     <div className={`cart-layer ${open ? "is-open" : ""}`} aria-hidden={!open}>
-      <button
-        className="cart-layer__backdrop"
-        aria-label="Cerrar carrito"
-        onClick={close}
-      />
-      <aside
-        className="cart-drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Bolsa de compra"
-      >
+      <button className="cart-layer__backdrop" aria-label="Cerrar carrito" onClick={close} />
+      <aside className="cart-drawer" role="dialog" aria-modal="true" aria-label="Bolsa de compra">
         <div className="cart-drawer__head">
           <h2>Tu bolsa</h2>
           <button aria-label="Cerrar" onClick={close}>
@@ -38,7 +30,7 @@ export function CartDrawer({
                   <b>{product.name}</b>
                   <span>{product.attributes.colorPattern}</span>
                   <p>
-                    {quantity} × {product.price}
+                    {quantity} × {formatMoney(product.priceAmount, product.currency)}
                   </p>
                 </div>
               </div>
@@ -46,15 +38,12 @@ export function CartDrawer({
             <div className="cart-drawer__total">
               <span>Subtotal</span>
               <b>
-                $
-                {items
-                  .reduce(
-                    (total, item) =>
-                      total + item.product.priceAmount * item.quantity,
+                {formatMoney(
+                  items.reduce(
+                    (total, item) => total + item.product.priceAmount * item.quantity,
                     0,
-                  )
-                  .toLocaleString("es-MX")}{" "}
-                MXN
+                  ),
+                )}
               </b>
             </div>
             <button className="button">Ir al checkout</button>

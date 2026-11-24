@@ -25,10 +25,11 @@
 }
 .token-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   margin-top: 50px;
 }
 .token-grid article {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,6 +37,7 @@
   padding: 18px;
 }
 .token-grid span {
+  overflow-wrap: anywhere;
   font-family: var(--serif);
   font-size: 24px;
   text-transform: uppercase;
@@ -117,4 +119,21 @@
   font-size: 13px;
   line-height: 1.6;
 }
+}
+
+@mixin prices {
+  .price-examples__notice {
+    max-width: 65ch;
+    margin-top: 24px;
+    color: var(--sierra);
+    line-height: 1.6;
+  }
+  .price-examples__details > div {
+    min-width: 0;
+    min-height: 0;
+    padding: clamp(18px, 3vw, 40px);
+  }
+  .price-examples__cards {
+    margin-top: 48px;
+  }
 }
