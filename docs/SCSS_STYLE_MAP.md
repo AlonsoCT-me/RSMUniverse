@@ -63,3 +63,18 @@ Orden original conservado; cada fila representa un tramo contiguo.
 | 57 | `footer `, `.footer__brand img `, `.footer__brand p `, `.footer__nav `, `.footer__nav span, .footer__meta span `, `.footer__nav button `, `.footer__nav button:hover `, `.footer__meta p `, `.footer__bottom ` | `src/index.css` | `src/styles/layout/_footer.scss` | layout/footer | Sin query externa; posición de emisión en main.scss |
 | 58 | `.cart-layer `, `.cart-layer.is-open `, `.cart-layer__backdrop `, `.cart-layer.is-open .cart-layer__backdrop `, `.cart-drawer `, `.cart-layer.is-open .cart-drawer `, `.cart-drawer__head `, `.cart-drawer__head h2 `, `.cart-item `, `.cart-item > img `, `.cart-item div `, `.cart-item b `, `.cart-item span `, `.cart-drawer__total `, `.cart-drawer > .button `, `.cart-drawer > small `, `.cart-empty `, `.cart-empty p `, `.cart-empty small ` | `src/index.css` | `src/styles/components/_cart.scss` | components/cart | Sin query externa; posición de emisión en main.scss |
 | 59 | `@media (max-width: 900px) `, `@media (max-width: 540px) `, `@media (max-width: 900px) `, `@media (max-width: 540px) `, `@media (max-width: 900px) `, `@media (max-width: 540px) `, `@media (prefers-reduced-motion: reduce) ` | `src/index.css` | `src/styles/base/_responsive.scss` | base/responsive | (max-width: 900px) ; (max-width: 540px) ; (max-width: 900px) ; (max-width: 540px) ; (max-width: 900px) ; (max-width: 540px) ; (prefers-reduced-motion: reduce) ; posición de emisión en main.scss |
+
+## Actualización: EditorialSplitSection reutilizable
+
+Las filas anteriores registran el mapa histórico de extracción. Propiedad actual de los selectores modificados:
+
+| Emisión | Selectores | Propietario actual |
+|---|---|---|
+| Junto a 45 | `.story-split`, `--text-right`, `--paper`, `__copy`, `__copy h2` | `components/_editorial-split.scss`, `segment-45` |
+| Junto a 45 | `--ratio-25-75`, `--ratio-30-70`, `--ratio-50-50`, `--ratio-70-30`, `--ratio-75-25`; tracks flexibles para tablet/desktop | `components/_editorial-split.scss`, `segment-45` |
+| 46, min-width 1120px | override de columnas desktop, padding y wrapping | `base/_responsive.scss` |
+| Junto a 47 | `__copy .eyebrow`, `__copy p`, `__media`, `__media img` | `components/_editorial-split.scss`, `segment-47` |
+| Después del tramo anterior | `__slider*`, `__slide`, `is-active`, fade/slide, controles y movimiento reducido | `components/_editorial-split.scss`, `slider` |
+| 59, max-width 900/540px | columnas apiladas, `--text-first`, `--image-first`, tamaños y padding previos | `base/_responsive.scss` |
+
+Se eliminan los modificadores origin/city/reverse y los selectores huérfanos `__inner`; el encuadre pasa a props, el fondo a surface y el orden móvil a mobileLayout. El gap de página sigue siendo propiedad de `pages/_our-story.scss`. Véase [contrato editorial](EDITORIAL_SPLIT_SECTION.md).

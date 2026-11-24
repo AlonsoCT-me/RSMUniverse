@@ -11,6 +11,7 @@
 @use "pages/special-edition";
 @use "components/product-gallery";
 @use "components/product-info";
+@use "components/editorial-split";
 @use "pages/design-system";
 @use "pages/care";
 @use "pages/comparison";
@@ -63,8 +64,11 @@
 @include product-info.segment-43;
 @include product.segment-44;
 @include our-story.segment-45;
+@include editorial-split.segment-45;
 @include responsive.segment-46;
 @include our-story.segment-47;
+@include editorial-split.segment-47;
+@include editorial-split.slider;
 @include responsive.segment-48;
 @include our-story.segment-49;
 @include responsive.segment-50;

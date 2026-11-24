@@ -52,15 +52,15 @@ export function Collection({
         : "Línea: Special Edition";
 
   return (
-    <main className="page-light">
+    <main className="page-light" id="collection">
       <section
         className="collection-hero"
         aria-label="Gorra RSM Special Edition Leather Brown como portada de colección"
       >
-        <div className="collection-hero__shade" />
+        <div className="collection-hero__shade hidden" />
         <div className="collection-hero__copy">
           <span className="sr-only eyebrow eyebrow--light">Colección Core</span>
-          <h1>
+          <h1 className="collection-hero__title sr-only">
             La colección <em>Tierra RSM</em>
           </h1>
           <p className="collection-hero__description sr-only">
@@ -71,7 +71,7 @@ export function Collection({
       </section>
       <section className="collection shell">
         <div className="collection__intro">
-          <p>
+          <p className="sr-only">
             Gorras de carácter sobrio, tonos naturales y detalles que hablan del
             oficio sin exageración.
           </p>

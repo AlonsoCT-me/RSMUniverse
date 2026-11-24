@@ -49,7 +49,11 @@ export function CorePdp({
         <div className="related__head">
           <SectionHeading
             eyebrow="También puede interesarte"
-            title="Más de Tierra RSM"
+            title={
+              <>
+                Más de Tierra <span style={{ color: "var(--arcilla)" }}>RSM</span>
+              </>
+            }
           />
           <TextLink onClick={() => navigate("collection")}>Ver todo</TextLink>
         </div>

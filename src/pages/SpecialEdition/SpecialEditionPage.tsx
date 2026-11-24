@@ -11,7 +11,7 @@ import { ImagePlaceholder } from "../../components/ui/ImagePlaceholder";
 
 export function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
   return (
-    <main className="se-page">
+    <main className="se-page" id="special-edition">
       <SpecialEditionHero />
       <EditorialIntro />
       <SpecialEditionDetails navigate={navigate} />
@@ -30,6 +30,8 @@ export function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
           copy="Un emblema que expresa la identidad de RSM a través de acabados y detalles distintivos."
           label="DETALLE — EMBLEMA"
           color="#64242E"
+          imageSrc="/assets/Embossed Black Suede Rancho Branding.png"
+          imageAlt="Gorra de gamuza negra sobre piedra, mostrando sus materiales y texturas"
         />
         <EditorialImageText
           reverse
@@ -37,12 +39,16 @@ export function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
           copy="Una combinación de texturas y materiales seleccionados para dar personalidad a esta edición."
           label="DETALLE — MATERIAL"
           color="#574D35"
+          imageSrc="/assets/Cinematic Black Suede Cap on Stone.png"
+          imageAlt="Gorra de gamuza negra sobre piedra, mostrando sus materiales y texturas"
         />
         <EditorialImageText
           title="El ajuste y los acabados"
           copy="Cada elemento contribuye a una pieza que equilibra comodidad, diseño y atención al detalle."
           label="DETALLE — AJUSTE"
           color="#4B5B6E"
+          imageSrc="/assets/Luxury Black Suede Cap Close-Up.png"
+          imageAlt="Detalle del ajuste y los acabados de la gorra de gamuza negra"
         />
       </section>
       <section className="se-lifestyle hidden">

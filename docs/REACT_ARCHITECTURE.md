@@ -202,3 +202,7 @@ Los artefactos de la sesión se guardan fuera del repositorio en `/private/tmp/r
 ## Actualización de estilos — fase 2
 
 La entrada de estilos ahora combina src/index.css (fuentes y Tailwind) y src/styles/main.scss. La estructura y la cascada se documentan en [SCSS_ARCHITECTURE.md](SCSS_ARCHITECTURE.md). Las referencias anteriores a CSS centralizado describen el estado de fase 1.
+
+## Extensión editorial reutilizable
+
+`EditorialSplitSection` dispone ahora de una unión discriminada static/slider y propiedades independientes de layout, ratio, orden móvil, fondo y encuadre. Sus tipos se exportan desde el componente y se definen en `EditorialSplitSection.types.ts`; el estado interactivo está aislado en `EditorialSlider.tsx`. Solo Nuestra Historia activa el slider en El Origen. Ciudad conserva su composición previa por decisión explícita del usuario. Contrato, ejemplos, auditoría de variantes, migración y futura equivalencia de opciones en Prestige: [EditorialSplitSection](EDITORIAL_SPLIT_SECTION.md). Las secciones no importan páginas ni deducen comportamiento desde IDs.

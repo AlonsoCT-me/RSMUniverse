@@ -107,15 +107,11 @@
 .borderless-fullwidth h2 {
   margin: 20px 0;
   font-family: var(--serif);
-  font-size: clamp(58px, 6vw, 92px);
   font-weight: 600;
-  line-height: 0.86;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
-.borderless-fullwidth .borderless-fullwidth__title {
-  font-size: 60px;
-}
+
 .borderless-fullwidth p {
   max-width: 440px;
   margin-bottom: 32px;
@@ -125,5 +121,28 @@
 
 .featured-collection {
   background-color: var(--caliza);
+}
+.app--home .special-split__copy {
+  min-width: 0;
+  container-type: inline-size;
+}
+.app--home .special-split__copy > .eyebrow,
+.app--home .special-split__copy > h2 {
+  font-family: var(--serif);
+  white-space: nowrap;
+  text-wrap: nowrap;
+  overflow-wrap: normal;
+}
+.app--home .special-split__copy > .eyebrow {
+  max-width: 100%;
+  font-size: min(75px, 12cqi);
+  line-height: 1.1;
+  letter-spacing: normal;
+  color: var(--white);
+}
+.app--home .special-split__copy > h2 {
+  font-size: min(80px, 12cqi);
+  color: #e1c6aa;
+  margin-top: 0;
 }
 }

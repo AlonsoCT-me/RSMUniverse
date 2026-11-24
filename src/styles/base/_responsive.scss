@@ -17,8 +17,14 @@
 
 @mixin segment-46 {
 @media (min-width: 1120px) {
+  .story-split {
+    grid-template-columns: var(--story-split-columns, var(--story-split-ratio-columns));
+  }
+  .story-split__copy {
+    padding: clamp(24px, 2vw, 40px);
+  }
   .story-split__copy h2 {
-    white-space: nowrap;
+    white-space: normal;
   }
 }
 }
@@ -87,10 +93,6 @@
     left: 22px;
     right: 22px;
     bottom: 55px;
-  }
-  .home-hero h1 {
-    font-size: clamp(53px, 15vw, 72px);
-    line-height: 0.82;
   }
   .hero-index {
     display: none;
@@ -210,9 +212,6 @@
   .special-hero__content {
     padding: 65px 22px 90px;
   }
-  .special-hero h1 {
-    font-size: clamp(58px, 15vw, 80px);
-  }
   .special-intro {
     padding-block: 100px;
   }
@@ -254,10 +253,6 @@
   }
   .pdp--dark {
     padding-top: 68px;
-  }
-  .story-split__inner {
-    gap: 36px;
-    padding-block: 90px;
   }
   .territory-gallery__heading {
     grid-template-columns: 1fr;
@@ -307,7 +302,6 @@
   }
   .home-hero h1 {
     margin-bottom: 28px;
-    font-size: 52px;
   }
   .button {
     min-height: 46px;
@@ -321,19 +315,8 @@
     min-height: 620px;
     background-position: 42% center;
   }
-  .borderless-fullwidth h2 {
-    font-size: 52px;
-  }
   .borderless-fullwidth__content {
     padding-block: 62px;
-  }
-  .borderless h2,
-  .special-split h2,
-  .history-banner h2,
-  .pdp-story h2,
-  .special-cta h2,
-  .nocturna-story h2 {
-    font-size: 47px;
   }
   .featured-collection__head,
   .related__head {
@@ -344,9 +327,6 @@
   }
   .featured-collection .product-card {
     padding: 6px 6px 12px;
-  }
-  .section-heading h2 {
-    font-size: 45px;
   }
   .product-card__title > span {
     display: block;
@@ -377,9 +357,6 @@
     height: 570px;
     background-position: 56% center;
   }
-  .collection-hero h1 {
-    font-size: 52px;
-  }
   .collection__intro p {
     font-size: 21px;
   }
@@ -400,9 +377,6 @@
   }
   .product-gallery .image-placeholder {
     min-height: 230px;
-  }
-  .product-info h1 {
-    font-size: clamp(32px, 8.8vw, 42px);
   }
   .product-gallery__thumbs {
     display: flex;
@@ -468,27 +442,8 @@
     bottom: 70px;
     left: 24px;
   }
-  .story-hero h1 {
-    font-size: clamp(38px, 11vw, 46px);
-    line-height: 0.86;
-  }
-  .story-split__inner,
-  .story-split--reverse .story-split__inner {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-  .story-split__inner {
-    grid-template-areas: "copy" "media";
-  }
-  .story-split--reverse .story-split__inner {
-    grid-template-areas: "media" "copy";
-  }
   .story-split__media {
     aspect-ratio: 4 / 3;
-  }
-  .story-split__copy h2,
-  .territory-gallery__heading h2 {
-    font-size: 48px;
   }
   .territory-grid {
     grid-template-columns: 1fr;
@@ -496,10 +451,6 @@
   }
   .territory-card__panel {
     padding: 24px 72px 24px 24px;
-  }
-  .system-hero h1,
-  .comparison__hero h1 {
-    font-size: 56px;
   }
   .token-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -622,7 +573,6 @@
   }
   .se-hero h1 {
     margin-bottom: 25px;
-    font-size: clamp(70px, 24vw, 94px);
   }
   .se-hero__content > small {
     max-width: 300px;
@@ -630,11 +580,6 @@
   }
   .se-intro {
     padding-block: 100px;
-  }
-  .se-intro h2,
-  .se-story__heading h2,
-  .se-lifestyle h2 {
-    font-size: 49px;
   }
   .se-presentation {
     padding-block: 80px 100px;
@@ -661,9 +606,6 @@
   .se-detail__media {
     aspect-ratio: 4 / 5;
   }
-  .se-detail__copy h3 {
-    font-size: 45px;
-  }
   .se-lifestyle,
   .se-lifestyle__copy {
     min-height: 620px;
@@ -687,30 +629,15 @@
   .se-product-cta__copy {
     padding: 62px 24px;
   }
-  .se-product-cta h2 {
-    font-size: 76px;
-  }
   .care-hero {
     min-height: 700px;
   }
   .care-hero__content {
     bottom: 19%;
   }
-  .care-hero h1 {
-    font-size: clamp(48px, 15vw, 62px);
-  }
   .care-hero__continue {
     right: 22px;
     bottom: 25px;
-  }
-  .care-intro h2,
-  .care-everyday h2,
-  .care-storage h2,
-  .care-information h2,
-  .care-faq h2,
-  .care-cta h2,
-  .care-story__heading h2 {
-    font-size: 45px;
   }
   .care-intro__marquee {
     padding-block: 20px;
@@ -766,9 +693,6 @@
   .care-step > button > span {
     font-size: 30px;
   }
-  .care-step h3 {
-    font-size: 36px;
-  }
   .care-step p {
     font-size: 13px;
   }
@@ -786,14 +710,14 @@
 
 @media (max-width: 900px) {
   .story-split,
-  .story-split--reverse {
+  .story-split--text-right {
     grid-template-columns: 1fr;
     min-height: 0;
   }
-  .story-split {
+  .story-split--text-first {
     grid-template-areas: "copy" "media";
   }
-  .story-split--reverse {
+  .story-split--image-first {
     grid-template-areas: "media" "copy";
   }
   .story-split__copy {
@@ -834,8 +758,6 @@
   .story-hero h1 {
     max-width: 330px;
     margin-block: 16px 28px;
-    font-size: clamp(39px, 11vw, 47px);
-    line-height: 0.9;
   }
   .story-hero__rule {
     width: 46px;
@@ -848,9 +770,6 @@
   .story-split__media {
     aspect-ratio: 4 / 3;
   }
-  .story-split__copy h2 {
-    font-size: 47px;
-  }
   .territory-editorial {
     grid-template-columns: 1fr;
   }
@@ -860,9 +779,6 @@
   .territory-editorial__copy {
     min-height: 390px;
     padding: 58px 24px;
-  }
-  .territory-editorial__copy h2 {
-    font-size: 50px;
   }
   .territory-editorial__visual--door {
     min-height: 390px;
@@ -897,9 +813,7 @@
   .pdp .buy-row > .button--add {
     min-width: 0;
   }
-  .borderless-fullwidth .borderless-fullwidth__title {
-    font-size: clamp(46px, 15vw, 60px);
-  }
+
   .care-story__layout,
   .care-story__visual {
     grid-template-columns: minmax(0, 1fr);
@@ -914,13 +828,7 @@
 }
 // Phase 3B P2: mobile-only editorial containment and touch targets.
 @media (max-width: 540px) {
-  .featured-collection__accent {
-    font-size: clamp(48px, 14vw, 70px);
-  }
-  .system-hero h1,
-  .comparison__hero h1 {
-    font-size: clamp(40px, 13vw, 56px);
-  }
+
   .token-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -944,10 +852,6 @@
   .care-cta > * {
     min-width: 0;
     max-width: 100%;
-  }
-  .care-intro h2,
-  .care-cta h2 {
-    font-size: clamp(34px, 10.8vw, 45px);
   }
   .care-cta .button {
     width: min(100%, 290px);
@@ -998,9 +902,6 @@
     min-width: 0;
     max-width: 100%;
   }
-  .newsletter h2 {
-    font-size: clamp(32px, 10.5vw, 43px);
-  }
   .newsletter input {
     min-width: 0;
     width: 100%;
@@ -1014,9 +915,6 @@
 @media (max-width: 540px) {
   .pdp-story {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .territory-editorial__copy h2 {
-    font-size: clamp(44px, 13.9vw, 50px);
   }
 }
 }

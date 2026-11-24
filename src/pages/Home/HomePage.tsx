@@ -23,7 +23,7 @@ export function Home({
         <div className="home-hero__shade" style={{ width: "800px" }} />
         <div className="home-hero__content">
           <h1>
-            Nuestro origen <br></br>nos define.
+            Nuestro origen <br></br>nos define
             <em>No nos limita</em>
           </h1>
           <button
@@ -138,7 +138,7 @@ export function Home({
         </div>
         <div className="special-split__copy">
           <span className="eyebrow eyebrow--light">Special Edition</span>
-          <h2 style={{ width: "100%", fontSize: "50px" }}>Estirpe de lujo.</h2>
+          <h2 style={{ width: "100%" }}>Estirpe de lujo.</h2>
           <p className="sr-only">
             Una expresión nocturna donde el detalle, la textura y la presencia
             ocupan el centro.
@@ -163,8 +163,6 @@ export function Home({
             style={{
               maxWidth: 460,
               margin: "18px 0 30px",
-              fontSize: "clamp(39px, 4vw, 60px)",
-              lineHeight: 0.9,
               letterSpacing: "-0.035em",
             }}
           >

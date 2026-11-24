@@ -55,7 +55,6 @@
 }
 .special-hero h1 {
   margin-bottom: 40px;
-  font-size: clamp(62px, 7vw, 106px);
 }
 .special-hero p {
   max-width: 470px;
@@ -120,8 +119,6 @@
 .bento__heading h2 {
   max-width: 670px;
   font-family: var(--serif);
-  font-size: clamp(48px, 5.5vw, 80px);
-  line-height: 0.86;
   text-align: right;
   text-transform: uppercase;
 }
@@ -143,8 +140,6 @@
 .bento__text h3 {
   margin: 20px 0;
   font-family: var(--serif);
-  font-size: 34px;
-  line-height: 1;
   text-transform: uppercase;
 }
 .bento__text p {
@@ -234,9 +229,7 @@
 .se-hero h1 {
   margin: 0 0 30px;
   font-family: var(--serif);
-  font-size: clamp(92px, 12vw, 120px);
   font-weight: 600;
-  line-height: 0.72;
   letter-spacing: -0.055em;
   text-transform: uppercase;
 }
@@ -266,8 +259,6 @@
 }
 .se-intro h2 {
   margin: 20px 0 30px;
-  font-size: clamp(58px, 7vw, 104px);
-  line-height: 0.84;
 }
 .se-intro p {
   max-width: 660px;
@@ -315,8 +306,6 @@
 .se-product-card h3 {
   margin-top: 22px;
   font-family: var(--serif);
-  font-size: clamp(22px, 1.85vw, 28px);
-  line-height: 1.05;
   text-transform: uppercase;
 }
 .se-product-card h3 button {
@@ -347,8 +336,6 @@
 }
 .se-story__heading h2 {
   margin-top: 20px;
-  font-size: clamp(58px, 7vw, 100px);
-  line-height: 0.84;
 }
 .se-detail {
   display: grid;
@@ -375,8 +362,6 @@
 .se-detail__copy h3 {
   margin: 18px 0 24px;
   font-family: var(--serif);
-  font-size: clamp(45px, 5vw, 74px);
-  line-height: 0.87;
   text-transform: uppercase;
 }
 .se-detail__copy p {
@@ -413,8 +398,6 @@
 }
 .se-lifestyle h2 {
   max-width: 900px;
-  font-size: clamp(58px, 7vw, 102px);
-  line-height: 0.84;
 }
 .se-lifestyle p {
   margin-top: 22px;
@@ -444,8 +427,6 @@
 }
 .se-product-cta h2 {
   margin-top: 18px;
-  font-size: clamp(68px, 8vw, 112px);
-  line-height: 0.76;
 }
 .se-product-cta__copy > small {
   margin-top: 17px;

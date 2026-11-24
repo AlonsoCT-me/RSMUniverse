@@ -44,8 +44,7 @@
 
 @mixin segment-16 {
 .featured-collection__accent {
-  color: #6e3413;
-  font-size: 70px;
+  color: #e1c6aa
 }
 }
 
@@ -56,8 +55,8 @@
   overflow: hidden;
   color: white;
   background-color: var(--dark);
-  background-image: url("/assets/rsm-special-edition-leather-brown.webp");
-  background-position: 62% center;
+  background-image: url("/assets/Premium Caps in Warm Sunlight.png");
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -83,7 +82,6 @@
 }
 .collection-hero h1 {
   margin: 15px 0 24px;
-  font-size: clamp(58px, 6.5vw, 94px);
 }
 .collection-hero p {
   max-width: 480px;
