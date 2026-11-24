@@ -1,0 +1,27 @@
+{
+  "views": 9,
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    540,
+    541,
+    768,
+    1024,
+    1440
+  ],
+  "height": 900,
+  "scale": 1,
+  "html": {
+    "protected_pairs": 36,
+    "differences": 0
+  },
+  "png": {
+    "protected_pairs": 211,
+    "differences": 0
+  },
+  "mobile_cases": 45,
+  "mobile_pngs": 313,
+  "result": "PASS"
+}

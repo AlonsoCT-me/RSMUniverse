@@ -1,0 +1,45 @@
+{
+  "html": {
+    "pairs": 81,
+    "identical": 81,
+    "changed_only_in_core_story_320": [],
+    "unpaired": [],
+    "protected_pairs": 36,
+    "protected_differences": 0
+  },
+  "png": {
+    "pairs": 161,
+    "identical": 149,
+    "changed_only_in_core_story_320": [
+      "caliza-320-y1800.png",
+      "caliza-320-y2700.png",
+      "caliza-320-y3600.png",
+      "caliza-320-y4262.png",
+      "caliza-320-y900.png",
+      "caliza-320.png",
+      "story-320-y1800.png",
+      "story-320-y2700.png",
+      "story-320-y3600.png",
+      "story-320-y3982.png",
+      "story-320-y900.png",
+      "story-320.png"
+    ],
+    "unpaired": [],
+    "protected_pairs": 66,
+    "protected_differences": 0
+  },
+  "mobile_cases_without_document_overflow": 45,
+  "views": 9,
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    540,
+    541,
+    768,
+    1024,
+    1440
+  ],
+  "result": "PASS"
+}

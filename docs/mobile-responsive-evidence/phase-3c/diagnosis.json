@@ -1,0 +1,299 @@
+{
+  "before": {
+    "caliza": {
+      "vw": 320,
+      "client": 305,
+      "scroll": 312,
+      "parents": [
+        {
+          "cls": "pdp-story",
+          "width": 305,
+          "columns": "312.328px",
+          "padding": "0px",
+          "gap": "normal",
+          "position": "static",
+          "transform": "none"
+        }
+      ],
+      "nodes": [
+        {
+          "tag": "BUTTON",
+          "cls": "product-gallery__thumb product-gallery__thumb--light ",
+          "text": "",
+          "x": 286,
+          "right": 366,
+          "w": 80,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "80px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "hidden",
+          "rects": []
+        },
+        {
+          "tag": "IMG",
+          "cls": "",
+          "text": "",
+          "x": 287,
+          "right": 365,
+          "w": 78,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "78px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "clip",
+          "rects": []
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "product-gallery__thumb product-gallery__thumb--light ",
+          "text": "",
+          "x": 376,
+          "right": 456,
+          "w": 80,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "80px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "hidden",
+          "rects": []
+        },
+        {
+          "tag": "IMG",
+          "cls": "",
+          "text": "",
+          "x": 377,
+          "right": 455,
+          "w": 78,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "78px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "clip",
+          "rects": []
+        },
+        {
+          "tag": "DIV",
+          "cls": "image-placeholder image-placeholder--dark  ",
+          "text": "LIFESTYLE IMAGE",
+          "x": 0,
+          "right": 312.328125,
+          "w": 312.328125,
+          "scroll": 312,
+          "font": "16px",
+          "min": "0px",
+          "width": "312.328px",
+          "padding": "70px 22px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "relative",
+          "overflow": "hidden",
+          "rects": []
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "text": "Del origen al presenteMateria que se siente.Carácter que permanece.Una paleta tomada de la tierra y ",
+          "x": 0,
+          "right": 312.328125,
+          "w": 312.328125,
+          "scroll": 312,
+          "font": "16px",
+          "min": "auto",
+          "width": "312.328px",
+          "padding": "70px 22px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "visible",
+          "rects": []
+        }
+      ]
+    },
+    "story": {
+      "vw": 320,
+      "client": 305,
+      "scroll": 311,
+      "parents": [
+        {
+          "cls": "territory-editorial__copy",
+          "width": 305,
+          "columns": "none",
+          "padding": "58px 24px",
+          "gap": "normal",
+          "position": "static",
+          "transform": "none"
+        }
+      ],
+      "nodes": [
+        {
+          "tag": "H2",
+          "cls": "",
+          "text": "EL TERRITORIO",
+          "x": 24,
+          "right": 310.890625,
+          "w": 286.890625,
+          "scroll": 287,
+          "font": "50px",
+          "min": "auto",
+          "width": "286.891px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "visible",
+          "rects": [
+            {
+              "left": 24,
+              "right": 74.90625,
+              "width": 50.90625,
+              "text": "EL TERRITORIO"
+            },
+            {
+              "left": 24,
+              "right": 310.90625,
+              "width": 286.90625,
+              "text": "EL TERRITORIO"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "after": {
+    "caliza": {
+      "vw": 320,
+      "client": 305,
+      "scroll": 305,
+      "parents": [
+        {
+          "cls": "pdp-story",
+          "width": 305,
+          "columns": "305px",
+          "padding": "0px",
+          "gap": "normal",
+          "position": "static",
+          "transform": "none"
+        }
+      ],
+      "nodes": [
+        {
+          "tag": "BUTTON",
+          "cls": "product-gallery__thumb product-gallery__thumb--light ",
+          "text": "",
+          "x": 286,
+          "right": 366,
+          "w": 80,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "80px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "hidden",
+          "rects": []
+        },
+        {
+          "tag": "IMG",
+          "cls": "",
+          "text": "",
+          "x": 287,
+          "right": 365,
+          "w": 78,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "78px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "clip",
+          "rects": []
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "product-gallery__thumb product-gallery__thumb--light ",
+          "text": "",
+          "x": 376,
+          "right": 456,
+          "w": 80,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "80px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "hidden",
+          "rects": []
+        },
+        {
+          "tag": "IMG",
+          "cls": "",
+          "text": "",
+          "x": 377,
+          "right": 455,
+          "w": 78,
+          "scroll": 78,
+          "font": "16px",
+          "min": "auto",
+          "width": "78px",
+          "padding": "0px",
+          "margin": "0px",
+          "gap": "normal",
+          "transform": "none",
+          "position": "static",
+          "overflow": "clip",
+          "rects": []
+        }
+      ]
+    },
+    "story": {
+      "vw": 320,
+      "client": 305,
+      "scroll": 305,
+      "parents": [
+        {
+          "cls": "territory-editorial__copy",
+          "width": 305,
+          "columns": "none",
+          "padding": "58px 24px",
+          "gap": "normal",
+          "position": "static",
+          "transform": "none"
+        }
+      ],
+      "nodes": []
+    }
+  }
+}

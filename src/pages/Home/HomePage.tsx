@@ -69,7 +69,7 @@ export function Home({
         <div className="borderless-fullwidth__shade" />
         <div className="borderless-fullwidth__content shell">
           <div className="borderless-fullwidth__text">
-            <h2 style={{ fontSize: "60px" }}>Sin fronteras.</h2>
+            <h2 className="borderless-fullwidth__title">Sin fronteras.</h2>
             <p className="sr-only">
               Una identidad que se mueve con naturalidad entre el origen y una
               forma contemporánea de vivirlo.

@@ -881,4 +881,142 @@
     animation-duration: 0.01ms !important;
   }
 }
+// Phase 3B: scoped mobile containment; preserve every rule above 540px.
+@media (max-width: 540px) {
+  .pdp {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pdp > .product-gallery,
+  .pdp > .product-info {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .pdp .buy-row {
+    grid-template-columns: 94px minmax(0, 1fr);
+  }
+  .pdp .buy-row > .button--add {
+    min-width: 0;
+  }
+  .borderless-fullwidth .borderless-fullwidth__title {
+    font-size: clamp(46px, 15vw, 60px);
+  }
+  .care-story__layout,
+  .care-story__visual {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .care-story__steps,
+  .care-story__visual {
+    min-width: 0;
+  }
+  .care-step > button {
+    grid-template-columns: 45px minmax(0, 1fr);
+  }
+}
+// Phase 3B P2: mobile-only editorial containment and touch targets.
+@media (max-width: 540px) {
+  .featured-collection__accent {
+    font-size: clamp(48px, 14vw, 70px);
+  }
+  .system-hero h1,
+  .comparison__hero h1 {
+    font-size: clamp(40px, 13vw, 56px);
+  }
+  .token-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .token-grid article,
+  .component-board > div {
+    min-width: 0;
+  }
+  .token-grid span {
+    font-size: clamp(17px, 5.2vw, 24px);
+  }
+  .component-board .button,
+  .system-section > .button {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .care-intro .shell,
+  .care-cta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .care-intro .shell > *,
+  .care-cta > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .care-intro h2,
+  .care-cta h2 {
+    font-size: clamp(34px, 10.8vw, 45px);
+  }
+  .care-cta .button {
+    width: min(100%, 290px);
+  }
+  .header-actions {
+    gap: 4px;
+  }
+  .header-actions > button:not(.desktop-only),
+  .mobile-nav__top button,
+  .cart-drawer__head button {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .footer__nav {
+    gap: 0;
+  }
+  .footer__nav button,
+  .toolbar button,
+  .toolbar select,
+  .newsletter form button,
+  .care-hero__continue {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .pdp .buy-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .pdp .quantity {
+    flex: 0 0 110px;
+    grid-template-columns: 44px minmax(20px, 1fr) 44px;
+  }
+  .pdp .quantity button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .pdp .buy-row > .button--add {
+    flex: 1 1 180px;
+  }
+}
+@media (max-width: 540px) {
+  .newsletter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .newsletter > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .newsletter h2 {
+    font-size: clamp(32px, 10.5vw, 43px);
+  }
+  .newsletter input {
+    min-width: 0;
+    width: 100%;
+  }
+  .home-hero .button {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+// Phase 3C: only the two reproduced narrow-mobile overflow sources.
+@media (max-width: 540px) {
+  .pdp-story {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .territory-editorial__copy h2 {
+    font-size: clamp(44px, 13.9vw, 50px);
+  }
+}
 }
