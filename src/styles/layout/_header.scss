@@ -1,0 +1,132 @@
+@mixin segment-04 {
+.site-header {
+  position: relative;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  align-items: center;
+  height: 76px;
+  padding: 0 32px;
+  color: var(--dark);
+  background: rgba(247, 242, 235, 0.94);
+  border-bottom: 1px solid var(--line);
+}
+.site-header--overlay {
+  position: absolute;
+  inset: 0 0 auto;
+  color: white;
+  background: linear-gradient(to bottom, rgba(8, 7, 6, 0.64), transparent);
+  border: 0;
+}
+.site-header--dark {
+  color: white;
+  background: rgba(16, 15, 14, 0.92);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.site-header--overlay.site-header--dark {
+  background: linear-gradient(to bottom, rgba(8, 7, 6, 0.78), transparent);
+}
+.logo-button {
+  justify-self: start;
+}
+.brand-logo {
+  width: 80px;
+  height: auto;
+}
+.desktop-nav {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+}
+.desktop-nav button {
+  position: relative;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.desktop-nav button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 1px;
+  background: currentColor;
+  transition: right 0.25s;
+}
+.desktop-nav button:hover::after,
+.desktop-nav button.is-active::after {
+  right: 0;
+}
+.header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+.header-actions button {
+  position: relative;
+}
+.bag-button span {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--estirpe);
+  color: white;
+  font-size: 9px;
+}
+.mobile-menu-button {
+  display: none;
+}
+.mobile-nav {
+  visibility: hidden;
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  color: white;
+  background: var(--dark);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: 0.3s ease;
+}
+.mobile-nav.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+.mobile-nav__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mobile-nav__top img {
+  width: 70px;
+}
+.mobile-nav nav {
+  display: grid;
+  gap: 22px;
+  margin: auto 0;
+}
+.mobile-nav nav button {
+  font-family: var(--serif);
+  font-size: clamp(36px, 11vw, 54px);
+  text-align: left;
+  text-transform: uppercase;
+}
+.mobile-nav > p {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 13px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+}

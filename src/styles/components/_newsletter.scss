@@ -1,0 +1,41 @@
+@mixin segment-56 {
+.newsletter {
+  display: grid;
+  justify-items: center;
+  padding: 100px 30px;
+  color: white;
+  text-align: center;
+  background: var(--estirpe);
+}
+.newsletter h2 {
+  margin: 18px 0 35px;
+  font-family: var(--serif);
+  text-transform: uppercase;
+}
+.newsletter > p {
+  color: rgba(255, 255, 255, 0.7);
+}
+.newsletter form {
+  display: flex;
+  width: min(100%, 630px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+}
+.newsletter input {
+  flex: 1;
+  padding: 16px 0;
+  color: white;
+  background: transparent;
+}
+.newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.62);
+}
+.newsletter form button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+}

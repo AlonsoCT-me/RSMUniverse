@@ -1,0 +1,120 @@
+@mixin segment-51 {
+.system-page {
+  padding-top: 60px;
+}
+.system-hero {
+  padding-block: 100px 130px;
+}
+.system-hero h1,
+.comparison__hero h1 {
+  margin: 24px 0;
+  font-family: var(--serif);
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+.system-hero p,
+.comparison__hero p {
+  max-width: 650px;
+  color: #645c55;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.system-section {
+  padding-block: 90px;
+  border-top: 1px solid var(--line);
+}
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-top: 50px;
+}
+.token-grid article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 0.72;
+  padding: 18px;
+}
+.token-grid span {
+  font-family: var(--serif);
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.token-grid small {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.type-specimen__display,
+.type-specimen__body {
+  margin-top: 65px;
+}
+.type-specimen__display span,
+.type-specimen__body span {
+  color: #817970;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.type-specimen__display p {
+  font-family: var(--serif);
+  font-size: clamp(60px, 9vw, 140px);
+  line-height: 0.85;
+}
+.type-specimen__body p {
+  max-width: 760px;
+  font-size: 26px;
+  line-height: 1.5;
+}
+.component-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 55px;
+}
+.component-board > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  min-height: 520px;
+  padding: 55px;
+}
+.component-board__light {
+  background: var(--caliza);
+}
+.component-board__dark {
+  color: white;
+  background: var(--dark);
+}
+.component-board__dark .accordion {
+  width: 100%;
+}
+.component-board__light .accordion {
+  width: 100%;
+}
+}
+
+@mixin segment-53 {
+.feasibility {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: 55px 0 45px;
+  background: var(--line);
+}
+.feasibility article {
+  min-height: 220px;
+  padding: 28px;
+  background: var(--paper);
+}
+.feasibility b {
+  font-family: var(--serif);
+  font-size: 27px;
+  text-transform: uppercase;
+}
+.feasibility p {
+  margin-top: 24px;
+  color: #625a53;
+  font-size: 13px;
+  line-height: 1.6;
+}
+}

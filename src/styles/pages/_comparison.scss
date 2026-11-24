@@ -1,0 +1,31 @@
+@mixin segment-55 {
+.comparison__hero {
+  padding-block: 160px 110px;
+}
+.comparison__table {
+  padding-bottom: 140px;
+}
+.comparison__header,
+.comparison__table article {
+  display: grid;
+  grid-template-columns: 0.7fr repeat(3, 1fr);
+  gap: 40px;
+  padding: 25px;
+  border-top: 1px solid var(--line);
+}
+.comparison__header {
+  color: #7d746d;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.comparison__table article h2 {
+  font-family: var(--serif);
+  text-transform: uppercase;
+}
+.comparison__table article p {
+  color: #5f5750;
+  font-size: 13px;
+  line-height: 1.65;
+}
+}

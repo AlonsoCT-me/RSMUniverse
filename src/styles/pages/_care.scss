@@ -1,0 +1,395 @@
+@mixin segment-54 {
+.care-page {
+  overflow: clip;
+  background: var(--paper);
+}
+.care-hero {
+  position: relative;
+  height: min(860px, 100svh);
+  min-height: 690px;
+  overflow: hidden;
+  color: white;
+  background: var(--sierra);
+}
+.care-hero > .image-placeholder {
+  position: absolute;
+  inset: 0;
+}
+.care-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 14, 12, 0.76),
+    rgba(16, 14, 12, 0.08) 72%
+  );
+}
+.care-hero__content {
+  position: absolute;
+  left: max(32px, calc((100vw - 1360px) / 2));
+  bottom: 13%;
+  max-width: 940px;
+}
+.care-hero__content > span {
+  display: block;
+  margin-bottom: 22px;
+  color: #e9d3bd;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.care-hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+.care-hero__continue {
+  position: absolute;
+  right: 36px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.care-hero__continue svg {
+  transform: rotate(90deg);
+}
+.care-intro {
+  padding-top: clamp(100px, 11vw, 160px);
+  text-align: center;
+  background: var(--caliza);
+}
+.care-intro .shell {
+  display: grid;
+  justify-items: center;
+}
+.care-intro h2,
+.care-everyday h2,
+.care-storage h2,
+.care-information h2,
+.care-faq h2,
+.care-cta h2,
+.care-story__heading h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.care-intro h2 {
+  max-width: 1050px;
+  margin: 20px auto 30px;
+}
+.care-intro .shell > p {
+  max-width: 680px;
+  color: #5d554e;
+  line-height: 1.75;
+}
+.care-intro__marquee {
+  overflow: hidden;
+  margin-top: clamp(80px, 9vw, 130px);
+  padding-block: 26px;
+  border-block: 1px solid rgba(25, 23, 22, 0.2);
+}
+.care-intro__marquee > div {
+  display: flex;
+  width: max-content;
+  animation: care-marquee 24s linear infinite;
+}
+.care-intro__marquee span {
+  padding-right: 8vw;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 46px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+@keyframes care-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.care-everyday {
+  background: var(--paper);
+}
+.care-everyday__inner,
+.care-storage__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 110px);
+  padding-block: clamp(100px, 11vw, 160px);
+}
+.care-everyday__copy,
+.care-storage__copy {
+  max-width: 520px;
+}
+.care-everyday h2,
+.care-storage h2 {
+  margin: 18px 0 28px;
+}
+.care-everyday__copy > p,
+.care-storage__copy > p {
+  color: #5d554e;
+  line-height: 1.75;
+}
+.care-everyday ul {
+  display: grid;
+  gap: 0;
+  margin-top: 36px;
+  border-top: 1px solid var(--line);
+}
+.care-everyday li {
+  position: relative;
+  padding: 18px 0 18px 28px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.care-everyday li::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--arcilla);
+}
+.care-everyday__media,
+.care-storage__media {
+  aspect-ratio: 6 / 5;
+  overflow: hidden;
+}
+.care-story {
+  padding-block: clamp(110px, 11vw, 170px);
+  color: white;
+  background: var(--dark);
+}
+.care-story__heading {
+  margin-bottom: 80px;
+}
+.care-story__heading h2 {
+  max-width: 900px;
+  margin: 18px 0 24px;
+}
+.care-story__heading > p {
+  color: rgba(255, 255, 255, 0.58);
+}
+.care-story__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: clamp(60px, 8vw, 130px);
+  align-items: start;
+}
+.care-story__visual {
+  position: sticky;
+  top: 94px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+}
+.care-story__illustration {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  color: var(--dark);
+  background: var(--caliza);
+}
+.care-illustration {
+  width: 92%;
+  height: auto;
+  overflow: visible;
+}
+.care-illustration__base,
+.care-illustration__action {
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.care-illustration__base {
+  opacity: 0.94;
+}
+.care-illustration__action {
+  color: var(--estirpe);
+  animation: care-illustration-in 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes care-illustration-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.care-story__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding-bottom: 6px;
+}
+.care-story__nav > span {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  writing-mode: vertical-rl;
+}
+.care-story__nav > div {
+  display: grid;
+  gap: 7px;
+}
+.care-story__nav button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 9px;
+  transition: 300ms ease;
+}
+.care-story__nav button:hover,
+.care-story__nav button.is-active {
+  color: var(--dark);
+  background: var(--caliza);
+  border-color: var(--caliza);
+}
+.care-step {
+  display: grid;
+  align-items: center;
+  min-height: 70vh;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  opacity: 0.3;
+  transform: translateY(20px);
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease;
+}
+.care-step.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.care-step > button {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 24px;
+  width: 100%;
+  padding-block: 58px;
+  color: inherit;
+  text-align: left;
+}
+.care-step > button > span {
+  color: #c49270;
+  font-family: var(--serif);
+  font-size: 38px;
+}
+.care-step h3 {
+  font-family: var(--serif);
+  text-transform: uppercase;
+}
+.care-step p {
+  max-width: 600px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.75;
+}
+.care-story__note {
+  padding: 34px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
+  line-height: 1.65;
+}
+.care-storage {
+  background: var(--caliza);
+}
+.care-storage__inner {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+}
+.care-storage__copy {
+  justify-self: end;
+}
+.care-storage__copy .text-link {
+  margin-top: 34px;
+}
+.care-information {
+  padding-block: clamp(110px, 11vw, 160px);
+  background: var(--paper);
+}
+.care-information__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(60px, 9vw, 140px);
+}
+.care-information__heading {
+  align-self: start;
+  position: sticky;
+  top: 100px;
+}
+.care-information h2 {
+  margin: 18px 0 28px;
+}
+.care-information__heading p {
+  max-width: 440px;
+  color: #5d554e;
+  line-height: 1.7;
+}
+.care-material-accordion .accordion {
+  border-color: var(--line);
+}
+.care-material-accordion .accordion > button {
+  min-height: 74px;
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.care-faq {
+  padding-block: clamp(100px, 10vw, 150px);
+  color: white;
+  background: var(--dark);
+}
+.care-faq__inner {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: clamp(60px, 9vw, 140px);
+}
+.care-faq h2 {
+  margin-top: 18px;
+}
+.care-faq .accordion > button {
+  min-height: 74px;
+  font-family: var(--serif);
+  font-size: 21px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.care-cta {
+  display: grid;
+  justify-items: center;
+  padding: clamp(100px, 11vw, 160px) 24px;
+  text-align: center;
+  background: var(--caliza);
+}
+.care-cta h2 {
+  max-width: 900px;
+  margin: 18px 0 22px;
+}
+.care-cta p {
+  margin-bottom: 32px;
+  color: #5d554e;
+}
+}

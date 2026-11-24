@@ -10,7 +10,7 @@ export function Footer({ navigate }: { navigate: (page: Page) => void }) {
         <div className="footer__brand">
           <img src={assetUrl("/assets/rsm-logo-white.png")} alt="RSM" />
           <p>
-            Nuestro origen nos define.
+            Nuestro origen nos define
             <br />
             No nos limita.
           </p>

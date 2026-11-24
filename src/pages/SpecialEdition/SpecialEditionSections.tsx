@@ -99,23 +99,36 @@ export function EditorialImageText({
   copy,
   label,
   color,
+  imageSrc,
+  imageAlt,
   reverse = false,
 }: {
   title: string;
   copy: string;
   label: string;
   color: string;
+  imageSrc?: string;
+  imageAlt?: string;
   reverse?: boolean;
 }) {
   return (
     <Reveal className={`se-detail ${reverse ? "se-detail--reverse" : ""}`}>
       <div className="se-detail__media">
-        <ImagePlaceholder
-          label={label}
-          backgroundColor={color}
-          aspectRatio="4 / 5"
-          variant="dark"
-        />
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={imageAlt ?? title}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <ImagePlaceholder
+            label={label}
+            backgroundColor={color}
+            aspectRatio="4 / 5"
+            variant="dark"
+          />
+        )}
       </div>
       <div className="se-detail__copy">
         <span className="eyebrow eyebrow--light">El detalle</span>

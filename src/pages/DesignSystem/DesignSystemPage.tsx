@@ -47,7 +47,7 @@ export function DesignSystem({ navigate }: { navigate: (page: Page) => void }) {
         <SectionHeading eyebrow="02 — Tipografía" title="Una voz precisa." />
         <div className="type-specimen__display">
           <span>Cormorant Garamond · 600</span>
-          <p>Nuestro origen nos define.</p>
+          <p>Nuestro origen nos define</p>
         </div>
         <div className="type-specimen__body">
           <span>Figtree · 400 / 500 / 600</span>
