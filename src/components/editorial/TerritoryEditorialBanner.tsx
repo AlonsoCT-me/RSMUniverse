@@ -1,23 +1,26 @@
+import { Section } from "../layout/SectionContainer";
+import type { SectionContainer } from "../../types/section";
 import territoryLandscapeImg from "@/imports/home-SIN_FRONTERAS-2.jpg";
 import { assetUrl } from "../../asset-url";
 
-export function TerritoryEditorialBanner() {
+export function TerritoryEditorialBanner({
+  container = "full-width",
+}: { container?: SectionContainer } = {}) {
   return (
-    <section
+    <Section
+      container={container}
+      contentClassName="territory-editorial__inner"
       className="territory-editorial"
       aria-labelledby="territory-editorial-title"
     >
       <figure className="territory-editorial__visual territory-editorial__visual--landscape">
-        <img
-          src={territoryLandscapeImg}
-          alt="Hombre contemplando Monterrey desde la montaña"
-        />
+        <img src={territoryLandscapeImg} alt="Hombre contemplando Monterrey desde la montaña" />
       </figure>
       <div className="territory-editorial__copy">
         <h2 id="territory-editorial-title">EL TERRITORIO</h2>
         <p>
-          La arquitectura, los paisajes y la cultura ecuestre del norte de
-          México forman parte del lenguaje visual de RSM.
+          La arquitectura, los paisajes y la cultura ecuestre del norte de México forman parte del
+          lenguaje visual de RSM.
         </p>
       </div>
       <figure className="territory-editorial__visual territory-editorial__visual--architecture">
@@ -26,6 +29,6 @@ export function TerritoryEditorialBanner() {
           alt="Arquitectura de rancho con cúpula y farol"
         />
       </figure>
-    </section>
+    </Section>
   );
 }

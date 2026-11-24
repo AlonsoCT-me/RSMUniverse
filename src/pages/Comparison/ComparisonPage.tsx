@@ -1,3 +1,4 @@
+import { Section } from "../../components/layout/SectionContainer";
 export function Comparison() {
   const rows = [
     [
@@ -33,7 +34,7 @@ export function Comparison() {
   ];
   return (
     <main className="comparison page-light">
-      <section className="comparison__hero shell">
+      <Section className="comparison__hero" contentClassName="comparison__hero__container">
         <span className="eyebrow">Referencia → refinamiento</span>
         <h1>
           Decisiones de diseño,
@@ -41,11 +42,11 @@ export function Comparison() {
           no decoración.
         </h1>
         <p>
-          La propuesta combina la dirección RSM con patrones comerciales de
-          Prestige y reglas verificables del brandbook.
+          La propuesta combina la dirección RSM con patrones comerciales de Prestige y reglas
+          verificables del brandbook.
         </p>
-      </section>
-      <section className="comparison__table shell">
+      </Section>
+      <Section className="comparison__table" contentClassName="comparison__table__container">
         <div className="comparison__header">
           <span>Vista</span>
           <span>Referencia conceptual</span>
@@ -59,7 +60,7 @@ export function Comparison() {
             )}
           </article>
         ))}
-      </section>
+      </Section>
     </main>
   );
 }

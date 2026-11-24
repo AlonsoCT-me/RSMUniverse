@@ -1,11 +1,13 @@
+import { Section } from "../layout/SectionContainer";
+import type { SectionContainer } from "../../types/section";
 import { Icon } from "./Icon";
 import { useState } from "react";
 
-export function Newsletter() {
+export function Newsletter({ container = "contained" }: { container?: SectionContainer } = {}) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   return (
-    <section className="newsletter">
+    <Section className="newsletter" container={container} contentClassName="newsletter__inner">
       <span className="eyebrow eyebrow--light">Desde el origen</span>
       <h2>
         Historias, producto
@@ -36,6 +38,6 @@ export function Newsletter() {
           </button>
         </form>
       )}
-    </section>
+    </Section>
   );
 }

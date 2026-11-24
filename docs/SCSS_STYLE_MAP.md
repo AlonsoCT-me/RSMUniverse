@@ -78,3 +78,29 @@ Las filas anteriores registran el mapa histórico de extracción. Propiedad actu
 | 59, max-width 900/540px | columnas apiladas, `--text-first`, `--image-first`, tamaños y padding previos | `base/_responsive.scss` |
 
 Se eliminan los modificadores origin/city/reverse y los selectores huérfanos `__inner`; el encuadre pasa a props, el fondo a surface y el orden móvil a mobileLayout. El gap de página sigue siendo propiedad de `pages/_our-story.scss`. Véase [contrato editorial](EDITORIAL_SPLIT_SECTION.md).
+
+
+## Actualización: sistema global de contenedores
+
+| Emisión | Selectores / responsabilidad | Propietario |
+|---|---|---|
+| 1 | Token `--section-container-max-width: 1520px` | `abstracts/_tokens.scss` |
+| Después de 3 | `.section-container`, `--contained`, `--full-width`, alias `.shell`; gutter 60/48/36px en queries 900/540 | `layout/_containers.scss`, mixin system |
+| 13 | Se elimina el padding horizontal duplicado de featured-collection__head; fondo y espacio vertical permanecen | `pages/_collection.scss` |
+| 29 / responsive | Grid en pdp__container; padding vertical en pdp exterior | `pages/_product.scss`, `base/_responsive.scss` |
+| 45 / 46 / 59 | Grid en story-split__inner; fondo, variables y gap en exterior | `components/_editorial-split.scss`, `base/_responsive.scss` |
+| 47 / 48 / 59 | Grid en territory-editorial__inner con gap heredado; fondo/min-height exterior | `pages/_our-story.scss`, `base/_responsive.scss` |
+| 54 / 56 | Grid interior de Care CTA y Newsletter, espacio vertical y fondo exteriores | `pages/_care.scss`, `components/_newsletter.scss` |
+
+No se reordenan los includes existentes. Shell ya no tiene otra fórmula de ancho ni queries independientes. Matriz de secciones y resultados: [SECTION_CONTAINER_SYSTEM.md](SECTION_CONTAINER_SYSTEM.md).
+
+## Actualización: MediaHero
+
+| Emisión | Cambio / propietario |
+|---|---|
+| 6 | `media-hero.base` sustituye a home.segment-06; estilos en components/_media-hero.scss. |
+| 7 / 8 | Se retira únicamente Home de los grupos compartidos de títulos/em; las otras entradas permanecen. |
+| 9 | hero-index se traslada a media-hero__index; el resto de Home sigue en el tramo existente. |
+| 59 | Los overrides exclusivos home-hero/hero-index se trasladan al parcial del componente y a su configuración responsive. |
+
+No se reordenan los demás includes. Las variables nuevas son locales al hero; no se modifican tokens globales. Referencia: [MEDIA_HERO.md](MEDIA_HERO.md).

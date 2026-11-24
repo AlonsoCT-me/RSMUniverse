@@ -1,6 +1,7 @@
 import type * as React from "react";
 import type { Product } from "../../types/product";
 import type { NavigateFn } from "../../types/navigation";
+import { ProductPrice } from "./ProductPrice";
 import { Quantity } from "./Quantity";
 import { Accordion } from "../ui/Accordion";
 import { useState, useEffect } from "react";
@@ -32,35 +33,33 @@ export function ProductInfo({
         <button
           type="button"
           onClick={() =>
-            navigate(
-              product.collectionId === "special-edition"
-                ? "special"
-                : "collection",
-            )
+            navigate(product.collectionId === "special-edition" ? "special" : "collection")
           }
         >
-          {product.collectionId === "special-edition"
-            ? "Special Edition"
-            : "Colección Core"}
+          {product.collectionId === "special-edition" ? "Special Edition" : "Colección Core"}
         </button>
         <b>/</b>
         <span>{product.name}</span>
       </nav>
       <span className="eyebrow">{product.collectionLabel}</span>
       <h1>{product.name}</h1>
-      <p className="product-info__price">
-        {product.price}
+      <div className="product-info__price">
+        <ProductPrice
+          price={product.priceAmount}
+          compareAtPrice={product.compareAtPrice}
+          currency={product.currency}
+          variant="detail"
+          showDiscountBadge
+          showSavings
+        />
         {product.mockData && <small>Precio demostrativo</small>}
-      </p>
+      </div>
       <div className="variant">
         <div>
           <span>Color / patrón</span>
           <b>{product.attributes.colorPattern}</b>
         </div>
-        <div
-          className="swatches swatches--large"
-          aria-label="Tono principal del modelo"
-        >
+        <div className="swatches swatches--large" aria-label="Tono principal del modelo">
           {product.variants && product.variants.length > 0 ? (
             product.variants.map((variant, index) => (
               <button
@@ -119,8 +118,7 @@ export function ProductInfo({
         </Accordion>
         <Accordion title="Ajuste y dimensiones" dark={dark}>
           <p>
-            Talla: {product.attributes.size}. Cierre:{" "}
-            {product.attributes.closure}.
+            Talla: {product.attributes.size}. Cierre: {product.attributes.closure}.
           </p>
         </Accordion>
         <Accordion title="Envíos y devoluciones" dark={dark}>

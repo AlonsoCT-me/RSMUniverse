@@ -1,4 +1,5 @@
 import type * as React from "react";
+import type { SectionContainer } from "../../types/section";
 
 export type EditorialSplitVariant = "static" | "slider";
 export type EditorialSplitLayout = "text-left" | "text-right";
@@ -28,6 +29,7 @@ export interface EditorialSplitBaseProps {
   eyebrow: string;
   title: React.ReactNode;
   copy: string;
+  container?: SectionContainer;
   layout?: EditorialSplitLayout;
   ratio?: EditorialSplitRatio;
   mobileLayout?: EditorialSplitMobileLayout;

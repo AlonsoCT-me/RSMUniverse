@@ -69,4 +69,17 @@ Las reglas reutilizables `story-split` se extraen de `pages/_our-story.scss` a `
 
 ## Escala tipográfica global
 
-Los tamaños de encabezados se centralizan en `base/_elements.scss`, dentro de `@layer base`: h1 85px, h2 80px y acentos span/em dentro de ambos a 70px, también en mobile. H3–h6 usan escalas fluidas con máximos 48/32/24/20px y mínimos 32/26/22/18px. Los encabezados permiten envolver palabras largas sin desbordar. Se conservan las familias de marca, colores y tratamientos de cada sección; los tamaños e interlineados locales de h1–h3 y los dos tamaños inline de Home se retiran para mantener una sola fuente de verdad. Los párrafos, precios y controles conservan sus estilos específicos.
+Los tamaños de encabezados se centralizan en `base/_elements.scss`, dentro de `@layer base`: h1 80px, sus span/em interiores 70px y h2 60px. Los span/em de h2 heredan su tamaño. H3–h6 usan escalas fluidas con máximos 40/30/24/20px y mínimos 28/24/20/18px. MediaHero conserva la adaptación fluida autorizada en mobile estrecho, con máximos actualizados de 80/60px y acento de h1 hasta 70px. El H2 de Special Edition en Home utiliza un máximo de 60px y conserva su ajuste al ancho del contenedor. Los encabezados permiten envolver palabras largas sin desbordar. Se conservan las familias de marca, colores y tratamientos de cada sección; los tamaños e interlineados locales de h1–h3 y los dos tamaños inline de Home se retiran para mantener una sola fuente de verdad. Los párrafos, precios y controles conservan sus estilos específicos.
+
+
+## Sistema global de contenedores
+
+Se añade `layout/_containers.scss`, emitido inmediatamente después de shared.segment-03. El token máximo de 1520px está en abstracts/_tokens.scss; los gutters son 60px (>900), 48px (541–900) y 36px (≤540), derivados del borde efectivo del banner Featured Collection. El máximo incluye ambos gutters. Las reglas width/centrado/padding de shell se consolidan como alias del sistema; se retiran sus width overrides de responsive y el padding horizontal adicional de la cabecera del banner.
+
+La sección exterior conserva fondo y separación vertical; únicamente el interior recibe el máximo. Los grids PDP, EditorialSplitSection y TerritoryEditorialBanner se trasladan a wrappers interiores con sus mismos breakpoints, proporciones y gaps. El banner Territorio y el componente editorial heredan el gap del exterior, incluido el de 4px de Historia. Los controles del slider permanecen sin cambios. Contrato y evidencia: [SECTION_CONTAINER_SYSTEM.md](SECTION_CONTAINER_SYSTEM.md).
+
+## MediaHero
+
+Se añade `components/_media-hero.scss`; su mixin base se emite donde estaba home.segment-06. Solo se trasladan los selectores home-hero/hero-index, las entradas Home de los grupos de títulos/em y sus overrides responsive. Las reglas de otros heroes permanecen en sus parciales originales. El nuevo componente utiliza variables CSS locales, los breakpoints 900/540px, SectionContainer y un layout editorial en flujo normal. Los gutters y tokens globales no cambian.
+
+El medio y overlay son capas full-cover; el contenido puede ser contained/full-width. Las alturas reservadas tienen fallback vh y soporte svh; el título se adapta en mobile estrecho por autorización explícita del usuario, sin modificar la escala global. Detalle de configuración, compatibilidad visual y límites: [MEDIA_HERO.md](MEDIA_HERO.md).

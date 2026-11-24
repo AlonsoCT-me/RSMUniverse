@@ -1,5 +1,4 @@
 @mixin segment-08 {
-.home-hero h1 em,
 .special-hero h1 em,
 .collection-hero h1 em {
   color: #e1c6aa;
@@ -13,7 +12,7 @@
 .featured-collection__banner {
   padding-block: 96px 76px;
   background-color: var(--caliza);
-  background-image: url("/assets/home-collection-bg.webp");
+  background-image: url("/assets/RSM_clean_background_8K.png");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,14 +36,24 @@
 }
 .featured-collection__banner .featured-collection__head {
   margin-bottom: 0;
-  padding: 28px;
+  padding-block: 28px;
   background: transparent;
 }
 }
 
 @mixin segment-16 {
 .featured-collection__accent {
-  color: #e1c6aa
+  color: var(--sierra);
+  // The photograph's shadows require a local Caliza halo for contrast.
+  text-shadow:
+    -1px -1px 0 var(--caliza),
+    0 -1px 0 var(--caliza),
+    1px -1px 0 var(--caliza),
+    -1px 0 0 var(--caliza),
+    1px 0 0 var(--caliza),
+    -1px 1px 0 var(--caliza),
+    0 1px 0 var(--caliza),
+    1px 1px 0 var(--caliza);
 }
 }
 

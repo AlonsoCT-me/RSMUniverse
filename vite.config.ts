@@ -91,9 +91,8 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
 
   const title = config.title ?? "Figma Make App";
   const description = config.description ?? "";
-  // Imported HTML keeps its own favicon. New Makes use PNG because Google Search does not
-  // support SVG favicons, even though browsers do.
-  const favicon = config.icons?.icon ?? "/favicon.png";
+  // Keep icons declared in HTML; otherwise fall back to the official RSM icon.
+  const favicon = config.icons?.icon ?? "/logo/favicon.ico";
   const socialImage = config.openGraph?.image ?? "";
   const language = sanitizeHtmlValue(config.language) || "en";
   const googleAnalyticsId = sanitizeHtmlValue(config.analytics?.googleAnalyticsId);
@@ -148,7 +147,8 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
             injectTo: "head",
           });
         }
-        if (favicon) {
+        const hasHtmlFavicon = /<link\b[^>]*\brel\s*=\s*["'](?:shortcut\s+)?icon["']/i.test(result);
+        if (favicon && !hasHtmlFavicon) {
           tags.push({ tag: "link", attrs: { rel: "icon", href: favicon }, injectTo: "head" });
         }
         if (title) {

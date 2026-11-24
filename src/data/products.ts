@@ -9,7 +9,6 @@ export const products: Product[] = [
       "Contraste crema y azul marino con bordado frontal RSM en relieve.",
     description:
       "Corona estructurada en tono crema de sarga diagonal en contraste con visera curva, botón superior y bordado frontal RSM en relieve tridimensional azul marino.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "core",
@@ -44,7 +43,6 @@ export const products: Product[] = [
       "Corona arena con emblema en relieve oscuro y visera en patrón camuflaje.",
     description:
       "Corona estructurada en tono arena con emblema frontal RSM en relieve oscuro mate, cordón trenzado olivo en la base y visera curva con patrón camuflaje en tonos tierra.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "core",
@@ -79,7 +77,6 @@ export const products: Product[] = [
       "Textura tipo gamuza en tono tabaco con emblema metálico dorado y cordón trenzado.",
     description:
       "Silueta de seis paneles en acabado tipo gamuza color tabaco, distinguida por emblema ovalado e iniciales RSM en relieve metálico dorado, cordón trenzado frontal con herraje labrado y cierre posterior con hebilla metálica.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "special-edition",
@@ -129,7 +126,6 @@ export const products: Product[] = [
       "Corona café texturizada, parche ovalado con emblema en relieve y visera tono miel.",
     description:
       "Corona en café profundo con relieve orgánico sutil, parche ovalado frontal con marco labrado y emblema RSM en acabado metálico cobrizo, cordón trenzado con doble herraje lateral y visera curva en tono miel.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "special-edition",
@@ -164,7 +160,6 @@ export const products: Product[] = [
       "Contraste hueso y negro con emblema RSM en bordado texturizado tonos tierra.",
     description:
       "Construcción bicolor de acabado suave con paneles frontales en tono hueso, paneles posteriores y visera curva en negro con pespuntes claros, cordón frontal al tono y emblema RSM en bordado texturizado tipo bucle.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "special-edition",
@@ -199,7 +194,6 @@ export const products: Product[] = [
       "Frente hueso y paneles en tono vino con bordado histórico Rancho San Marco.",
     description:
       "Diseño bicolor de textura tipo gamuza con frente estructurado en tono hueso y visera, paneles posteriores y cordón trenzado en rojo vino, acompañado del bordado frontal Rancho San Marco · Monterrey, N.L. · ESTD 2016.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "special-edition",
@@ -234,7 +228,6 @@ export const products: Product[] = [
       "Silueta trucker en negro y cajeta con parche grabado Rancho Riders y malla beige.",
     description:
       "Silueta trucker con panel frontal negro estructurado, parche frontal grabado con la inscripción Super Cajeta · RSM · Rancho Riders, visera curva en tono cajeta, paneles de malla beige y cierre posterior snapback con etiqueta tejida RSM.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "core",
@@ -289,7 +282,6 @@ export const products: Product[] = [
       "Frente crema con emblema bordado en relieve y paneles de malla en tono vino.",
     description:
       "Construcción trucker con panel frontal estructurado en tono crema, emblema RSM bordado en relieve tridimensional color vino, cordón frontal al tono, visera curva vino con pespuntes visibles y paneles posteriores de malla.",
-    price: "$1,599 MXN",
     priceAmount: 1599,
     mockData: true,
     collectionId: "core",

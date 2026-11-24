@@ -12,10 +12,12 @@
 
 @mixin segment-29 {
 .pdp {
+  padding-block: 48px 120px;
+}
+.pdp__container {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(340px, 0.72fr);
   gap: 48px;
-  padding-block: 48px 120px;
 }
 }
 

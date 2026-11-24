@@ -1,3 +1,4 @@
+import { Section } from "../../components/layout/SectionContainer";
 import type { Product } from "../../types/product";
 import type { NavigateFn } from "../../types/navigation";
 import type { AddToCartFn } from "../../types/cart";
@@ -22,16 +23,12 @@ export function CorePdp({
 }) {
   return (
     <main className="page-light">
-      <section className="pdp shell">
+      <Section className="pdp" contentClassName="pdp__container">
         <ProductGallery product={product} />
         <ProductInfo product={product} navigate={navigate} onAdd={onAdd} />
-      </section>
+      </Section>
       <section className="pdp-story">
-        <ImagePlaceholder
-          label="LIFESTYLE IMAGE"
-          backgroundColor="#574D35"
-          variant="dark"
-        />
+        <ImagePlaceholder label="LIFESTYLE IMAGE" backgroundColor="#574D35" variant="dark" />
         <div>
           <span className="eyebrow">Del origen al presente</span>
           <h2>
@@ -40,12 +37,12 @@ export function CorePdp({
             Carácter que permanece.
           </h2>
           <p>
-            Una paleta tomada de la tierra y una construcción visual que
-            prioriza el producto sin perder su contexto.
+            Una paleta tomada de la tierra y una construcción visual que prioriza el producto sin
+            perder su contexto.
           </p>
         </div>
       </section>
-      <section className="related shell">
+      <Section className="related" contentClassName="related__container">
         <div className="related__head">
           <SectionHeading
             eyebrow="También puede interesarte"
@@ -62,15 +59,10 @@ export function CorePdp({
             .filter((p) => p.id !== product.id)
             .slice(0, 3)
             .map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                navigate={navigate}
-                onAdd={onQuickAdd}
-              />
+              <ProductCard key={p.id} product={p} navigate={navigate} onAdd={onQuickAdd} />
             ))}
         </div>
-      </section>
+      </Section>
     </main>
   );
 }

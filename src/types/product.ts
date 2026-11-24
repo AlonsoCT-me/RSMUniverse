@@ -27,8 +27,10 @@ export type Product = {
   name: string;
   shortDescription: string;
   description: string;
-  price: string;
+  /** Effective price in pesos (major units), used by display and cart. */
   priceAmount: number;
+  compareAtPrice?: number;
+  currency?: string;
   mockData: boolean;
   collectionId: CollectionId;
   collectionLabel: string;
