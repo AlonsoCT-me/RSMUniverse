@@ -70,7 +70,7 @@ No hay obsoletos eliminados por mera falta de referencia. Se conservan los alias
 
 ## Respaldo verificable
 
-Commit anterior a la tarea: `07e9eecb35cdbeb775b2ecf5427f481f3ec780c9`. Antes de retirar cualquier original se verificó su entrada versionada, OID LFS y que el objeto local existe y coincide por SHA-256 con el archivo de trabajo. No se presupone copia remota. El inventario JSON conserva los datos completos para cada original; dos maestros siguen además como archivos íntegros en [asset-masters](../asset-masters/README.md).
+Commit anterior a la tarea: `07e9eecb35cdbeb775b2ecf5427f481f3ec780c9`. Antes de retirar cualquier original se verificó su entrada versionada, OID LFS y que el objeto local existe y coincide por SHA-256 con el archivo de trabajo. No se presupone copia remota. El inventario JSON conserva los datos completos para cada original; dos maestros siguen además como archivos íntegros en [asset-masters](ASSET_MASTERS.md).
 
 Para recuperar una fuente sustituida, localizar el puntero de su ruta en ese commit y su OID; el payload verificado está en `.git/lfs/objects/<primeros 2>/<siguientes 2>/<OID>`. Leer solo git show de un archivo LFS devuelve el puntero, no la imagen. Recuperar el payload a un destino aprobado y comprobar su SHA antes de usarlo. No se hizo fetch remoto, poda LFS, copia a servicios externos ni commit. La carpeta temporal de pruebas es auxiliar y no es el respaldo único.
 
