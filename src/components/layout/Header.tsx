@@ -47,8 +47,8 @@ export function Header({
             className="brand-logo"
             src={
               overlay || dark
-                ? assetUrl("/assets/rsm-logo-white.png")
-                : assetUrl("/assets/rsm-logo-dark.png")
+                ? assetUrl("/logo/RSM-logo-white.png")
+                : assetUrl("/logo/RSM-logo-black.png")
             }
             alt="RSM"
             style={{ width: 120, height: "fit-content" }}
@@ -94,7 +94,7 @@ export function Header({
         aria-hidden={!menuOpen}
       >
         <div className="mobile-nav__top">
-          <img src={assetUrl("/assets/rsm-logo-white.png")} alt="RSM" />
+          <img src={assetUrl("/logo/RSM-logo-white.png")} alt="RSM" />
           <button aria-label="Cerrar menú" onClick={() => setMenuOpen(false)}>
             <Icon name="close" size={24} />
           </button>

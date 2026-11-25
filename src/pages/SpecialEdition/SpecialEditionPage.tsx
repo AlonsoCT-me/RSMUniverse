@@ -30,7 +30,7 @@ export function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
           copy="Un emblema que expresa la identidad de RSM a través de acabados y detalles distintivos."
           label="DETALLE — EMBLEMA"
           color="#64242E"
-          imageSrc={assetUrl("/assets/Embossed Black Suede Rancho Branding.png")}
+          imageSrc={assetUrl("/assets/special-edition-suede-emblem.webp")}
           imageAlt="Gorra de gamuza negra sobre piedra, mostrando sus materiales y texturas"
         />
         <EditorialImageText
@@ -39,7 +39,7 @@ export function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
           copy="Una combinación de texturas y materiales seleccionados para dar personalidad a esta edición."
           label="DETALLE — MATERIAL"
           color="#574D35"
-          imageSrc={assetUrl("/assets/Cinematic Black Suede Cap on Stone.png")}
+          imageSrc={assetUrl("/assets/special-edition-suede-material.webp")}
           imageAlt="Gorra de gamuza negra sobre piedra, mostrando sus materiales y texturas"
         />
         <EditorialImageText
@@ -47,7 +47,7 @@ export function SpecialLanding({ navigate }: { navigate: NavigateFn }) {
           copy="Cada elemento contribuye a una pieza que equilibra comodidad, diseño y atención al detalle."
           label="DETALLE — AJUSTE"
           color="#4B5B6E"
-          imageSrc={assetUrl("/assets/Luxury Black Suede Cap Close-Up.png")}
+          imageSrc={assetUrl("/assets/special-edition-suede-finish.webp")}
           imageAlt="Detalle del ajuste y los acabados de la gorra de gamuza negra"
         />
       </Section>

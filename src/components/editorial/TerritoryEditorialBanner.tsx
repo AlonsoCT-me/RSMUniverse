@@ -1,6 +1,5 @@
 import { Section } from "../layout/SectionContainer";
 import type { SectionContainer } from "../../types/section";
-import territoryLandscapeImg from "@/imports/home-SIN_FRONTERAS-2.jpg";
 import { assetUrl } from "../../asset-url";
 
 export function TerritoryEditorialBanner({
@@ -14,7 +13,7 @@ export function TerritoryEditorialBanner({
       aria-labelledby="territory-editorial-title"
     >
       <figure className="territory-editorial__visual territory-editorial__visual--landscape">
-        <img src={territoryLandscapeImg} alt="Hombre contemplando Monterrey desde la montaña" />
+        <img src={assetUrl("/assets/home-sin-fronteras.webp")} alt="Hombre contemplando Monterrey desde la montaña" />
       </figure>
       <div className="territory-editorial__copy">
         <h2 id="territory-editorial-title">EL TERRITORIO</h2>

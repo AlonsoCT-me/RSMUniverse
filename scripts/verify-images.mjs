@@ -1,10 +1,15 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
-// Check the working tree after checkout has hydrated Git LFS objects.
-const images = execFileSync("git", ["ls-files", "-z"], { encoding: "utf8" })
+// Include new working-tree images and omit pending deletions before they are staged.
+// CI still checks all committed images after Git LFS hydration.
+const images = execFileSync(
+  "git",
+  ["ls-files", "--cached", "--others", "--exclude-standard", "--deduplicate", "-z"],
+  { encoding: "utf8" },
+)
   .split("\0")
-  .filter((file) => /\.(?:png|jpe?g|webp)$/i.test(file));
+  .filter((file) => /\.(?:png|jpe?g|webp)$/i.test(file) && existsSync(file));
 if (images.length === 0) throw new Error("No tracked images found.");
 
 const errors = [];
@@ -15,11 +20,12 @@ for (const file of images) {
       throw new Error("unresolved Git LFS pointer");
     }
     const extension = file.split(".").pop().toLowerCase();
-    const valid = extension === "webp"
-      ? bytes.subarray(0, 4).toString() === "RIFF" && bytes.subarray(8, 12).toString() === "WEBP"
-      : extension === "png"
-        ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
-        : bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+    const valid =
+      extension === "webp"
+        ? bytes.subarray(0, 4).toString() === "RIFF" && bytes.subarray(8, 12).toString() === "WEBP"
+        : extension === "png"
+          ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+          : bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
     if (!valid) throw new Error("invalid image signature");
   } catch (error) {
     errors.push(`${file}: ${error.message}`);

@@ -6,7 +6,7 @@ Refactorización estructural revisada el 20 de noviembre de 2026. La fuente de v
 
 El árbol de trabajo estaba limpio. `src/App.tsx` tenía **2,815 líneas**, `src/index.css` **3,611**. App reunía nueve vistas, 37 funciones de componentes (incluido App), nueve tipos, el catálogo, la navegación y el estado principal. No había componentes ni hooks externos; `asset-url.ts` y `userback.ts` ya tenían responsabilidades independientes.
 
-Se revisaron App, main, CSS, resolución de assets, package.json, tsconfig, Vite, scripts de verificación, workflows y documentación existente: `DEPLOYMENT.md`, `RSM_DESIGN_IMPLEMENTATION_SPEC.md`, `.figma/README.md` y `docs/USERBACK_INTEGRATION.md`. Las cifras y algunas referencias de la especificación histórica pueden corresponder a versiones anteriores; este documento describe la arquitectura actual sin cambiar especificaciones visuales. No existe `docs/shopify-handoff/`.
+Se revisaron App, main, CSS, resolución de assets, package.json, tsconfig, Vite, scripts de verificación, workflows y documentación existente: `docs/DEPLOYMENT.md`, `docs/RSM_DESIGN_IMPLEMENTATION_SPEC.md`, `.figma/README.md` y `docs/USERBACK_INTEGRATION.md`. Las cifras y algunas referencias de la especificación histórica pueden corresponder a versiones anteriores; este documento describe la arquitectura actual sin cambiar especificaciones visuales. No existe `docs/shopify-handoff/`.
 
 Antes de editar pasaron TypeScript, build, verificación de 34 imágenes y las 12 pruebas de Userback. No hay script de lint ni suite de componentes configurados.
 

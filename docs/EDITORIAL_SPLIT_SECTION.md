@@ -79,7 +79,7 @@ Las duraciones no finitas usan sus valores predeterminados. Un intervalo no posi
       objectPosition: "54% center",
     },
     {
-      imageSrc: assetUrl("/assets/Appaloosa Rider Across Green Hills.png"),
+      imageSrc: assetUrl("/assets/story-origin-appaloosa.webp"),
       imageAlt: "Jinete sobre un caballo Appaloosa entre las colinas verdes",
     },
   ]}
@@ -109,10 +109,10 @@ La solicitud proponía `text-right`/`70-30` para Ciudad, pero la implementación
 Imágenes del slider, verificadas visualmente en assets existentes:
 
 1. `story-origin.webp`: vista aérea del rancho, 1835×857.
-2. `Appaloosa Rider Across Green Hills.png`: jinete y paisaje, 1672×941.
-3. `Golden-Hour Equestrian Courtyard.png`: patio y caballos, 1672×941.
+2. `story-origin-appaloosa.webp`: jinete y paisaje, 1672×941.
+3. `story-origin-courtyard.webp`: patio y caballos, 1672×941.
 
-No se generan imágenes ni se cambian los archivos originales. Ciudad conserva `story-city.webp` (1972×798).
+Las ocho conversiones WebP de la auditoría de assets no generan fotografías nuevas; los originales se respaldan según [ASSET_OPTIMIZATION_REPORT.md](ASSET_OPTIMIZATION_REPORT.md). Ciudad conserva `story-city.webp` (1972×798).
 
 ## Comportamiento y accesibilidad
 
