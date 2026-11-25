@@ -758,8 +758,8 @@ Riesgos observados:
 
 | Ruta                                                  | Tipo     | Uso / fuente original                                                                         |
 | ----------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------- |
-| `public/assets/rsm-logo-dark.png`                     | Logo PNG | Header claro                                                                                  |
-| `public/assets/rsm-logo-white.png`                    | Logo PNG | Header overlay/dark, mobile nav, Footer                                                       |
+| `public/logo/RSM-logo-black.png`                     | Logo PNG | Header claro                                                                                  |
+| `public/logo/RSM-logo-white.png`                    | Logo PNG | Header overlay/dark, mobile nav, Footer                                                       |
 | `public/favicon.png`                                  | PNG      | favicon                                                                                       |
 | `public/assets/home-hero.webp`                        | WebP     | Home Hero; fuente `home-HERO.png`                                                             |
 | `public/assets/home-sin-fronteras.webp`               | WebP     | Ambas variantes Sin Fronteras; fuente `home-SIN FRONTERAS-2.jpg`                              |

@@ -8,7 +8,7 @@ export function Footer({ navigate }: { navigate: (page: Page) => void }) {
       <Newsletter />
       <footer>
         <div className="footer__brand">
-          <img src={assetUrl("/assets/rsm-logo-white.png")} alt="RSM" />
+          <img src={assetUrl("/logo/RSM-logo-white.png")} alt="RSM" />
           <p>
             Nuestro origen nos define
             <br />

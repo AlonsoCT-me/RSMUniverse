@@ -35,11 +35,11 @@ export function Story() {
             objectPosition: "54% center",
           },
           {
-            imageSrc: assetUrl("/assets/Appaloosa Rider Across Green Hills.png"),
+            imageSrc: assetUrl("/assets/story-origin-appaloosa.webp"),
             imageAlt: "Jinete sobre un caballo Appaloosa entre las colinas verdes",
           },
           {
-            imageSrc: assetUrl("/assets/Golden-Hour Equestrian Courtyard.png"),
+            imageSrc: assetUrl("/assets/story-origin-courtyard.webp"),
             imageAlt: "Patio ecuestre de piedra con caballos al atardecer",
           },
         ]}

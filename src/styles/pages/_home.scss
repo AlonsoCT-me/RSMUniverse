@@ -61,6 +61,13 @@
   align-items: flex-start;
   padding-left: min(58%, 790px);
 }
+@media (min-width: 901px) {
+  .app--home .borderless-fullwidth--experimental .borderless-fullwidth__text {
+    align-self: flex-end;
+    padding-right: 0;
+    text-align: left;
+  }
+}
 .borderless-fullwidth h2 {
   margin: 20px 0;
   font-family: var(--serif);
