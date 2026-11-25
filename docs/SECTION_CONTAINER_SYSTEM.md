@@ -266,3 +266,13 @@ Actualizados:
 - `docs/SCSS_ARCHITECTURE.md`.
 - `docs/SCSS_STYLE_MAP.md`.
 - `docs/REACT_ARCHITECTURE.md`.
+
+## Home — alineación desktop de «Sin fronteras»
+
+El ajuste se limita a `.app--home .borderless-fullwidth--experimental .borderless-fullwidth__text` dentro de `@media (min-width: 901px)`, el tramo desktop posterior al breakpoint de 900px. El contenedor existente es Flexbox en columna: `align-self: flex-end` desplaza únicamente el bloque de texto al extremo derecho de su columna. `text-align: right` alinea el H2 y el TextLink inline-flex completo, incluido su icono; `padding-right: 0` elimina el padding interno derecho del bloque.
+
+No se cambia el layout del texto ni el `justify-content: center` del contenedor. Se conservan el padding-left editorial `min(58%, 790px)`, las proporciones/ancho de la columna, el máximo global de 1520px y el gutter exterior desktop de 60px proporcionado por SectionContainer. Tampoco se cambian imagen, overlay, altura, tipografía, color o espaciado vertical. TextLink y SectionContainer permanecen sin modificaciones globales. Se retira únicamente el botón JSX comentado que precedía al enlace actual.
+
+Validación local con Chromium: capturas revisadas a 1280, 1440, 1520, 1920 y 2560px; bloque, título, enlace e icono terminan en el borde derecho interior de la columna. Las posiciones Y, anchos/altos del contenido y geometría del contenedor son iguales a las anteriores. También se comprueba el límite desktop a 901px, sin overflow.
+
+Mobile/tablet: capturas y métricas idénticas antes/después a 320, 390, 540, 541, 768 y 900px. Evidencia temporal en `/private/tmp/rsm-borderless-align/`. `npm run build` correcto; persiste la advertencia previa `section::last-child`, ajena a este ajuste. Archivos de esta intervención: HomePage.tsx (retirada del comentario), styles/pages/_home.scss (regla acotada desktop) y este documento. Sin commit, push ni despliegue.
