@@ -42,19 +42,9 @@
 }
 
 @mixin segment-16 {
-.featured-collection__accent {
-  color: var(--sierra);
-  // The photograph's shadows require a local Caliza halo for contrast.
-  text-shadow:
-    -1px -1px 0 var(--caliza),
-    0 -1px 0 var(--caliza),
-    1px -1px 0 var(--caliza),
-    -1px 0 0 var(--caliza),
-    1px 0 0 var(--caliza),
-    -1px 1px 0 var(--caliza),
-    0 1px 0 var(--caliza),
-    1px 1px 0 var(--caliza);
-}
+  .featured-collection__accent {
+    color: var(--sierra);
+  }
 }
 
 @mixin segment-26 {
