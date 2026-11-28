@@ -190,8 +190,19 @@
     opacity: 0.4;
     content: "";
   }
-  .story-split__slider-dot[aria-current="true"]::before {
-    opacity: 1;
+  .story-split__slider-dot::after {
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 12px);
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    content: "";
+  }
+  .story-split__slider-dot[aria-current="true"]::after {
+    transform: scaleX(var(--story-slider-progress, 1));
   }
   .story-split__slider-play {
     position: absolute;

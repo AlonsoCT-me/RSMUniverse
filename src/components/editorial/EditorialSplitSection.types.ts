@@ -15,12 +15,14 @@ export interface EditorialSlide {
 export interface EditorialSliderOptions {
   arrows?: boolean;
   dots?: boolean;
+  /** Show the pause/resume control when autoplay is enabled. Defaults to true. */
+  pauseButton?: boolean;
   animation?: "slide" | "fade";
-  /** Milliseconds. */
+  /** Transition duration in milliseconds (fade or slide). Defaults to 600. */
   duration?: number;
   loop?: boolean;
   autoplay?: boolean;
-  /** Milliseconds; must be greater than zero. */
+  /** Time between automatic slide changes in milliseconds; greater than zero. Defaults to 5000. */
   autoplayInterval?: number;
 }
 

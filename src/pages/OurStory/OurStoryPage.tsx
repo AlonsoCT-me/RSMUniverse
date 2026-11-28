@@ -10,7 +10,9 @@ export function Story() {
       <section className="story-hero">
         <div className="story-hero__shade" />
         <SectionContainer container="contained" className="story-hero__content">
-          <span className="sr-only eyebrow eyebrow--light">NUESTRA HISTORIA</span>
+          <span className="sr-only eyebrow eyebrow--light">
+            NUESTRA HISTORIA
+          </span>
           <h1 className="sr-only">
             Antes que <br></br>una marca, <br></br> una historia.
           </h1>
@@ -36,7 +38,8 @@ export function Story() {
           },
           {
             imageSrc: assetUrl("/assets/story-origin-appaloosa.webp"),
-            imageAlt: "Jinete sobre un caballo Appaloosa entre las colinas verdes",
+            imageAlt:
+              "Jinete sobre un caballo Appaloosa entre las colinas verdes",
           },
           {
             imageSrc: assetUrl("/assets/story-origin-courtyard.webp"),
@@ -44,12 +47,14 @@ export function Story() {
           },
         ]}
         sliderOptions={{
-          arrows: true,
+          arrows: false,
           dots: true,
+          pauseButton: true,
           animation: "fade",
-          duration: 600,
+          duration: 600, // Duración de la transición, en milisegundos.
           loop: true,
           autoplay: true,
+          autoplayInterval: 3000, // Tiempo entre imágenes, en milisegundos.
         }}
       />
       <TerritoryGrid />

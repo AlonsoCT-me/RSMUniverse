@@ -21,6 +21,7 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
   const {
     arrows = true,
     dots = true,
+    pauseButton = true,
     animation = "fade",
     duration = 600,
     loop = true,
@@ -31,13 +32,16 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
   const [failedImages, setFailedImages] = useState<ReadonlySet<string>>(() => new Set());
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [keyboardFocused, setKeyboardFocused] = useState(false);
+  const [navigationCycle, setNavigationCycle] = useState(0);
   const [hidden, setHidden] = useState(() => typeof document !== "undefined" && document.hidden);
   const [reducedMotion, setReducedMotion] = useState(
     () =>
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
-  const pointerPlayIntent = useRef<boolean | null>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const elapsed = useRef(0);
   const gesture = useRef<{ x: number; y: number; pointerId: number } | null>(null);
   const images = slides.filter((slide) => !failedImages.has(slide.imageSrc));
   const count = images.length;
@@ -45,6 +49,7 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
   const multiple = count > 1;
   const atEnd = !loop && activeIndex === count - 1;
   const playing = autoplay && multiple && !paused && !reducedMotion && !atEnd;
+  const running = playing && !hovered && !hidden && !keyboardFocused;
   const safeDuration = Number.isFinite(duration) ? Math.max(0, duration) : 600;
   const safeInterval =
     Number.isFinite(autoplayInterval) && autoplayInterval > 0 ? autoplayInterval : 5000;
@@ -62,18 +67,58 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
   }, []);
 
   useEffect(() => {
-    if (!playing || hovered || hidden) return;
-    const timer = window.setTimeout(() => {
-      setSelectedIndex((index) =>
-        loop ? (Math.min(index, count - 1) + 1) % count : Math.min(index + 1, count - 1),
+    elapsed.current = 0;
+    sliderRef.current?.style.setProperty(
+      "--story-slider-progress",
+      autoplay && multiple && !atEnd && !reducedMotion ? "0" : "1",
+    );
+  }, [
+    activeIndex,
+    count,
+    safeInterval,
+    loop,
+    autoplay,
+    multiple,
+    atEnd,
+    reducedMotion,
+    navigationCycle,
+  ]);
+
+  // One clock drives both the countdown and its fill, without rendering every frame.
+  useEffect(() => {
+    if (!running) return;
+    const startedAt = performance.now() - elapsed.current;
+    let frame: number;
+
+    function tick(now: number) {
+      elapsed.current = Math.min(now - startedAt, safeInterval);
+      sliderRef.current?.style.setProperty(
+        "--story-slider-progress",
+        String(elapsed.current / safeInterval),
       );
-    }, safeInterval);
-    return () => window.clearTimeout(timer);
-  }, [playing, hovered, hidden, safeInterval, activeIndex, count, loop]);
+      if (elapsed.current >= safeInterval) {
+        setSelectedIndex((index) =>
+          loop ? (Math.min(index, count - 1) + 1) % count : Math.min(index + 1, count - 1),
+        );
+        return;
+      }
+      frame = window.requestAnimationFrame(tick);
+    }
+
+    frame = window.requestAnimationFrame(tick);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      elapsed.current = Math.min(performance.now() - startedAt, safeInterval);
+      sliderRef.current?.style.setProperty(
+        "--story-slider-progress",
+        String(elapsed.current / safeInterval),
+      );
+    };
+  }, [running, safeInterval, activeIndex, count, loop, navigationCycle]);
 
   function navigate(index: number) {
     if (!multiple) return;
-    setPaused(true);
+    setNavigationCycle((cycle) => cycle + 1);
     setSelectedIndex(loop ? (index + count) % count : Math.max(0, Math.min(index, count - 1)));
   }
 
@@ -114,6 +159,7 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
 
   return (
     <div
+      ref={sliderRef}
       className={`story-split__slider story-split__slider--${animation}`}
       style={{ "--story-slider-duration": `${safeDuration}ms` } as React.CSSProperties}
       role="region"
@@ -122,7 +168,10 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
       tabIndex={multiple ? 0 : undefined}
       onKeyDown={onKeyDown}
       onFocusCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(true);
+        if (event.target.matches(":focus-visible")) setKeyboardFocused(true);
+      }}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setKeyboardFocused(false);
       }}
       onPointerEnter={(event) => {
         if (event.pointerType === "mouse") setHovered(true);
@@ -195,20 +244,15 @@ function EditorialSliderContent({ slides, options, labelledBy }: EditorialSlider
           ))}
         </div>
       ) : null}
-      {multiple && autoplay ? (
+      {multiple && autoplay && pauseButton ? (
         <button
           type="button"
           className="story-split__slider-play"
           disabled={reducedMotion}
           aria-label={playing ? "Pausar presentación" : "Reanudar presentación"}
-          onPointerDown={() => {
-            pointerPlayIntent.current = playing;
-          }}
           onClick={() => {
-            const shouldPause = pointerPlayIntent.current ?? playing;
-            pointerPlayIntent.current = null;
             if (atEnd) setSelectedIndex(0);
-            setPaused(shouldPause);
+            setPaused(playing);
           }}
         >
           {reducedMotion ? "Movimiento reducido" : playing ? "Pausar" : "Reanudar"}

@@ -89,7 +89,7 @@ export function Home({
           onClick: () => navigate("collection"),
         }}
         index={{
-          visible: true,
+          visible: false,
           current: "01",
           total: "05",
           tabletVisible: false,
@@ -190,7 +190,7 @@ export function Home({
         <div className="special-split__image">
           <img
             className="home-special-image"
-            src={assetUrl("/assets/rsm-special-edition-cap.webp")}
+            src={assetUrl("/assets/rsm-special-black-ed.jpg")}
             alt="Detalle del emblema metálico de la edición especial RSM"
           />
         </div>
