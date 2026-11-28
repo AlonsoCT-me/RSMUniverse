@@ -49,7 +49,7 @@ export function Story() {
         sliderOptions={{
           arrows: false,
           dots: true,
-          pauseButton: true,
+          pauseButton: false,
           animation: "fade",
           duration: 600, // Duración de la transición, en milisegundos.
           loop: true,
